@@ -9,6 +9,6 @@ public class Address {
 	private String state;
 	private String city;
 	private int pincode;
-	//private Customer cutomer;
+	//private Customer customer;
 
 }

@@ -3,8 +3,8 @@ package com.lti.entity;
 public class Beneficiary {
 	
 	private int beneficiaryId;
-	//user id foreign key
-	//beneficiary_ac_no foreign key
+	//private User user;
+	//private Account account;
 	private String beneficiaryName;
 	private String beneficiaryNickName;
 
