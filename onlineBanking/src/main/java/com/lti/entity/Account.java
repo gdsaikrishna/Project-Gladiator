@@ -1,9 +1,21 @@
 package com.lti.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "table_account")
 public class Account {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accSeq")
+	@SequenceGenerator(name = "accSeq", sequenceName = "ACCOUNT_NUMBER_SEQ", allocationSize = 2)
 	private int accountNumber;
-	private User userId; //FK
+	private User user; // FK
 	private double balance;
 	
 	public int getAccountNumber() {
@@ -12,11 +24,11 @@ public class Account {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	public User getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public double getBalance() {
 		return balance;
@@ -24,5 +36,5 @@ public class Account {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	
+
 }
