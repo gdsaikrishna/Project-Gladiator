@@ -3,6 +3,7 @@ package com.lti.entity;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,29 +20,61 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "custSeq")
 	@SequenceGenerator(name = "custSeq", sequenceName = "CUSTOMER_SERVICE_REF_NO_SEQ", allocationSize = 11)
+	@Column(name="service_ref_no")
 	private int serviceRefNo;
+	
 	private String title;
+	
+	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="middle_name")
 	private String middleName;
+	
+	@Column(name="last_name")
 	private String lastName;
+	
+	@Column(name="father_name")
 	private String fatherName;
+	
+	@Column(name="mobile_no")
 	private long mobileNo;
+	
+	@Column(name="email_id")
 	private String emailId;
+	
+	@Column(name="aadhaar_card_no")
 	private long aadhaarNo;
+	
+	@Column(name="date_of_birth")
 	private LocalDate dateOfBirth;
+	
+	@Column(name="occupation_type")
 	private String occupationType;
+	
+	@Column(name="source_of_income")
 	private String sourceOfIncome;
+	
+	@Column(name="gross_annual_income")
 	private float grossAnnualIncome;
+	
+	@Column(name="debit_card_requirement")
 	private String debitCardRequirement;
+	
+	@Column(name="net_banking_requirement")
 	private String netBankingRequirement;
+	
+	@Column(name="is_approved")
 	private String isApproved;
+	
+	@Column(name="pan_card")
 	private String panCard;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "res_address_id")
 	private Address resAddress; //fk
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "per_address_id")
 	private Address perAddress; //fk
 

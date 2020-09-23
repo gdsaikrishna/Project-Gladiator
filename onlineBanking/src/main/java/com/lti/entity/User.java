@@ -1,11 +1,16 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "table_user")
@@ -14,9 +19,17 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
 	@SequenceGenerator(name = "userSeq", sequenceName = "USER_ID_SEQ", allocationSize = 5)
+	@Column(name="user_id")
 	private int id;
-	private Customer customer;// fk
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="service_ref_no")
+	private Customer customer; //fk
+	
+	@Column(name="user_password")
 	private String userPassword;
+	
+	@Column(name="tx_password")
 	private String transactionPassword;
 
 	public int getId() {

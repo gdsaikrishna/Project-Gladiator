@@ -1,10 +1,10 @@
 package com.lti.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,12 +15,22 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adrSeq")
 	@SequenceGenerator(name = "adrSeq", sequenceName = "ADDRESS_ID_SEQ", allocationSize = 2)
+	@Column(name = "address_id")
 	private int addressId;
+	
+	@Column(name = "address_line_1")
 	private String addressLine1;
+	
+	@Column(name = "address_line_2")
 	private String addressLine2;
+	
 	private String landmark;
+	
 	private String state;
+	
 	private String city;
+	
+	@Column(name = "pincode")
 	private int pincode;
 
 	public int getAddressId() {

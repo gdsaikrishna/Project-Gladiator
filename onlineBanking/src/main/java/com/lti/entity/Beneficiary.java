@@ -1,9 +1,13 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,10 +18,21 @@ public class Beneficiary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "benSeq")
 	@SequenceGenerator(name = "benSeq", sequenceName = "BENEFICIARY_ID_SEQ", allocationSize = 2)
+	@Column(name = "beneficiary_id")
 	private int beneficiaryId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private User userId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="beneficiary_ac_no")
 	private Account account;
+	
+	@Column(name = "beneficiary_name")
 	private String beneficiaryName;
+	
+	@Column(name = "beneficiary_nick_name")
 	private String beneficiaryNickName;
 
 	public int getBeneficiaryId() {

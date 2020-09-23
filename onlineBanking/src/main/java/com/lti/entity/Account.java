@@ -1,9 +1,13 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,8 +18,13 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accSeq")
 	@SequenceGenerator(name = "accSeq", sequenceName = "ACCOUNT_NUMBER_SEQ", allocationSize = 2)
+	@Column(name="account_number")
 	private int accountNumber;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private User user; // FK
+	
 	private double balance;
 	
 	public int getAccountNumber() {
