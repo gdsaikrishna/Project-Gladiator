@@ -72,11 +72,11 @@ public class Customer {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "res_address_id")
-	private Address resAddress; //fk
+	private Address resAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "per_address_id")
-	private Address perAddress; //fk
+	private Address perAddress;
 
 	public int getServiceRefNo() {
 		return serviceRefNo;

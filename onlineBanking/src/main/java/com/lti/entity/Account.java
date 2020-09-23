@@ -24,7 +24,7 @@ public class Account {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
-	private User user; // FK
+	private User user;
 	
 	private double balance;
 	
