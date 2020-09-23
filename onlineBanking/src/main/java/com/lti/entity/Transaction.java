@@ -20,7 +20,7 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tranSeq")
 	@SequenceGenerator(name = "tranSeq", sequenceName = "TRANSACTION_ID_SEQ", allocationSize = 1)
-	@Column(name = "")
+	@Column(name = "transaction_Id")
 	private int transactionId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
