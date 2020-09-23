@@ -22,9 +22,6 @@ public class Address {
 	private String state;
 	private String city;
 	private int pincode;
-	
-//	@OneToOne(mappedBy = "")
-	private Customer customer;
 
 	public int getAddressId() {
 		return addressId;
@@ -82,12 +79,6 @@ public class Address {
 		this.pincode = pincode;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
 
 }
