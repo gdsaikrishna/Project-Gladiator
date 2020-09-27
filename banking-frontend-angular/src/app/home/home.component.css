@@ -25,33 +25,12 @@
   opacity: 60%;
 }
 
-.footer {
-  padding: 40px;
-  background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
-  bottom: 0;
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.footer a {
-  color: rgb(58, 56, 56);
-  padding: 20px;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.footer a:hover {
-  opacity: 60%;
-}
-
 .banner-image {
   float: left;
   margin: 28px 0;
 }
 
-img {
+.banner-image img {
   border-radius: 10px;
   margin-left: 50px;
 }

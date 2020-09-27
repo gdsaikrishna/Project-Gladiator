@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'session-expired', component: SessionExpiredComponent },
   { path: 'forgot-user-id', component: ForgotUserIdComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'set-new-password', component: SetNewPasswordComponent }
+  { path: 'set-new-password', component: SetNewPasswordComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { SetNewPasswordComponent } from './set-new-password/set-new-password.com
     ForgotUserIdComponent,
     ForgotPasswordComponent,
     SetNewPasswordComponent,
+    DashboardComponent,
+    FooterComponent,
     ],
   imports: [
     BrowserModule,

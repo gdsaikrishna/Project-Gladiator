@@ -33,3 +33,7 @@ a:hover {
 input[type="text"], input[type="password"] {
     border: 1px solid #428BCA;
 }
+
+.forgot-options{
+    padding: 7px 0;
+}
