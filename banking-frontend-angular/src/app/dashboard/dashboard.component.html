@@ -1,20 +1,23 @@
-<div class="text-center"><img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="100" height="100"></div>
-<div class="header">
-    <p href="#">HFDC Bank</p>
-    <ul style="float: right;">
-        <li [routerLink]="['/session-expired']">Account Statement</li>
-        <li>Fund Transfer</li>
-        <li>User Profile</li>
-        <li>Change User ID / Password</li>
-    </ul>
-</div>
-<div>
-    <ul class="sidebar">
-        <li [routerLink]="['/logout']">Account Details</li>
-        <li [routerLink]="['/session-expired']">Account Summary</li>
-        <li>Fund Transefer</li>
-        <li>Account Statement</li>
-        <li>Account Statement</li>
-    </ul>
+<div style="font-size: 18px;">
+    <div class="text-center"><img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="100" height="100">
+    </div>
+    <div class="header">
+        <p href="#">HFDC Bank</p>
+        <ul style="float: right;">
+            <li [routerLink]="['/session-expired']">User Profile</li>
+            <li>Change User ID</li>
+            <li>Change Password</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="sidebar">
+            <li [routerLink]="['/logout']">Account Summary</li>
+            <li [routerLink]="['/session-expired']">Account Statement</li>
+            <li>Fund Transfer</li>
+            <li>Add Beneficiary</li>
+            <li>Account Statement</li>
+        </ul>
+    </div>
 </div>
 <!-- <app-footer></app-footer> -->
