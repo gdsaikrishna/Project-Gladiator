@@ -5,6 +5,8 @@
   position: fixed;
   width: 100%;
   top: 0;
+  /*margin: 0px 0px 0px 150px  ;*/
+  
 }
 
 .header a {
@@ -27,10 +29,14 @@
 
 .banner-image {
   float: left;
-  margin: 28px 0;
+  margin: 28px 100px;
 }
 
 .banner-image img {
   border-radius: 10px;
   margin-left: 50px;
+}
+
+.login{
+  margin-right: 110px;
 }

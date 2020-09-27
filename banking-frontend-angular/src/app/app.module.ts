@@ -14,6 +14,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
+import { OpenAccComponent } from './open-acc/open-acc.component';
+import { RegisterIbComponent } from './register-ib/register-ib.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     SetNewPasswordComponent,
     DashboardComponent,
     FooterComponent,
+    OpenAccComponent,
+    RegisterIbComponent,
     ],
   imports: [
     BrowserModule,
