@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 import { OpenAccComponent } from './open-acc/open-acc.component';
 import { RegisterIbComponent } from './register-ib/register-ib.component';
+import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegisterIbComponent } from './register-ib/register-ib.component';
     SetNewPasswordComponent,
     OpenAccComponent,
     RegisterIbComponent,
+    FundTransferComponent,
     ],
   imports: [
     BrowserModule,
