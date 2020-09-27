@@ -1,0 +1,11 @@
+.wrapper {
+    /* background-color: #ffe2e2; */
+    border-radius: 6px;
+    padding: 14px;
+    width: 46%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}

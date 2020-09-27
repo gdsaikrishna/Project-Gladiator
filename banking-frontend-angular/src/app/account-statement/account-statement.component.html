@@ -1,0 +1,6 @@
+<app-dashboard></app-dashboard>
+<div class="wrapper container">
+    <ul class="list-group" *ngFor="let transaction of transactions">
+        <li class="list-group-items">{{transaction.transactionId}} {{transaction.txType}} {{transaction.amount}} {{transaction.date}} {{transaction.remarks}} </li>
+      </ul>
+</div>

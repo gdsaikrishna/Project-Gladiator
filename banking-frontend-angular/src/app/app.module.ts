@@ -17,6 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { OpenAccComponent } from './open-acc/open-acc.component';
 import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
+import { AccountSummaryComponent } from './account-summary/account-summary.component';
+import { AccountStatementComponent } from './account-statement/account-statement.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
     OpenAccComponent,
     RegisterIbComponent,
     FundTransferComponent,
-    ],
+    AccountSummaryComponent,
+    AccountStatementComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

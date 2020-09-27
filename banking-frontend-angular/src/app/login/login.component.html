@@ -2,17 +2,17 @@
     <p>HFDC Bank</p>
 </div> -->
 <div class="wrapper container">
-    <h2>Login</h2>
+    <p class="h3">Login</p>
     <br>
     <p>Please fill in your credentials to login.</p>
-    <br>
     <!--VALIDATION NOT WORKING PROPERLY-->
-    <form [formGroup]="loginForm" action="login.html" method="post">
+    <form [formGroup]="loginForm" (ngSubmit)="buildLoginForm()">
         <div class="form-group">
             <label>User ID</label>
             <input formControlName="userId" class="form-control" type="text" name="userId"
                 placeholder="Your 6-digit user id">
-            <div *ngIf="loginForm.controls.userId.invalid">
+            <div *ngIf="loginForm.controls.userId.invalid && (loginForm.controls.userId.dirty || loginForm.controls.userId.touched)"
+                class="alert alert-danger">
                 <div *ngIf="loginForm.controls.userId.errors.required">User ID is required</div>
                 <div *ngIf="loginForm.controls.userId.errors.pattern">User ID must contain 6 digits</div>
             </div>
@@ -21,15 +21,16 @@
             <label>Password</label>
             <input formControlName="password" class="form-control" type="password" name="password"
                 placeholder="Your password">
-            <div *ngIf="loginForm.controls.password.invalid">Password is required</div>
+            <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)"
+                class="alert alert-danger">
+                <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+            </div>
         </div>
-        <div class="form-group">
-            <input (click)="buildLoginForm()" type="submit" class="btn btn-primary" value="Login" style="width: 100%;">
-        </div>
-        <!-- <p>Register for Internet Banking <a href="">here</a>.</p> -->
-        <div class="forgot-options">
-            <p>Forgot User ID? <a href="">Click here</a>.</p>
-            <p>Forgot Password? <a href="">Click here</a>.</p>
-        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
     </form>
+    <!-- <p>Register for Internet Banking <a href="">here</a>.</p> -->
+    <div class="forgot-options">
+        <p>Forgot User ID? <a href="">Click here</a>.</p>
+        <p>Forgot Password? <a href="">Click here</a>.</p>
+    </div>
 </div>

@@ -1,3 +1,4 @@
+import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -9,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SessionExpiredComponent } from './session-expired/session-expired.component';
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
+import { AccountStatementComponent } from './account-statement/account-statement.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'set-new-password', component: SetNewPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'account-summary', component: AccountSummaryComponent },
+  { path: 'account-statement', component: AccountStatementComponent }
 ];
 
 @NgModule({
