@@ -6,14 +6,23 @@
     <br>
     <p>Please fill in your credentials to receive your User ID.</p>
     <br>
-    <form action="forgot-user-id.html" method="post">
-        <div class="form-group ">
-            <label>Enter Account Number</label>
-            <input class="form-control" type="text" name="accountNo">
-        </div>
+    <form [formGroup]="forgotUserIdForm">
         <div class="form-group">
-            <label>Enter OTP</label>
-            <input class="form-control" type="text" name="password">
+            <label>Enter Account Number</label>
+            <input [class.is-invalid]="forgotUserIdForm.get('accountNo').invalid && forgotUserIdForm.get('accountNo').touched" 
+                    formControlName="accountNo" type="text" class="form-control">
+            <small class="text-danger" [class.d-none]="forgotUserIdForm.get('accountNo').valid || forgotUserIdForm.get('accountNo').untouched">Account No is required</small>
+        </div>
+
+        <div class="form-group">
+            <label>Enter OTP(One Time Password) sent to your email Id</label>
+            <input [class.is-invalid]="forgotUserIdForm.get('otp').invalid && forgotUserIdForm.get('otp').touched"
+                    formControlName="otp" type="text" class="form-control">
+            <div *ngIf="forgotUserIdForm.get('otp').invalid && forgotUserIdForm.get('otp').touched">
+                <small *ngIf="forgotUserIdForm.get('otp').errors?.required" class="text-danger">OTP is required</small>
+                <small *ngIf="forgotUserIdForm.get('otp').errors?.minLength" class="text-danger">OTP should be of minimum 6 digits</small>
+                <small *ngIf="forgotUserIdForm.get('otp').errors?.maxLength" class="text-danger">OTP should not exceed 6 digits</small>
+            </div>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Proceed" style="margin-left: 80px;">
