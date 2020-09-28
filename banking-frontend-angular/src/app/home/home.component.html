@@ -1,8 +1,8 @@
 <div class="header">
     <a href="#">HFDC Bank</a>
     <div style="float: right;">
-        <a href="#" routerLink="/register-ib">Register for Internet Banking</a>
-        <a href="#" routerLink="/open-acc">Apply for Account</a>
+        <a href="#" [routerLink]="['/register-ib']">Register for Internet Banking</a>
+        <a href="#" [routerLink]="['/open-acc']">Apply for Account</a>
         <a [routerLink]="['/admin-login']">Admin Login</a>
     </div>
 </div>
@@ -28,3 +28,4 @@
 <a [routerLink]="['/forgot-user-id']"><button>FORGOT USER ID</button></a>
 <a [routerLink]="['/forgot-password']"><button>FORGOT PASSWORD</button></a>
 <a [routerLink]="['/set-new-password']"><button>SET NEW PASSWORD</button></a>
+<a [routerLink]="['/track-application']"><button>TRACK APPLICATION</button></a>

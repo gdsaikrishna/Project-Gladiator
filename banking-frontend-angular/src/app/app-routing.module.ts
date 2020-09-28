@@ -13,6 +13,7 @@ import { SessionExpiredComponent } from './session-expired/session-expired.compo
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 import { AccountStatementComponent } from './account-statement/account-statement.component';
 import { OpenAccComponent } from './open-acc/open-acc.component';
+import { TrackApplicationComponent } from './track-application/track-application.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'account-summary', component: AccountSummaryComponent },
   { path: 'account-statement', component: AccountStatementComponent },
   { path: 'register-ib', component: RegisterIbComponent},
-  { path: 'open-acc', component: OpenAccComponent}
+  { path: 'open-acc', component: OpenAccComponent},
+  { path: 'track-application', component: TrackApplicationComponent }
 ];
 
 @NgModule({

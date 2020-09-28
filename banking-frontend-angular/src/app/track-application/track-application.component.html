@@ -1,0 +1,37 @@
+<div class="text-center">
+    <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
+</div>
+<div class="wrapper container" style="width: 28%;">
+    <p class="h3">Track Application</p>
+    <br>
+    <form (ngSubmit)="trackApplicationForm.valid && onSubmit()" #trackApplicationForm="ngForm">
+        <div class="form-group ">
+            <label>Service Reference Number</label>
+            <input class="form-control" type="text" name="adminId" placeholder="Your 4-digit service reference number"
+                [(ngModel)]=serviceRefNo #refNo="ngModel" required pattern="^[0-9]{4}$">
+            <div class="alert alert-danger"
+                *ngIf="trackApplicationForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
+                <div *ngIf="refNo.errors.required">Service reference number is required</div>
+                <div *ngIf="refNo.errors.pattern">Invalid service reference number</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Track" style="width: 100%;">
+        </div>
+    </form>
+</div><br>
+<div class="h2" style="text-align: center;" *ngIf="submitted">
+    <div *ngIf="approved == 'Y'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-success"
+        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 42%">
+        Hurray! Your application is approved.
+    </div>
+    <div *ngIf="approved == 'P'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 86%" #notApproved>Your
+        application is pending for approval.
+        You will be notified once approved.
+    </div>
+    <div *ngIf="approved == 'N'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-danger"
+        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 36%">
+        Your application is rejected.
+    </div>
+</div>

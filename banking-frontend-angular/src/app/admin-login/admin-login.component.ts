@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
   styleUrls: ['.././app.component.css']
 })
-export class AdminLoginComponent implements OnInit {
+export class AdminLoginComponent {
 
+  adminLoginId: number;
+  password: string = '';
   constructor() { }
 
-  ngOnInit(): void {
+  showDetails() {
+    alert(this.adminLoginId + this.password);
   }
-
 }

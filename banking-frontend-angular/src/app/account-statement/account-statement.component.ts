@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountStatementComponent implements OnInit {
 
-  transactions=[
-    new Transaction(1234, 399, "DEBIT", "28-02-2020", "Airtel Recharge"),
-    new Transaction(4321, 1237, "DEBIT", "28-02-2020", "Electricity Bill"),
-    new Transaction(7894, 456.25, "CREDIT", "28-02-2020", "Paytm Refund")
+  transactions = [
+    new Transaction(1234, 399, "debit", "28-02-2020", "Airtel Recharge"),
+    new Transaction(4321, 1237, "debit", "28-02-2020", "Electricity Bill"),
+    new Transaction(7894, 456.25, "credit", "28-02-2020", "Paytm Refund")
   ]
+  count: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {

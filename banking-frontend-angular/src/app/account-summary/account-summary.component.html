@@ -5,8 +5,8 @@
             <div class="card-header">Account</div>
             <div class="card-body text-dark">
                 <h5 class="card-title">{{account.accountNumber}}</h5>
-                <p class="card-text">Balance: {{account.balance}}</p>
-                <p class="card-text">Type: {{account.accountType}}</p>
+                <p class="card-text">Balance: {{account.balance | currency : 'INR'}}</p>
+                <p class="card-text">Type: {{account.accountType | uppercase}}</p>
             </div>
         </div>
     </div>

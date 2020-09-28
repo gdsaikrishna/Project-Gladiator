@@ -1,18 +1,26 @@
 <div class="text-center">
-    <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="180" height="180">
+    <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
 </div>
 <div class="wrapper container" style="width: 28%;">
-    <p class="h3">Login</p>
+    <p class="h3">Admin Login</p>
     <br>
     <p>Please fill in your credentials to login.</p>
-    <form action="home.html" method="post">
+    <form (ngSubmit)="adminLoginForm.valid && showDetails()" #adminLoginForm="ngForm">
         <div class="form-group ">
             <label>User ID</label>
-            <input class="form-control" type="text" name="userId" placeholder="Your 5-digit admin id">
+            <input class="form-control" type="text" name="adminId" placeholder="Your 5-digit admin id" [(ngModel)]=adminLoginId #id="ngModel" required pattern="^[0-9]{5}$">
+            <div class="alert alert-danger" *ngIf="adminLoginForm.submitted && id.invalid && (id.dirty || id.touched)">
+                <div *ngIf="id.errors.required">Admin ID is required</div>
+                <div *ngIf="id.errors.pattern">Admin ID must be of 5 digits</div>
+            </div>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input class="form-control" type="password" name="password" placeholder="Your password">
+            <input class="form-control" type="password" name="password" placeholder="Your password" [(ngModel)]=password
+                #pwd="ngModel" required>
+            <div class="alert alert-danger" *ngIf="adminLoginForm.submitted && pwd.invalid && (pwd.dirty || pwd.touched)">
+                <div *ngIf="pwd.errors.required">Password is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login" style="width: 100%;">
