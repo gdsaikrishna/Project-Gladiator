@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder} from '@angular/forms';
-// import { passwordValidator} from '../shared/password.validator';
+import {  FormBuilder, Validators} from '@angular/forms';
 
-// COMMENTED BECAUSE OF ERRORS
 @Component({
   selector: 'app-set-new-password',
   templateUrl: './set-new-password.component.html',
@@ -15,8 +13,9 @@ export class SetNewPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // setNewPasswordForm=this.fb.group({
-  //   password:[''],
-  //   confirmPassword:['']
-  // },{Validators:passwordValidator});
+    setNewPasswordForm=this.fb.group({
+     password:['',Validators.required],
+     confirmPassword:['',Validators.required]
+   });
 }
+
