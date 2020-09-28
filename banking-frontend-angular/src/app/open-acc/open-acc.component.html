@@ -1,4 +1,8 @@
-<h3><strong>Open Savings Account </strong></h3>
+<div class="text-center">
+    <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="180" height="180">
+</div>
+
+<h3><strong>Open Savings Account</strong></h3>
 
 <div class="w-75 form justify-content-center">
     <form class="form" [formGroup]="openAccForm" (ngSubmit)="onSubmit()">
@@ -12,7 +16,7 @@
                 <div class="form-group row">
                     <label for="title" class="col-sm-5 col-form-label">Title <span style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <select [(ngModel)] = "newAccount.title" class="form-control" id="title" formControlName="title">
+                        <select [(ngModel)]="newAccount.title" class="form-control" id="title" formControlName="title">
                             <option value=""></option>
                             <option value="Mr."> Mr.</option>
                             <option value="Mrs."> Mrs.</option>
@@ -26,13 +30,14 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="firstName" formControlName="firstName"
-                            placeholder="Enter First Name"  [(ngModel)] = "newAccount.firstName">
+                            placeholder="Enter First Name" [(ngModel)]="newAccount.firstName">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="mName" class="col-sm-5 col-form-label">Middle Name</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="middleName" formControlName="middleName" [(ngModel)] = "newAccount.middleName" placeholder="Enter Middle Name">
+                        <input type="text" class="form-control" id="middleName" formControlName="middleName"
+                            [(ngModel)]="newAccount.middleName" placeholder="Enter Middle Name">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -40,7 +45,7 @@
                     </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="lastName" formControlName="lastName"
-                            placeholder="Enter Last Name"  [(ngModel)] = "newAccount.lastName">
+                            placeholder="Enter Last Name" [(ngModel)]="newAccount.lastName">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -48,7 +53,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="fatherName" formControlName="fatherName"
-                            placeholder="Enter Father's Name"  [(ngModel)] = "newAccount.fatherName">
+                            placeholder="Enter Father's Name" [(ngModel)]="newAccount.fatherName">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -56,7 +61,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="tel" class="form-control" id="mobileNo" formControlName="mobileNo"
-                            placeholder="Enter Mobile Number" [(ngModel)] = "newAccount.mobileNo">
+                            placeholder="Enter Mobile Number" [(ngModel)]="newAccount.mobileNo">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -64,7 +69,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control" id="emailId" formControlName="emailId"
-                            placeholder="Enter Email Address" [(ngModel)] = "newAccount.emailId">
+                            placeholder="Enter Email Address" [(ngModel)]="newAccount.emailId">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -72,14 +77,15 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="tel" class="form-control" id="aadhaarNo" formControlName="aadhaarNo"
-                            placeholder="Enter Aadhar Card Number" [(ngModel)] = "newAccount.aadhaarNo" > 
+                            placeholder="Enter Aadhar Card Number" [(ngModel)]="newAccount.aadhaarNo">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="dob" class="col-sm-5 col-form-label">Date of Birth <span
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter DOB" formControlName="dateOfBirth" [(ngModel)] = "newAccount.dateOfBirth"  >
+                        <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter DOB"
+                            formControlName="dateOfBirth" [(ngModel)]="newAccount.dateOfBirth">
                     </div>
                 </div>
             </div>
@@ -98,7 +104,7 @@
                     <label for="resLine1" class="col-sm-5 col-form-label">Address Line 1 <span
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resLine1" formControlName="resAddressLine1" 
+                        <input type="text" class="form-control" id="resLine1" formControlName="resAddressLine1"
                             placeholder="Enter Address Line 1" [(ngModel)]="resAdd.addressLine1">
                     </div>
                 </div>
@@ -107,29 +113,29 @@
                     <label for="resLine2" class="col-sm-5 col-form-label">Address Line 2 <span
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resLine2" formControlName="resAddressLine2" 
-                        placeholder="Enter Address Line 2" [(ngModel)]="resAdd.addressLine2">
+                        <input type="text" class="form-control" id="resLine2" formControlName="resAddressLine2"
+                            placeholder="Enter Address Line 2" [(ngModel)]="resAdd.addressLine2">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="resLandmark" class="col-sm-5 col-form-label">Landmark</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resLandmark" placeholder="Enter Landmark" 
-                        formControlName="resLandmark" [(ngModel)]="resAdd.landmark">
+                        <input type="text" class="form-control" id="resLandmark" placeholder="Enter Landmark"
+                            formControlName="resLandmark" [(ngModel)]="resAdd.landmark">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="resState" class="col-sm-5 col-form-label">State <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resState" formControlName="resState"
-                            placeholder="Enter State" [(ngModel)]="resAdd.state" >
+                            placeholder="Enter State" [(ngModel)]="resAdd.state">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="resCity" class="col-sm-5 col-form-label">City <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resCity" formControlName="resCity"
-                            placeholder="Enter City" [(ngModel)]="resAdd.city" >
+                            placeholder="Enter City" [(ngModel)]="resAdd.city">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -154,7 +160,7 @@
                     <label for="perLine1" class="col-sm-5 col-form-label">Address Line 1 <span
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perLine1" formControlName="perAddressLine1" 
+                        <input type="text" class="form-control" id="perLine1" formControlName="perAddressLine1"
                             placeholder="Enter Address Line 1" [(ngModel)]="perAdd.addressLine1">
                     </div>
                 </div>
@@ -163,29 +169,29 @@
                     <label for="perLine2" class="col-sm-5 col-form-label">Address Line 2 <span
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perLine2" formControlName="perAddressLine2" 
-                        placeholder="Enter Address Line 2" [(ngModel)]="perAdd.addressLine2">
+                        <input type="text" class="form-control" id="perLine2" formControlName="perAddressLine2"
+                            placeholder="Enter Address Line 2" [(ngModel)]="perAdd.addressLine2">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="perLandmark" class="col-sm-5 col-form-label">Landmark</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perLandmark" placeholder="Enter Landmark" 
-                        formControlName="perLandmark" [(ngModel)]="perAdd.landmark">
+                        <input type="text" class="form-control" id="perLandmark" placeholder="Enter Landmark"
+                            formControlName="perLandmark" [(ngModel)]="perAdd.landmark">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="perState" class="col-sm-5 col-form-label">State <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="perState" formControlName="perState"
-                            placeholder="Enter State" [(ngModel)]="perAdd.state" >
+                            placeholder="Enter State" [(ngModel)]="perAdd.state">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="perCity" class="col-sm-5 col-form-label">City <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="perCity" formControlName="perCity"
-                            placeholder="Enter City" [(ngModel)]="perAdd.city" >
+                            placeholder="Enter City" [(ngModel)]="perAdd.city">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -210,7 +216,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="occupation" formControlName="occupationType"
-                            placeholder="Enter Occupation"  [(ngModel)] = "newAccount.occupationType">
+                            placeholder="Enter Occupation" [(ngModel)]="newAccount.occupationType">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -218,7 +224,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="income" formControlName="sourceOfIncome"
-                            placeholder="Enter Source of Income" [(ngModel)] = "newAccount.sourceOfIncome">
+                            placeholder="Enter Source of Income" [(ngModel)]="newAccount.sourceOfIncome">
                     </div>
                 </div>
 
@@ -226,7 +232,7 @@
                     <label for="title" class="col-sm-5 col-form-label">Gross Annual Income</label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" id="grossIncome" formControlName="grossAnnualIncome"
-                            placeholder="Enter Annual Income" [(ngModel)] = "newAccount.grossAnnualIncome">
+                            placeholder="Enter Annual Income" [(ngModel)]="newAccount.grossAnnualIncome">
                     </div>
                 </div>
             </div>
@@ -235,12 +241,12 @@
             <div class="pos">
                 <div class="form-group row ml-1">
                     <div class="checkbox">
-                        <label><input type="checkbox" id="internetBanking">  Opt for Internet Banking</label>
+                        <label><input type="checkbox" id="internetBanking"> Opt for Internet Banking</label>
                     </div>
                 </div>
                 <div class="form-group row ml-1">
                     <div class="checkbox">
-                        <label><input type="checkbox" id="termsCheckbox">  I agree to the terms and conditions</label>
+                        <label><input type="checkbox" id="termsCheckbox"> I agree to the terms and conditions</label>
                     </div>
                 </div>
             </div>
