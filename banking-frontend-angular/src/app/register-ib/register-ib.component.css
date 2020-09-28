@@ -5,12 +5,11 @@ body {
 }
 
 .wrapper {
-    width: 380px;
-    float: right;
+    width: 450px;
     background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
     border: .2rem solid #428BCA;
-    margin: 28px 50px;
-    margin-left: 6px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     border-radius: 10px;
     padding: 14px;
 }
