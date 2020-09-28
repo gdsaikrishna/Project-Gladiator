@@ -1,19 +1,22 @@
 <div class="header">
     <a href="#">HFDC Bank</a>
     <div style="float: right;">
-        <a href = "#" routerLink = "/register-ib" >Register for Internet Banking</a>
-        <a href = "#" routerLink = "/open-acc">Apply for Account</a>
-        <a [routerLink] = "['/admin-login']">Admin Login</a>
+        <a href="#" routerLink="/register-ib">Register for Internet Banking</a>
+        <a href="#" routerLink="/open-acc">Apply for Account</a>
+        <a [routerLink]="['/admin-login']">Admin Login</a>
     </div>
 </div>
-<div style="margin-top: 70px;">
-    <div class="banner-image">
-        <img src="/assets/images/banner-image.jpg" alt="banner-image" width="840px" height="440px">
-    </div>
-    <div class="login">
-        <app-login></app-login>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 70px;">
+        <div class="banner-image col-9">
+            <img src="/assets/images/banner-image.jpg" alt="banner-image" width="84%" height="440px">
+        </div>
+        <div class="login col-3">
+            <app-login></app-login>
+        </div>
     </div>
 </div>
+
 <app-footer></app-footer>
 
 <!--TEMPORARY BUTTONS-->

@@ -35,13 +35,19 @@
   overflow: hidden;
   text-align: center;
 }
+/*
+.login{
+  float: right;
+}
+
 
 .banner-image {
   float: left;
-  margin: 28px 0;
-}
+  
+}*/
 
 .banner-image img {
   border-radius: 10px;
-  margin-left: 50px;
+  margin-left: 20px;
+  margin: 28px 0;
 }
