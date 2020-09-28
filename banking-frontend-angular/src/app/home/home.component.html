@@ -1,13 +1,15 @@
 <div class="header">
     <a href="#">HFDC Bank</a>
     <div style="float: right;">
+        <a href="#" routerLink="/home">Home</a>
         <a href="#" routerLink="/register-ib">Register for Internet Banking</a>
         <a href="#" routerLink="/open-acc">Apply for Account</a>
-        <a [routerLink]="['/admin-login']">Admin Login</a>
+        <a href="#" routerLink="/admin-login">Admin Login</a>
     </div>
 </div>
+
 <div class="container-fluid">
-    <div class="row" style="margin-top: 70px;">
+    <div class="row" style="margin-top: 5px;">
         <div class="banner-image col-9">
             <img src="/assets/images/banner-image.jpg" alt="banner-image" width="84%" height="440px">
         </div>
@@ -19,6 +21,9 @@
 
 <app-footer></app-footer>
 
+
+
+
 <!--TEMPORARY BUTTONS-->
 <a [routerLink]="['/home']"><button>HOME</button></a>
 <a [routerLink]="['/dashboard']"><button>DASHBOARD</button></a>
@@ -27,4 +32,4 @@
 <a [routerLink]="['/session-expired']"><button>SESSION EXPIRED</button></a>
 <a [routerLink]="['/forgot-user-id']"><button>FORGOT USER ID</button></a>
 <a [routerLink]="['/forgot-password']"><button>FORGOT PASSWORD</button></a>
-<a [routerLink]="['/set-new-password']"><button>SET NEW PASSWORD</button></a>
+<a [routerLink]="['/set-new-password']"><button>SET NEW PASSWORD</button></a> 

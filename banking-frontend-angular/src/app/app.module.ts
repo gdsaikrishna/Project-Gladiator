@@ -20,7 +20,6 @@ import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { AccountStatementComponent } from './account-statement/account-statement.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +37,7 @@ import { AccountStatementComponent } from './account-statement/account-statement
     RegisterIbComponent,
     FundTransferComponent,
     AccountSummaryComponent,
-    AccountStatementComponent,
+    AccountStatementComponent
   ],
   imports: [
     BrowserModule,
