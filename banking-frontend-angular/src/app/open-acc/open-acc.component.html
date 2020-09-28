@@ -1,4 +1,4 @@
-<!-- <div class="wrapper text-center my-3">
+<div class="wrapper text-center my-3">
     <h3>Open Savings Account</h3>
 </div>
 <div class="w-75 form justify-content-center">
@@ -33,7 +33,7 @@
                 <div class="form-group row">
                     <label for="mName" class="col-sm-5 col-form-label">Middle Name</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="middleName" formControlName="middleName" [(ngModel)] = "newAccount.middleName placeholder="Enter Middle Name">
+                        <input type="text" class="form-control" id="middleName" formControlName="middleName" [(ngModel)] = "newAccount.middleName" placeholder="Enter Middle Name">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -211,7 +211,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="occupation" formControlName="occupationType"
-                            placeholder="Enter Occupation"  [(ngModel)] = "newAccount.occupation">
+                            placeholder="Enter Occupation"  [(ngModel)] = "newAccount.occupationType">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -247,7 +247,7 @@
             </div>
         </div>
         <div class="wrapper text-center">
-            <button class="btn btn-primary my-4" type="submit" [disabled]="!openAccForm.valid">Submit</button><br>
+            <button class="btn btn-primary my-4" type="submit">Submit</button><br>
         </div>
     </form>
-</div> -->
+</div>

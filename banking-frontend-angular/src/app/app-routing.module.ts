@@ -1,3 +1,4 @@
+import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,6 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { SessionExpiredComponent } from './session-expired/session-expired.component';
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 import { AccountStatementComponent } from './account-statement/account-statement.component';
+import { OpenAccComponent } from './open-acc/open-acc.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +26,9 @@ const routes: Routes = [
   { path: 'set-new-password', component: SetNewPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'account-summary', component: AccountSummaryComponent },
-  { path: 'account-statement', component: AccountStatementComponent }
+  { path: 'account-statement', component: AccountStatementComponent },
+  { path: 'register-ib', component: RegisterIbComponent},
+  { path: 'open-acc', component: OpenAccComponent}
 ];
 
 @NgModule({

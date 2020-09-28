@@ -1,1 +1,36 @@
-<p>register-ib works!</p>
+<div class="wrapper container">
+    <p class="h3">Register for Internet Banking</p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label> Account Number</label>
+            <input formControlName="acNo" class="form-control" type="text" name="acNo"
+                placeholder="Your Account Number">
+        </div>
+        <div class="form-group">
+            <label> Set Login Password</label>
+            <input formControlName="loginPassword" class="form-control" type="password" name="loginPassword">
+        </div>
+        <div class="form-group">
+            <label> Confirm Login Password</label>
+            <input formControlName="confirmLoginPassword" class="form-control" type="password" name="confirmLoginPassword">
+        </div>
+        <div class="form-group">
+            <label> Set Transaction Password</label>
+            <input formControlName="txPassword" class="form-control" type="password" name="txPassword">
+        </div>
+        <div class="form-group">
+            <label> Confirm Transaction Password</label>
+            <input formControlName="confirmTxPassword" class="form-control" type="password" name="confirmTxPassword">
+        </div>
+        <div class="form-group">
+            <label> Enter OTP</label>
+            <input formControlName="otp" class="form-control" type="number" name="otp">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+    </form>
+    <!-- <p>Register for Internet Banking <a href="">here</a>.</p> -->
+    <div class="forgot-options">
+        <p>Already have an account? <a href="">Click here</a> to Login</p>
+    </div>
+</div>

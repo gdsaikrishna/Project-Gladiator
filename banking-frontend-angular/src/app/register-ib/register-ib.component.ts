@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-ib',
@@ -6,10 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-ib.component.css']
 })
 export class RegisterIbComponent implements OnInit {
+  //register object
+  registerForm : FormGroup;
+  submitted = false;
+  constructor(private formBuilder: FormBuilder) { }
 
-  constructor() { }
+  ngOnInit(){
+    this.registerForm = this.formBuilder.group({
+      acNo: ['', Validators.required],
+      loginPassword: ['', Validators.required],
+      confirmLoginPassword: ['', Validators.required],
+      txPassword: ['', Validators.required],
+      confirmTxPassword: ['', Validators.required],
+      otp: ['', Validators.required]
+    })
+  }
+  get f() { return this.registerForm.controls; }
+  onSubmit() {
 
-  ngOnInit(): void {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    //this.http.post
+
+
   }
 
 }
