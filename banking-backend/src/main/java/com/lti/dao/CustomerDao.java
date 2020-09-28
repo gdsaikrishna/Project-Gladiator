@@ -1,5 +1,5 @@
 package com.lti.dao;
 
-public class CustomerDao {
+public interface CustomerDao extends GenericDao {
 
 }
