@@ -18,6 +18,8 @@ import { OpenAccComponent } from './open-acc/open-acc.component';
 import { TrackApplicationComponent } from './track-application/track-application.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { EnterOtpComponent } from './enter-otp/enter-otp.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -38,7 +40,8 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'add-beneficiary', component: AddBeneficiaryComponent },
-  { path: 'view-beneficiary', component: ViewBeneficiaryComponent }
+  { path: 'view-beneficiary', component: ViewBeneficiaryComponent },
+  { path: 'enter-otp', component: EnterOtpComponent }
 ];
 
 @NgModule({

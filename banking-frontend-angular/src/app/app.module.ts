@@ -25,6 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
 import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
+import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.co
     ChangePasswordComponent,
     AddBeneficiaryComponent,
     ViewBeneficiaryComponent,
+    EnterOtpComponent
   ],
   imports: [
     BrowserModule,
