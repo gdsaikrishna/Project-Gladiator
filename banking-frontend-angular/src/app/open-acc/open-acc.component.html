@@ -77,6 +77,9 @@
                         <input type="text" class="form-control" name="fatherName" placeholder="Enter Father's Name"
                             [(ngModel)]="newAccount.fatherName" #fatherName="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && fatherName.invalid }" required>
+                        <div *ngIf="f.submitted && fatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="fatherName.errors.required">Father Name is required</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -86,6 +89,9 @@
                         <input type="tel" class="form-control" name="mobileNo" placeholder="Enter Mobile Number"
                             [(ngModel)]="newAccount.mobileNo" #mobileNo="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && mobileNo.invalid }" required>
+                        <div *ngIf="f.submitted && mobileNo.invalid" class="invalid-feedback">
+                            <div *ngIf="mobileNo.errors.required">Mobile Number is required</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -94,7 +100,11 @@
                     <div class="col-sm-6">
                         <input type="email" class="form-control" name="emailId" placeholder="Enter Email Address"
                             [(ngModel)]="newAccount.emailId" #emailId="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && emailId.invalid }" required>
+                            [ngClass]="{ 'is-invalid': f.submitted && emailId.invalid }" required email>
+                        <div *ngIf="f.submitted && emailId.invalid" class="invalid-feedback">
+                            <div *ngIf="emailId.errors.required">Email is required</div>
+                            <div *ngIf="emailId.errors.email">Email must be a valid email address</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -104,6 +114,9 @@
                         <input type="tel" class="form-control" name="aadhaarNo" placeholder="Enter Aadhar Card Number"
                             [(ngModel)]="newAccount.aadhaarNo" #aadhaarNo="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" required>
+                        <div *ngIf="f.submitted && aadhaarNo.invalid" class="invalid-feedback">
+                            <div *ngIf="aadhaarNo.errors.required">Aadhaar Number is required</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -111,7 +124,10 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dateOfBirth"
-                            [(ngModel)]="newAccount.dateOfBirth" #dateOfBirth="ngModel" required>
+                            [(ngModel)]="newAccount.dateOfBirth" #dateOfBirth="ngModel" required date> 
+                        <div *ngIf="f.submitted && dateOfBirth.invalid " class="invalid-feedback">
+                            <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -200,8 +216,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="perLine2" class="col-sm-5 col-form-label">Address Line 2 <span
-                            style="color:red">*</span></label>
+                    <label for="perLine2" class="col-sm-5 col-form-label">Address Line 2 </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="perAddressLine2"
                             placeholder="Enter Address Line 2" [(ngModel)]="newAccount.perAddress.addressLine2"
@@ -284,13 +299,13 @@
         </div>
         <div class="card my-1">
             <div class="pos">
-                <div class="form-group row ml-1">
+                <div class="form-group row ml-3 mt-2">
                     <div class="checkbox">
                         <label><input type="checkbox" class="form-check-input" name="internetBanking"> Opt for Internet
                             Banking</label>
                     </div>
                 </div>
-                <div class="form-group row ml-1">
+                <div class="form-group row ml-3">
                     <div class="checkbox">
                         <label><input type="checkbox" class="form-check-input" name="termsCheckbox"> I agree to the
                             terms and conditions</label>
