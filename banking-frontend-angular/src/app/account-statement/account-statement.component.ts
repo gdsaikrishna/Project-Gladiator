@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class AccountStatementComponent implements OnInit {
 
   transactions = [
-    new Transaction(1234, 399, "debit", "28-02-2020", "Airtel Recharge"),
-    new Transaction(4321, 1237, "debit", "28-02-2020", "Electricity Bill"),
-    new Transaction(7894, 456.25, "credit", "28-02-2020", "Paytm Refund")
+    new Transaction(1234, 399, "debit", "28-02-2020",4601, "Airtel Recharge"),
+    new Transaction(4321, 1237, "debit", "28-02-2020",3364, "Electricity Bill"),
+    new Transaction(7894, 456.25, "credit", "28-02-2020",3820.25, "Paytm Refund")
   ]
   count: number = 0;
 
