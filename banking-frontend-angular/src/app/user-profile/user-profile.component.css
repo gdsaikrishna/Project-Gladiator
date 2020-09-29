@@ -1,0 +1,12 @@
+.wrapper {
+    /* background-color: #ffe2e2; */
+    border-radius: 6px;
+    padding: 14px;
+    width: 50%;
+    position: relative;
+}
+
+.wrapper card{
+    margin-top: 0px;
+    padding: 0px;
+}
