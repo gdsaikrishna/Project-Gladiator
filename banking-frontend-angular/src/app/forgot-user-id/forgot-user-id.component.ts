@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ForgotUserId } from '../export-class';
 
 @Component({
   selector: 'app-forgot-user-id',
@@ -8,14 +10,21 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ForgotUserIdComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  forgotUserId:ForgotUserId=new ForgotUserId();
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  forgotUserIdForm=this.fb.group({
+  onSubmit(){
+    this.router.navigate(['/enter-otp']);
+  }
+/*  forgotUserIdForm=this.fb.group({
     accountNo:['',[Validators.required]],
     otp:['',[Validators.required,Validators.minLength(6),Validators.maxLength]]
   })
+
+*/
 
 }

@@ -33,3 +33,12 @@ export class Account {
 export class Transaction {
     constructor(public transactionId: number, public amount: number, public txType: string, public date: string, public balance: number, public remarks: string) { }
 }
+
+export class ForgotPassword{
+    userId:number;
+    otp:number;
+}
+
+export class ForgotUserId{
+    accountNo:number;
+}

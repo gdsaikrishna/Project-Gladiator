@@ -16,6 +16,7 @@ import { OpenAccComponent } from './open-acc/open-acc.component';
 import { TrackApplicationComponent } from './track-application/track-application.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'open-acc', component: OpenAccComponent },
   { path: 'track-application', component: TrackApplicationComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'change-password', component: ChangePasswordComponent }
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'enter-otp',component:EnterOtpComponent}
 ];
 
 @NgModule({

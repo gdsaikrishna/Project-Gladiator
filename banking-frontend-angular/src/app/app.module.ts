@@ -23,6 +23,7 @@ import { AccountStatementComponent } from './account-statement/account-statement
 import { TrackApplicationComponent } from './track-application/track-application.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     AccountStatementComponent,
     TrackApplicationComponent,
     UserProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    EnterOtpComponent
   ],
   imports: [
     BrowserModule,

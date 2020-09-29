@@ -13,9 +13,15 @@ export class SetNewPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    setNewPasswordForm=this.fb.group({
+  onSubmit(){
+
+  }
+
+
+
+   /* setNewPasswordForm=this.fb.group({
      password:['',Validators.required],
      confirmPassword:['',Validators.required]
-   });
+   });*/
 }
 
