@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -20,8 +20,8 @@ import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { AccountStatementComponent } from './account-statement/account-statement.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+//import { UserProfileComponent } from './user-profile/user-profile.component';
+//import { ChangePasswordComponent } from './change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,14 +40,15 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     FundTransferComponent,
     AccountSummaryComponent,
     AccountStatementComponent,
-    UserProfileComponent,
-    ChangePasswordComponent
+    //UserProfileComponent,
+    //ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

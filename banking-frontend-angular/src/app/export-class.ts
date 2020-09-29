@@ -9,8 +9,8 @@ export class OpenAccount {
     public emailId: string;
     public aadhaarNo: string;
     public dateOfBirth: Date;
-    public resAddress: Address;
-    public perAddress: Address;
+    public resAddress: Address = new Address();
+    public perAddress: Address = new Address();
     public occupationType: string;
     public sourceOfIncome: string;
     public grossAnnualIncome: number;

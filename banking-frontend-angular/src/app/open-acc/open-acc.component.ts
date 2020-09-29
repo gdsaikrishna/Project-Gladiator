@@ -1,6 +1,5 @@
 import { Address, OpenAccount } from './../export-class';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-open-acc',
@@ -10,12 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class OpenAccComponent implements OnInit {
 
   newAccount : OpenAccount = new OpenAccount();
-  resAdd : Address =new Address();
-  perAdd : Address =new Address();
-  submitted = false;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
-  openAccForm: FormGroup;
+  constructor() { }
   ngOnInit() {
+    /*
     this.openAccForm = this.formBuilder.group({
       title: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -42,21 +38,18 @@ export class OpenAccComponent implements OnInit {
       sourceOfIncome: ['', Validators.required],
       //grossAnnualIncome: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
-    });
+    });*/
   }
 
-  get f() { return this.openAccForm.controls; }
 
   onSubmit() {
-
-    this.submitted = true;
-
+/*
     if (this.openAccForm.invalid) {
       return;
     }
 
     //this.http.post
 
-
+*/
   }
 }
