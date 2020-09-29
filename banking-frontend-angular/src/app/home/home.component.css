@@ -17,10 +17,6 @@
   line-height: 25px;
 }
 
-.header {
-  font-size: 25px;
-}
-
 .header a:hover {
   opacity: 60%;
 }
@@ -34,16 +30,6 @@
   overflow: hidden;
   text-align: center;
 }
-/*
-.login{
-  float: right;
-}
-
-
-.banner-image {
-  float: left;
-  
-}*/
 
 .banner-image img {
   border-radius: 10px;

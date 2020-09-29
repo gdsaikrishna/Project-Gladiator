@@ -20,8 +20,10 @@ import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { AccountStatementComponent } from './account-statement/account-statement.component';
-//import { UserProfileComponent } from './user-profile/user-profile.component';
-//import { ChangePasswordComponent } from './change-password/change-password.component';
+import { TrackApplicationComponent } from './track-application/track-application.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,15 +42,16 @@ import { AccountStatementComponent } from './account-statement/account-statement
     FundTransferComponent,
     AccountSummaryComponent,
     AccountStatementComponent,
-    //UserProfileComponent,
-    //ChangePasswordComponent
+    TrackApplicationComponent,
+    UserProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

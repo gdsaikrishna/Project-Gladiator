@@ -8,17 +8,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  loginForm: FormGroup;
+  // loginForm: FormGroup;
+
+  userId: number;
+  password: string = '';
 
   constructor(
     private formBuilder: FormBuilder
   ) { }
 
-  buildLoginForm(): void {
-    this.loginForm=this.formBuilder.group({
-      userId: ['', [Validators.required, Validators.pattern('^\d{6}$')]],
-      password: ['', Validators.required]
-    })
+  // buildLoginForm(): void {
+  //   this.loginForm=this.formBuilder.group({
+  //     userId: ['', [Validators.required, Validators.pattern('^\d{6}$')]],
+  //     password: ['', Validators.required]
+  //   })
+  // }
+
+  showDetails(){
+    alert(this.userId + this.password);
   }
 
 }

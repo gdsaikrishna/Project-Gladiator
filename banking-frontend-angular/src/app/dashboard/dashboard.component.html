@@ -11,7 +11,7 @@
             <li [routerLink]="['/logout']">Logout</li>
         </ul>
     </div>
-    <div class="h5" style=" position: absolute; padding-left: 300px;">Welcome, {{name}}</div>
+    <div class="h5" style=" position: absolute; padding-left: 300px;">Welcome, {{name | uppercase}}</div>
     <div>
         <ul class="sidebar">
             <li [routerLink]="['/account-summary']">Account Summary</li>

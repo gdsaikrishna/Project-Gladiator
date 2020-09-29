@@ -1,11 +1,10 @@
 <!-- <div class="page-header h1">
     <p>HFDC Bank</p>
 </div> -->
-<div class="wrapper container">
+<!-- <div class="wrapper container">
     <p class="h3">Login</p>
     <br>
     <p>Please fill in your credentials to login.</p>
-    <!--VALIDATION NOT WORKING PROPERLY-->
     <form [formGroup]="loginForm" (ngSubmit)="buildLoginForm()">
         <div class="form-group">
             <label>User ID</label>
@@ -28,7 +27,36 @@
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
     </form>
-    <!-- <p>Register for Internet Banking <a href="">here</a>.</p> -->
+    <div class="forgot-options">
+        <p>Forgot User ID? <a href="">Click here</a>.</p>
+        <p>Forgot Password? <a href="">Click here</a>.</p>
+    </div>
+</div> -->
+
+<div class="wrapper container">
+    <p class="h3">Login</p>
+    <br>
+    <p>Please fill in your credentials to login.</p>
+    <form (ngSubmit)="loginForm.valid && showDetails()" #loginForm="ngForm">
+        <div class="form-group">
+            <label for="userId">User ID</label>
+            <input class="form-control" type="text" name="userId" placeholder="Your 6-digit user id"
+                [(ngModel)]=userId #id="ngModel" required pattern="^[0-9]{6}$">
+            <div class="alert alert-danger" *ngIf="loginForm.submitted && id.invalid && (id.dirty || id.touched)">
+                <div *ngIf="id.errors.required">User ID is required</div>
+                <div *ngIf="id.errors.pattern">User ID must be of 6 digits</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" placeholder="Your password" [(ngModel)]=password
+                #pwd="ngModel" required>
+            <div class="alert alert-danger" *ngIf="loginForm.submitted && pwd.invalid && (pwd.dirty || pwd.touched)">
+                <div *ngIf="pwd.errors.required">Password is required</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+    </form>
     <div class="forgot-options">
         <p>Forgot User ID? <a href="#" routerLink="/forgot-user-id">Click here</a>.</p>
         <p>Forgot Password? <a href="#" routerLink="/forgot-password">Click here</a>.</p>

@@ -1,6 +1,31 @@
 <app-dashboard></app-dashboard>
 <div class="wrapper container">
-    <ul class="list-group" *ngFor="let transaction of transactions">
-        <li class="list-group-items">{{transaction.transactionId}} {{transaction.txType}} {{transaction.amount}} {{transaction.date}} {{transaction.remarks}} </li>
-      </ul>
+  <!-- <ul class="list-group transaction" *ngFor="let transaction of transactions">
+    <li class="list-group-item list-group-item-dark">{{transaction.transactionId}} {{transaction.txType | uppercase}} {{transaction.amount | currency : 'INR'}}
+      {{transaction.date}} {{transaction.remarks}}</li>
+  </ul> -->
+  <table class="table table-striped table-active table-responsive-md transaction">
+    <thead style="background-color: #adb0c5;">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Type</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Date</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{transaction.transactionId}}</td>
+        <td>{{transaction.txType | uppercase}}</td>
+        <td>{{transaction.amount | currency : 'INR'}}</td>
+        <td>{{transaction.date}}</td>
+        <td>{{transaction.balance | currency: 'INR'}}</td>
+        <td>{{transaction.remarks}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
