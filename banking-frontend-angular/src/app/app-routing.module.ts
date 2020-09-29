@@ -1,3 +1,5 @@
+import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
+import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
 import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { NgModule } from '@angular/core';
@@ -34,7 +36,9 @@ const routes: Routes = [
   { path: 'open-acc', component: OpenAccComponent },
   { path: 'track-application', component: TrackApplicationComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'change-password', component: ChangePasswordComponent }
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'add-beneficiary', component: AddBeneficiaryComponent },
+  { path: 'view-beneficiary', component: ViewBeneficiaryComponent }
 ];
 
 @NgModule({
