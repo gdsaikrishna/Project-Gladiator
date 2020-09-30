@@ -17,7 +17,7 @@ public class AdminServiceImpl {
 	@Autowired
 	private AdminRepository repository;
 
-	private Admin login(int id, String password) {
+	public Admin login(int id, String password) {
 		try {
 			if (!repository.exists(id))
 				throw new ServiceException("Invalid admin id/password");
