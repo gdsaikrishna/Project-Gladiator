@@ -1,4 +1,4 @@
-import { Transaction } from './../export-class';
+import { Transaction } from './../models/transaction';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

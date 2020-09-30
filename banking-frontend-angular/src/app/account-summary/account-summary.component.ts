@@ -1,4 +1,4 @@
-import { Account } from './../export-class';
+import { Account } from './../models/account';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,4 +1,4 @@
-import { Beneficiary } from './../export-class';
+import { Beneficiary } from './../models/beneficiary';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
