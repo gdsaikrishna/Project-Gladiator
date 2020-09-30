@@ -1,4 +1,4 @@
-import { OpenAccount } from './../export-class';
+import {Address, OpenAccount } from './../export-class';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-open-acc',
@@ -8,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class OpenAccComponent implements OnInit {
 
   newAccount : OpenAccount = new OpenAccount();
-  submitted=false;
   constructor() { }
   ngOnInit() {
+    this.newAccount.netBankingRequirement="N";
+    this.newAccount.debitCardRequirement="N";
     
   }
   add(e){
@@ -18,11 +19,32 @@ export class OpenAccComponent implements OnInit {
     if(e.target.checked){
       this.newAccount.perAddress=this.newAccount.resAddress;
       //console.log(JSON.stringify(this.newAccount.perAddress));
+      //console.log(this.newAccount.netBankingRequirement);
+    }
+    else{
+      this.newAccount.perAddress=new Address();
+    }
+  }
+  netBanking(e){
+    if(e.target.checked){
+      this.newAccount.netBankingRequirement="Y";
+    }
+    else{
+      this.newAccount.netBankingRequirement="N";
+    }
+  }
+  debitCard(e){
+    if(e.target.checked){
+      this.newAccount.netBankingRequirement="Y";
+    }
+    else{
+      this.newAccount.netBankingRequirement="N";
     }
   }
 
   onSubmit(){
     //call service
-    console.log(JSON.stringify(this.newAccount));
+    //console.log(JSON.stringify(this.newAccount));
+    //console.log(this.newAccount.netBankingRequirement);
   } 
 }

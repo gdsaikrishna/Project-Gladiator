@@ -15,6 +15,7 @@ export class OpenAccount {
     public sourceOfIncome: string;
     public grossAnnualIncome: number;
     public netBankingRequirement: string;
+    public debitCardRequirement: string;
 }
 
 export class Address {

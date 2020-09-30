@@ -347,8 +347,14 @@
             <div class="pos">
                 <div class="form-group row ml-3 mt-2">
                     <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="internetBanking"> Opt for Internet
+                        <label><input type="checkbox" class="form-check-input" name="internetBanking" (change)="netBanking($event)"> Opt for Internet
                             Banking</label>
+                    </div>
+                </div>
+                <div class="form-group row ml-3 mt-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox" class="form-check-input" name="debitCardRequirement" (change)="debitCard($event)"> Opt for Debit Card 
+                           </label>
                     </div>
                 </div>
                 <div class="form-group row ml-3">
