@@ -45,6 +45,6 @@ export class OpenAccComponent implements OnInit {
   onSubmit(){
     //call service
     //console.log(JSON.stringify(this.newAccount));
-    //console.log(this.newAccount.netBankingRequirement);
+    
   } 
 }

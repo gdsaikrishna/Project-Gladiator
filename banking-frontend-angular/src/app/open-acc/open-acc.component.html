@@ -130,7 +130,7 @@
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="panCardNo"
                             placeholder="Enter Pan Card Number" [(ngModel)]="newAccount.panCardNo"
-                            #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && panCardNo.invalid }"
+                            #panCardNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && panCardNo.invalid }"
                             required>
                         <div *ngIf="f.submitted && panCardNo.invalid" class="invalid-feedback">
                             <div *ngIf="panCardNo.errors.required">Pan Card Number is required</div>
