@@ -1,24 +1,23 @@
-<div style="font-size: 18px;">
+<div style="font-size: 18px; height: 200px;">
     <div class="text-center">
         <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="100" height="100">
     </div>
     <div class="header">
         <p href="#">HFDC Bank</p>
+        <p href="#">Welcome, {{name | uppercase}}</p>
         <ul style="float: right;">
-            <li [routerLink]="['/user-profile']">User Profile</li>
-            <li>Change User ID</li>
             <li [routerLink]="['/change-password']">Change Password</li>
             <li [routerLink]="['/logout']">Logout</li>
         </ul>
     </div>
-    <div class="h5" style=" position: absolute; padding-left: 300px;">Welcome, {{name | uppercase}}</div>
     <div>
         <ul class="sidebar">
+            <li [routerLink]="['/user-profile']">User Profile</li>
             <li [routerLink]="['/account-summary']">Account Summary</li>
             <li [routerLink]="['/account-statement']">Account Statement</li>
             <li>Fund Transfer</li>
+            <li>View Beneficiary</li>
             <li>Add Beneficiary</li>
-            <li>Account Statement</li>
         </ul>
     </div>
 </div>
