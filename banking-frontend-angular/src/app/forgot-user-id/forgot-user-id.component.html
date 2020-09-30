@@ -9,7 +9,7 @@
     
     <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
         <div class="form-group" >
-            <label>Enter User ID</label>
+            <label>Enter Account Number</label>
             <input type="text" #accountNo="ngModel" [class.is-invalid]="f.submitted && accountNo.invalid"
             class="form-control" name="accountNo" [(ngModel)]="forgotUserId.accountNo" required>
             <div *ngIf="f.submitted && accountNo.invalid" class="invalid-feedback">

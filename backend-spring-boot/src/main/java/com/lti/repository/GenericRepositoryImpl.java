@@ -13,7 +13,6 @@ public class GenericRepositoryImpl implements GenericRepository {
 	protected EntityManager entityManager;
 
 	@Override
-	@Transactional
 	public <T> T save(Object object) {
 		return (T) entityManager.merge(object);
 	}
