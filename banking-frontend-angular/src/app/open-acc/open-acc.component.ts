@@ -1,7 +1,7 @@
 import { CustomerService } from './../services/customer.service';
-import { Address } from './../models/Address';
 import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
+import { Address } from '../models/address';
 @Component({
   selector: 'app-open-acc',
   templateUrl: './open-acc.component.html',
