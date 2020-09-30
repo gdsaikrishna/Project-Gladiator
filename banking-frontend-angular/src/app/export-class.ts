@@ -8,6 +8,7 @@ export class OpenAccount {
     public mobileNo: string;
     public emailId: string;
     public aadhaarNo: string;
+    public panCardNo: string;
     public dateOfBirth: Date;
     public resAddress: Address = new Address();
     public perAddress: Address = new Address();
