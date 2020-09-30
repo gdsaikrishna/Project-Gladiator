@@ -1,4 +1,6 @@
-import {Address, OpenAccount } from './../export-class';
+import { CustomerService } from './../services/customer.service';
+import { Address } from './../models/Address';
+import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-open-acc',
@@ -7,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenAccComponent implements OnInit {
 
-  newAccount : OpenAccount = new OpenAccount();
-  constructor() { }
+  newAccount : Customer= new Customer();
+  constructor(private customerService: CustomerService) { }
   ngOnInit() {
     this.newAccount.netBankingRequirement="N";
     this.newAccount.debitCardRequirement="N";
@@ -45,6 +47,10 @@ export class OpenAccComponent implements OnInit {
   onSubmit(){
     //call service
     //console.log(JSON.stringify(this.newAccount));
-    
+    this.customerService.openAcc(this.newAccount).subscribe(response =>{
+      alert(JSON.stringify(response));
+    })
+
+
   } 
 }
