@@ -1,3 +1,5 @@
+import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
+import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
 import { RegisterIbComponent } from './register-ib/register-ib.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
 import { NgModule } from '@angular/core';
@@ -17,6 +19,7 @@ import { TrackApplicationComponent } from './track-application/track-application
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 const routes: Routes = [
@@ -37,7 +40,10 @@ const routes: Routes = [
   { path: 'track-application', component: TrackApplicationComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'enter-otp',component:EnterOtpComponent}
+  { path: 'add-beneficiary', component: AddBeneficiaryComponent },
+  { path: 'view-beneficiary', component: ViewBeneficiaryComponent },
+  { path: 'enter-otp', component: EnterOtpComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent}
 ];
 
 @NgModule({

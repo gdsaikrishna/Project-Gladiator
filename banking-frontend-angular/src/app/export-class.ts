@@ -8,6 +8,7 @@ export class OpenAccount {
     public mobileNo: string;
     public emailId: string;
     public aadhaarNo: string;
+    public panCardNo: string;
     public dateOfBirth: Date;
     public resAddress: Address = new Address();
     public perAddress: Address = new Address();
@@ -15,6 +16,7 @@ export class OpenAccount {
     public sourceOfIncome: string;
     public grossAnnualIncome: number;
     public netBankingRequirement: string;
+    public debitCardRequirement: string;
 }
 
 export class Address {
@@ -34,11 +36,16 @@ export class Transaction {
     constructor(public transactionId: number, public amount: number, public txType: string, public date: string, public balance: number, public remarks: string) { }
 }
 
-export class ForgotPassword{
-    userId:number;
-    otp:number;
+export class Beneficiary {
+    public name: string;
+    public accountNumber: number;
+    public nickName: string;
+}
+export class ForgotPassword {
+    userId: number;
+    otp: number;
 }
 
-export class ForgotUserId{
-    accountNo:number;
+export class ForgotUserId {
+    accountNo: number;
 }

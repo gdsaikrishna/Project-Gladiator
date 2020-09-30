@@ -23,7 +23,10 @@ import { AccountStatementComponent } from './account-statement/account-statement
 import { TrackApplicationComponent } from './track-application/track-application.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
+import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { EnterOtpComponent } from './enter-otp/enter-otp.component';
     TrackApplicationComponent,
     UserProfileComponent,
     ChangePasswordComponent,
-    EnterOtpComponent
+    AddBeneficiaryComponent,
+    ViewBeneficiaryComponent,
+    EnterOtpComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
