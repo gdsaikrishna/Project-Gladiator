@@ -14,7 +14,7 @@ export class OpenAccComponent implements OnInit {
     
   }
   add(e){
-    console.log(e.target.checked);
+    //console.log(e.target.checked);
     if(e.target.checked){
       this.newAccount.perAddress=this.newAccount.resAddress;
       //console.log(JSON.stringify(this.newAccount.perAddress));
@@ -23,5 +23,6 @@ export class OpenAccComponent implements OnInit {
 
   onSubmit(){
     //call service
+    console.log(JSON.stringify(this.newAccount));
   } 
 }
