@@ -6,8 +6,8 @@
     <br>
     <p>Please fill in your credentials to login.</p>
     <form (ngSubmit)="adminLoginForm.valid && showDetails()" #adminLoginForm="ngForm">
-        <div class="form-group ">
-            <label>User ID</label>
+        <div class="form-group">
+            <label>Admin ID</label>
             <input class="form-control" type="text" name="id" placeholder="Your 5-digit admin id" [(ngModel)]=adminLoginId #id="ngModel" required pattern="^[0-9]{5}$">
             <div class="alert alert-danger" *ngIf="adminLoginForm.submitted && id.invalid && (id.dirty || id.touched)">
                 <div *ngIf="id.errors.required">Admin ID is required</div>
