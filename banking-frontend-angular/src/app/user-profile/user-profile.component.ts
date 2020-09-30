@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { OpenAccount } from '../export-class';
+
+import { Customer } from './../models/customer';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,7 +10,7 @@ import { OpenAccount } from '../export-class';
 })
 export class UserProfileComponent implements OnInit {
 
-  user=new OpenAccount();
+  user=new Customer();
 
   constructor() { }
 
