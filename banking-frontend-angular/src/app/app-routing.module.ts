@@ -19,6 +19,7 @@ import { TrackApplicationComponent } from './track-application/track-application
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'add-beneficiary', component: AddBeneficiaryComponent },
   { path: 'view-beneficiary', component: ViewBeneficiaryComponent },
-  { path: 'enter-otp', component: EnterOtpComponent }
+  { path: 'enter-otp', component: EnterOtpComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent}
 ];
 
 @NgModule({
