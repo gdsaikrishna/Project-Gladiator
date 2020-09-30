@@ -1,4 +1,4 @@
-import { Beneficiary } from './../export-class';
+import { Beneficiary } from './../models/beneficiary';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBeneficiaryComponent implements OnInit {
 
-  beneficiary: Beneficiary=new Beneficiary();
+  beneficiary: Beneficiary = new Beneficiary();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  showDetails(){
+  showDetails() {
     alert(JSON.stringify(this.beneficiary));
   }
 }
