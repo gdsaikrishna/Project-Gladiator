@@ -3,6 +3,7 @@ import { Address } from "./address";
 
 export class Customer {
 
+    public serviceRefNo: number;
     public title: string;
     public firstName: string;
     public middleName: string;
@@ -11,7 +12,7 @@ export class Customer {
     public mobileNo: string;
     public emailId: string;
     public aadhaarNo: string;
-    public panCardNo: string;
+    public panCard: string;
     public dateOfBirth: Date;
     public resAddress: Address = new Address();
     public perAddress: Address = new Address();
