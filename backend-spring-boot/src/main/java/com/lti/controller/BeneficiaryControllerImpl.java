@@ -23,7 +23,7 @@ public class BeneficiaryControllerImpl {
 	@Autowired
 	BeneficaryService beneficiaryService;
 	
-	@PostMapping(path="/addBeneficiary")
+	@PostMapping(path="/add-beneficiary")
 	public Status addNewBeneficiary(@RequestBody BeneficiaryDto beneficiaryDto) {
 	
 		try {
