@@ -25,6 +25,7 @@ public class BeneficiaryControllerImpl {
 	
 	@PostMapping(path="/addBeneficiary")
 	public Status addNewBeneficiary(@RequestBody BeneficiaryDto beneficiaryDto) {
+	
 		try {
 			beneficiaryService.addNewBeneficiary(beneficiaryDto);
 			Status status=new Status();

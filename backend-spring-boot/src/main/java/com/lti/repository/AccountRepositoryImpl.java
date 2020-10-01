@@ -13,10 +13,15 @@ import com.lti.entity.Account;
 public class AccountRepositoryImpl extends GenericRepositoryImpl implements AccountRepository {
 	
 	public boolean exists(int acno) {
-		Long count = (Long) entityManager.createQuery("select count(a.accountNumber) from Account a where a.accountNumber = :acno").setParameter("acno", acno).getSingleResult();
-		if (count == 1)
-			return true;
+		long count=((Long) 
+				entityManager.
+				createQuery("select count(a) from Account a where a.accountNumber = :acno")
+				.setParameter("acno", acno)
+				.getSingleResult()) ;
+		if(count==0)
 			return false;
+		else
+			return true;
 	}
 	
 	@Override
@@ -24,11 +29,11 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 		return (T) entityManager.createQuery("select distinct u from User u join u.accounts.accountNumber a where a.accountNumber = :acno").setParameter("acno", accountNumber).getSingleResult();
 	}
 	
-	public List<Account> findAccountByUserId(int userId) {
-		return entityManager
+	public Account findAccountByUserId(int userId) {
+		return (Account) entityManager
 				.createQuery("select a from Account a where a.user.id= :userId")
 				.setParameter("userId", userId)
-				.getResultList();
+				.getSingleResult();
 				
 	}
 	

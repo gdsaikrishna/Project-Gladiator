@@ -11,5 +11,5 @@ public interface AccountRepository {
 
 //	boolean exists(int acno);
 	
-	public List<Account> findAccountByUserId(int userId);
+	public Account findAccountByUserId(int userId);
 }
