@@ -15,6 +15,7 @@ export class OpenAccComponent implements OnInit {
   ngOnInit() {
     this.newAccount.netBankingRequirement="N";
     this.newAccount.debitCardRequirement="N";
+    this.newAccount.isApproved="W";
     
   }
   add(e){
@@ -38,10 +39,10 @@ export class OpenAccComponent implements OnInit {
   }
   debitCard(e){
     if(e.target.checked){
-      this.newAccount.netBankingRequirement="Y";
+      this.newAccount.debitCardRequirement="Y";
     }
     else{
-      this.newAccount.netBankingRequirement="N";
+      this.newAccount.debitCardRequirement="N";
     }
   }
 
