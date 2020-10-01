@@ -29,26 +29,24 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 	
 	
 	public void addNewBeneficiary(BeneficiaryDto beneficiaryDto) {
+		
 		try {
 			if(!accountRepository.exists(beneficiaryDto.getAccountNumber())) {
 				throw new ServiceException("Beneficiary Account Does not exist");
 			}
 			else {
-				if(beneficiaryRepository.checkIfAlreadyPresent(beneficiaryDto.getUserId(), beneficiaryDto.getAccountNumber())) {
+				if(!beneficiaryRepository.checkIfAlreadyPresent(beneficiaryDto.getUserId(), beneficiaryDto.getAccountNumber())) {
 					
 					throw new ServiceException("Beneficiary Already Exists");
 				}
 				else
 				{
-				  List<Account> list=accountRepository.findAccountByUserId(beneficiaryDto.getUserId());
-				  for(Account a:list) {
-					  if(a.getAccountNumber()== beneficiaryDto.getAccountNumber())
+				  Account account=accountRepository.findAccountByUserId(beneficiaryDto.getUserId());
+				  if(account.getAccountNumber()== beneficiaryDto.getAccountNumber())
 						  throw new ServiceException("Cannot Add Yourself as Beneficiary");
-				  }
 				  
 				  Beneficiary b=new Beneficiary();
 				  User user=beneficiaryRepository.fetchById(User.class, beneficiaryDto.getUserId());
-				  Account account=(Account) accountRepository.findAccountByUserId(beneficiaryDto.getUserId());
 				
 			      b.setUserId(user); 
 				  b.setAccount(account);

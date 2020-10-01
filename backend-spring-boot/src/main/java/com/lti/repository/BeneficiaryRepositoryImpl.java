@@ -15,7 +15,7 @@ public class BeneficiaryRepositoryImpl extends GenericRepositoryImpl implements 
 	public boolean checkIfAlreadyPresent(int userId,int beneficiaryAccountNumber) {
 		return (Long)
 				entityManager
-				.createQuery("select count(b.id) from Beneficiary b where b.userId = :userId and b.account.accountNumber =:beneficiaryAccountNumber")
+				.createQuery("select count(b.id) from Beneficiary b where b.userId.id = :userId and b.account.accountNumber =:beneficiaryAccountNumber")
 				.setParameter("userId", userId)
 				.setParameter("beneficiaryAccountNumber", beneficiaryAccountNumber)
 				.getSingleResult() == 0 ? false : true;
