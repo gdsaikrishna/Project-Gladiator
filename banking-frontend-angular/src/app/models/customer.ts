@@ -21,4 +21,5 @@ export class Customer {
     public grossAnnualIncome: number;
     public netBankingRequirement: string;
     public debitCardRequirement: string;
+    public isApproved: string;
 }

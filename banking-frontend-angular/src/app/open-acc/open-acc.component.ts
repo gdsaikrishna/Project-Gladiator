@@ -15,6 +15,7 @@ export class OpenAccComponent implements OnInit {
   ngOnInit() {
     this.newAccount.netBankingRequirement="N";
     this.newAccount.debitCardRequirement="N";
+    this.newAccount.isApproved="W";
     
   }
   add(e){
