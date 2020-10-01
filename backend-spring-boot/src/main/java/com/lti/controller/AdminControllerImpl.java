@@ -23,6 +23,7 @@ public class AdminControllerImpl {
 	
 	@PostMapping(path = "/admin-login")
 	public AdminLoginStatus login(@RequestBody AdminLogin login) {
+		System.out.println(login.getAdminId()+login.getPassword());
 		try {
 			Admin admin=adminService.login(login.getAdminId(), login.getPassword());
 

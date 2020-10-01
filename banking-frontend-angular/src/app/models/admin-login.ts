@@ -1,4 +1,4 @@
 export class AdminLogin {
-    public id: number;
+    public adminId: number;
     public password: string;
 }

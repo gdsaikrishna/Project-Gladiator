@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AdminLoginComponent {
 
-  adminLogin: AdminLogin=new AdminLogin();
+  adminLogin: AdminLogin = new AdminLogin();
   message: string;
   error: boolean;
 
@@ -19,14 +19,14 @@ export class AdminLoginComponent {
   loginCheck() {
     this.adminService.login(this.adminLogin).subscribe(response => {
       console.log(JSON.stringify(response));
-      if(response.statusCode === "TRUE"){
+      if (response.statusCode === "SUCCESS") {
         sessionStorage.setItem('adminId', String(response.adminId));
         sessionStorage.setItem('adminName', response.name);
         this.router.navigate(['admin-dashboard']);
       }
-      else{
-        this.error=!this.error;
-        this.message=response.statusMessage;
+      else {
+        this.error = true;
+        this.message = response.statusMessage;
       }
     })
   }
