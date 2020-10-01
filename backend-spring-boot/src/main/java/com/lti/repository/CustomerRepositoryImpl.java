@@ -11,8 +11,6 @@ import com.lti.entity.Customer;
 @Repository
 public class CustomerRepositoryImpl extends GenericRepositoryImpl implements CustomerRepository {
 	
-	@PersistenceContext
-	private EntityManager entityManager;
 	
 	@Override
 	public int save(Customer customer) {
