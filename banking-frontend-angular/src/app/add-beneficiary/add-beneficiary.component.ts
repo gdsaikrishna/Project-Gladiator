@@ -1,5 +1,7 @@
 import { Beneficiary } from './../models/beneficiary';
 import { Component, OnInit } from '@angular/core';
+import{ AddBeneficiaryService} from './../services/add-beneficiary.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-beneficiary',
@@ -9,12 +11,21 @@ import { Component, OnInit } from '@angular/core';
 export class AddBeneficiaryComponent implements OnInit {
 
   beneficiary: Beneficiary = new Beneficiary();
-  constructor() { }
+  constructor(private service:AddBeneficiaryService,private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+   
   }
 
   showDetails() {
-    alert(JSON.stringify(this.beneficiary));
+    this.beneficiary.userId=parseInt(sessionStorage.getItem('userId'));
+    this.service.addBeneficiary(this.beneficiary).subscribe(data=>{
+      console.log(data);
+      if(data.statusCode==="SUCCESS")
+        this.router.navigate(['dashboard']);  
+      else
+        console.log(data.statusMessage);
+    })
+    
   }
 }
