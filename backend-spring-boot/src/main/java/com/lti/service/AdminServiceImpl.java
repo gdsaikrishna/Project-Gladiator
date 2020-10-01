@@ -22,18 +22,19 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin login(int id, String password) {
-		try {
-			if (!repository.exists(id))
-				throw new ServiceException("Invalid admin id/password");
-			else {
-				if (repository.fetchByIdAndPassword(id, password) == null)
-					throw new ServiceException("Incorrect admin password");
-				else
-					return repository.fetchByIdAndPassword(id, password);
-			}
-		} catch (EmptyResultDataAccessException e) {
-			throw new ServiceException("Invalid admin id/password");
-		}
+		return repository.fetchByIdAndPassword(id, password);
+//		try {
+//			if (!repository.exists(id))
+//				throw new ServiceException("Invalid admin id/password");
+//			else {
+//				if (repository.fetchByIdAndPassword(id, password) == null)
+//					throw new ServiceException("Incorrect admin password");
+//				else
+//					return repository.fetchByIdAndPassword(id, password);
+//			}
+//		} catch (EmptyResultDataAccessException e) {
+//			throw new ServiceException("Invalid admin id/password");
+//		}
 	}
 
 	@Override
