@@ -26,8 +26,9 @@ public class AdminServiceImpl implements AdminService {
 			if (!repository.exists(id))
 				throw new ServiceException("Invalid admin id/password");
 			else {
-				if (repository.fetchByIdAndPassword(id, password) == null)
-					throw new ServiceException("Incorrect admin password");
+				Admin admin = repository.fetchById(Admin.class, id);
+				if (repository.fetchByIdAndPassword(admin.getId(), admin.getPassword()) == null)
+					throw new ServiceException("Incorrect password");
 				else
 					return repository.fetchByIdAndPassword(id, password);
 			}
@@ -37,21 +38,20 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Customer> getPendingRequests(){
-		if(repository.fetchPendingRequests().size() >= 1)
+	public List<Customer> getPendingRequests() {
+		if (repository.fetchPendingRequests().size() >= 1)
 			return repository.fetchPendingRequests();
 		else
 			throw new ServiceException("No pending requests");
 	}
-	
+
 	@Override
 	public void updatePendingRequests(int serviceRefNo, String response) {
-		Customer customer=repository.fetchById(Customer.class, serviceRefNo);
-			if(customer != null) {
-				customer.setIsApproved(response);
-				repository.save(customer);
-			}
-			else
-				throw new ServiceException("Invalid response from admin. No such customer");
+		Customer customer = repository.fetchById(Customer.class, serviceRefNo);
+		if (customer != null) {
+			customer.setIsApproved(response);
+			repository.save(customer);
+		} else
+			throw new ServiceException("Invalid response from admin, no such customer");
 	}
 }
