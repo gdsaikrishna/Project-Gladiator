@@ -22,7 +22,7 @@ public class AdminRepositoryImpl extends GenericRepositoryImpl implements AdminR
 
 	@Override
 	public Admin fetchByIdAndPassword(int adminId, String pwd) {
-		return (Admin) entityManager.createQuery("select a.id from Admin a where a.id = :adminId and a.password = :pwd")
+		return (Admin) entityManager.createQuery("select a from Admin a where a.id = :adminId and a.password = :pwd")
 				.setParameter("adminId", adminId).setParameter("pwd", pwd).getSingleResult();
 	}
 

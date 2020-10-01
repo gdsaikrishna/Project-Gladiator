@@ -1,3 +1,7 @@
+import { Router } from '@angular/router';
+import { AdminStatus } from './../models/admin-status';
+import { AdminService } from './../services/admin.service';
+import { AdminLogin } from './../models/admin-login';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,11 +11,23 @@ import { Component } from '@angular/core';
 })
 export class AdminLoginComponent {
 
-  adminLoginId: number;
-  password: string = '';
-  constructor() { }
+  adminLogin: AdminLogin=new AdminLogin();
+  adminLoginStatus: AdminStatus=new AdminStatus();
+  message: string;
 
-  showDetails() {
-    alert(this.adminLoginId + this.password);
+  constructor(private adminService: AdminService, private router: Router) { }
+
+  loginCheck() {
+    console.log(this.adminLogin.id+this.adminLogin.password);
+    this.adminService.login(this.adminLogin).subscribe(response => {
+      if(response.statusCode === "TRUE"){
+        sessionStorage.setItem('adminId', String(response.adminId));
+        sessionStorage.setItem('adminName', response.name);
+        this.router.navigate(['admin-dashboard']);
+      }
+      else{
+        this.message=response.statusMessage;
+      }
+    })
   }
 }

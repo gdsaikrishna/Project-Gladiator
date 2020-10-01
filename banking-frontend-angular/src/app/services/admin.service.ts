@@ -1,5 +1,6 @@
+import { AdminStatus } from './../models/admin-status';
+import { AdminLogin } from './../models/admin-login';
 import { Observable } from 'rxjs';
-import { Admin } from './../models/admin';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,5 +10,9 @@ import { Injectable } from '@angular/core';
 export class AdminService {
 
   constructor(private http: HttpClient) { }
-  
+
+  login(adminLogin: AdminLogin): Observable<AdminStatus>{
+    let url = "http://localhost:9090/admin-login";
+    return this.http.post<AdminStatus>(url, adminLogin);
+  }
 }

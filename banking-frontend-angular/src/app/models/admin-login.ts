@@ -1,5 +1,4 @@
-export class Admin{
+export class AdminLogin {
     public id: number;
     public password: string;
-    public name: string;
 }
