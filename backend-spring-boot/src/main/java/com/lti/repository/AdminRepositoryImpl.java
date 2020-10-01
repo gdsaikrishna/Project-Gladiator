@@ -14,6 +14,8 @@ public class AdminRepositoryImpl extends GenericRepositoryImpl implements AdminR
 	public boolean exists(int adminId) {
 		Long count = (Long) entityManager.createQuery("select count(a.id) from Admin a where a.id = :adminId")
 				.setParameter("adminId", adminId).getSingleResult();
+		//debug
+		System.out.println(count);
 		if (count == 1)
 			return true;
 		else

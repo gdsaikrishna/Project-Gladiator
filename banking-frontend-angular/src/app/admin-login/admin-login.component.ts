@@ -18,8 +18,8 @@ export class AdminLoginComponent {
   constructor(private adminService: AdminService, private router: Router) { }
 
   loginCheck() {
-    console.log(this.adminLogin.id+this.adminLogin.password);
     this.adminService.login(this.adminLogin).subscribe(response => {
+      alert(JSON.stringify(response));
       if(response.statusCode === "TRUE"){
         sessionStorage.setItem('adminId', String(response.adminId));
         sessionStorage.setItem('adminName', response.name);
