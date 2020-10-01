@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lti.dto.OpenAccStatus;
+import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Customer;
 import com.lti.exception.ServiceException;
 import com.lti.service.CustomerService;
@@ -24,7 +25,7 @@ public class CustomerControllerImpl {
 		try {
 			int id=customerService.register(customer);
 			OpenAccStatus status = new OpenAccStatus();
-			status.setStatus(true);
+			status.setStatusCode(StatusCode.SUCCESS);
 			status.setStatusMessage("Registration Successful");
 			status.setServiceRefNo(id);
 			return status;
@@ -33,8 +34,8 @@ public class CustomerControllerImpl {
 		}
 		catch(ServiceException e) {
 			OpenAccStatus status = new OpenAccStatus();
-			status.setStatus(false);
-			status.setStatusMessage(e.getMessage());
+			status.setStatusCode(StatusCode.FAILURE);
+			status.setStatusMessage("Registration Failed");
 			return status;
 			
 		}
