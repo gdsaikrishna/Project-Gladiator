@@ -12,6 +12,7 @@ export class AdminLoginComponent {
 
   adminLogin: AdminLogin=new AdminLogin();
   message: string;
+  error: boolean;
 
   constructor(private adminService: AdminService, private router: Router) { }
 
@@ -24,6 +25,7 @@ export class AdminLoginComponent {
         this.router.navigate(['admin-dashboard']);
       }
       else{
+        this.error=!this.error;
         this.message=response.statusMessage;
       }
     })
