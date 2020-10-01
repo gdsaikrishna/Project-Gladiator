@@ -1,4 +1,4 @@
-import { AdminStatus } from './../models/admin-status';
+import { AdminStatus } from '../models/admin-status';
 import { AdminLogin } from './../models/admin-login';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AdminService {
+  adminStatus: Observable<AdminStatus>;
 
   constructor(private http: HttpClient) { }
 

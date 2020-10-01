@@ -27,10 +27,10 @@ public class AdminServiceImpl implements AdminService {
 				throw new ServiceException("Invalid admin id/password");
 			else {
 				Admin admin = repository.fetchById(Admin.class, id);
-				if (repository.fetchByIdAndPassword(admin.getId(), admin.getPassword()) == null)
-					throw new ServiceException("Incorrect password");
-				else
+				if (repository.fetchByIdAndPassword(admin.getId(), admin.getPassword()) != null)
 					return repository.fetchByIdAndPassword(id, password);
+				else
+					throw new ServiceException("Incorrect password");
 			}
 		} catch (EmptyResultDataAccessException e) {
 			throw new ServiceException("Invalid admin id/password");
