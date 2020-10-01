@@ -13,7 +13,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   openAcc(customer: Customer) :Observable<OpenAccStatus>{
-    return this.http.post<any>('http://localhost:9191/openAccount',customer);
+    return this.http.post<any>('http://localhost:9090/openAccount',customer);
   }
 
   

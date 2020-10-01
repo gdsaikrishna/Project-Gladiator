@@ -17,8 +17,8 @@ export class AdminLoginComponent {
 
   loginCheck() {
     this.adminService.login(this.adminLogin).subscribe(response => {
+      console.log(JSON.stringify(response));
       if(response.statusCode === "TRUE"){
-        alert(JSON.stringify(response));
         sessionStorage.setItem('adminId', String(response.adminId));
         sessionStorage.setItem('adminName', response.name);
         this.router.navigate(['admin-dashboard']);
