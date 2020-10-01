@@ -37,11 +37,11 @@
     <p class="h3">Login</p>
     <br>
     <p>Please fill in your credentials to login.</p>
-    <form (ngSubmit)="loginForm.valid && showDetails()" #loginForm="ngForm">
+    <form (ngSubmit)="loginForm.valid && loginCheck()" #loginForm="ngForm">
         <div class="form-group">
             <label for="userId">User ID</label>
             <input class="form-control" type="text" name="id" placeholder="Your 6-digit user id"
-                [(ngModel)]=userId #id="ngModel" required pattern="^[0-9]{6}$">
+                [(ngModel)]="userLogin.userId" #id="ngModel" required pattern="^[0-9]{6}$">
             <div class="alert alert-danger" *ngIf="loginForm.submitted && id.invalid && (id.dirty || id.touched)">
                 <div *ngIf="id.errors.required">User ID is required</div>
                 <div *ngIf="id.errors.pattern">User ID must be of 6 digits</div>
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" name="pwd" placeholder="Your password" [(ngModel)]=password
+            <input class="form-control" type="password" name="pwd" placeholder="Your password" [(ngModel)]="userLogin.password"
                 #pwd="ngModel" required>
             <div class="alert alert-danger" *ngIf="loginForm.submitted && pwd.invalid && (pwd.dirty || pwd.touched)">
                 <div *ngIf="pwd.errors.required">Password is required</div>

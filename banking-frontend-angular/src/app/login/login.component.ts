@@ -1,5 +1,7 @@
+import { UserLogin } from './../models/user-login';
+import { UserService } from './../services/user.service';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  // loginForm: FormGroup;
+  userLogin:UserLogin = new UserLogin();
 
-  userId: number;
-  password: string = '';
-
-  constructor(
-    private formBuilder: FormBuilder
-  ) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   // buildLoginForm(): void {
   //   this.loginForm=this.formBuilder.group({
@@ -24,8 +21,19 @@ export class LoginComponent {
   //   })
   // }
 
-  showDetails(){
-    alert(this.userId + this.password);
-  }
+  loginCheck(){
+    console.log(this.userLogin);
+    this.userService.login(this.userLogin).subscribe(data => {
+      console.log(data);
+      if(data.statusCode === "SUCCESS"){
+        sessionStorage.setItem('userId', String(data.userId));
+        sessionStorage.setItem('userName',data.userName);
+        this.router.navigate(['dashboard']);
+      }
+      else{
+        alert(data.statusMessage);
 
+      }
+    })
+  }
 }
