@@ -118,9 +118,11 @@
                         <input type="number" class="form-control" name="aadhaarNo"
                             placeholder="Enter Aadhar Card Number" [(ngModel)]="newAccount.aadhaarNo"
                             #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }"
-                            required>
+                            required minlength="16" maxlength="16">
                         <div *ngIf="f.submitted && aadhaarNo.invalid" class="invalid-feedback">
                             <div *ngIf="aadhaarNo.errors.required">Aadhaar Number is required</div>
+                            <div *ngIf="aadhaarNo.errors.minlength || aadhaarNo.errors.maxlength">Aadhaar number must be 16
+                                digit</div>
                         </div>
                     </div>
                 </div>

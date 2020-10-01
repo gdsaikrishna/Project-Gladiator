@@ -20,7 +20,7 @@ public class UserControllerImpl {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/userLogin")
+	@PostMapping("/user-login")
 	@CrossOrigin
 	public @ResponseBody UserLoginStatus login(@RequestBody UserLogin login) {
 		

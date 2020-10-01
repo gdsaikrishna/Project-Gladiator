@@ -11,7 +11,7 @@ public class UserRepositoryImpl extends GenericRepositoryImpl implements UserRep
 	public boolean isUserExists(int id) {
 		return (Long)
 				entityManager
-				.createQuery("select count(u.id) from User u where c.id = :id")
+				.createQuery("select count(u.id) from User u where u.id = :id")
 				.setParameter("id", id)
 				.getSingleResult() == 1 ?true : false;
 	}
@@ -20,7 +20,7 @@ public class UserRepositoryImpl extends GenericRepositoryImpl implements UserRep
 	public User fetchUserWithUserIdAndPassword(int id, String password) {
 		return (User)
 				entityManager
-				.createQuery("select u from User u where u.id= :id and u.password = :pw")
+				.createQuery("select u from User u where u.id= :id and u.userPassword = :pw")
 				.setParameter("id", id)
 				.setParameter("pw", password)
 				.getSingleResult();
