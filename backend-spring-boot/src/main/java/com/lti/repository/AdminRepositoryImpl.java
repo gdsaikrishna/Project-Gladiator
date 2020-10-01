@@ -2,6 +2,9 @@ package com.lti.repository;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import com.lti.entity.Admin;
@@ -9,7 +12,6 @@ import com.lti.entity.Customer;
 
 @Repository
 public class AdminRepositoryImpl extends GenericRepositoryImpl implements AdminRepository {
-
 	@Override
 	public boolean exists(int adminId) {
 		Long count = (Long) entityManager.createQuery("select count(a.id) from Admin a where a.id = :adminId")
