@@ -129,7 +129,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="panCardNo"
-                            placeholder="Enter Pan Card Number" [(ngModel)]="newAccount.panCardNo"
+                            placeholder="Enter Pan Card Number" [(ngModel)]="newAccount.panCard"
                             #panCardNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && panCardNo.invalid }"
                             required>
                         <div *ngIf="f.submitted && panCardNo.invalid" class="invalid-feedback">
