@@ -11,9 +11,7 @@ import com.lti.entity.Account;
 
 @Repository
 public class AccountRepositoryImpl extends GenericRepositoryImpl implements AccountRepository {
-
-	@PersistenceContext
-	private EntityManager entityManager;
+	
 	public boolean exists(int acno) {
 		Long count = (Long) entityManager.createQuery("select count(a.accountNumber) from Account a where a.accountNumber = :acno").setParameter("acno", acno).getSingleResult();
 		if (count == 1)

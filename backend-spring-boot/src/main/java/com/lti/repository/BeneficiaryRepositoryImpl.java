@@ -11,8 +11,6 @@ import com.lti.entity.User;
 
 @Repository
 public class BeneficiaryRepositoryImpl extends GenericRepositoryImpl implements BeneficiaryRepository  {
-	@PersistenceContext
-	private EntityManager entityManager;
 	
 	public boolean checkIfAlreadyPresent(int userId,int beneficiaryAccountNumber) {
 		return (Long)

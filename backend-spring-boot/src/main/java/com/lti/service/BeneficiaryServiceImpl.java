@@ -27,8 +27,6 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 	@Autowired
 	private BeneficiaryRepository beneficiaryRepository;
 	
-	@Autowired
-	private GenericRepository genericRepository;
 	
 	public void addNewBeneficiary(BeneficiaryDto beneficiaryDto) {
 		try {
@@ -49,14 +47,14 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 				  }
 				  
 				  Beneficiary b=new Beneficiary();
-				  User user=genericRepository.fetchById(User.class, beneficiaryDto.getUserId());
+				  User user=beneficiaryRepository.fetchById(User.class, beneficiaryDto.getUserId());
 				  Account account=(Account) accountRepository.findAccountByUserId(beneficiaryDto.getUserId());
 				
 			      b.setUserId(user); 
 				  b.setAccount(account);
 				  b.setBeneficiaryName(beneficiaryDto.getBeneficiaryName());
 				  b.setBeneficiaryNickName(beneficiaryDto.getBeneficiaryNickName());
-				  genericRepository.save(b);
+				  beneficiaryRepository.save(b);
 				  
 				  
 				}
