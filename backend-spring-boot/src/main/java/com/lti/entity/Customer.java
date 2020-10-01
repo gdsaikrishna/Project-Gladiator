@@ -38,13 +38,13 @@ public class Customer {
 	private String fatherName;
 	
 	@Column(name="mobile_no")
-	private long mobileNo;
+	private String mobileNo;
 	
 	@Column(name="email_id")
 	private String emailId;
 	
 	@Column(name="aadhaar_card_no")
-	private long aadhaarNo;
+	private String aadhaarNo;
 	
 	@Column(name="date_of_birth")
 	private LocalDate dateOfBirth;
@@ -126,13 +126,7 @@ public class Customer {
 		this.fatherName = fatherName;
 	}
 
-	public long getMobileNo() {
-		return mobileNo;
-	}
-
-	public void setMobileNo(long mobileNo) {
-		this.mobileNo = mobileNo;
-	}
+	
 
 	public String getEmailId() {
 		return emailId;
@@ -142,11 +136,20 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-	public long getAadhaarNo() {
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
+	public String getAadhaarNo() {
 		return aadhaarNo;
 	}
 
-	public void setAadhaarNo(long aadhaarNo) {
+	public void setAadhaarNo(String aadhaarNo) {
 		this.aadhaarNo = aadhaarNo;
 	}
 
