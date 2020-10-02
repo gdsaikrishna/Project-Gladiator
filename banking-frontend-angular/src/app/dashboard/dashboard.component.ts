@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  name: string = "Soham Bhowmick";
+  name: string ;
   
   constructor() { }
 
   ngOnInit(): void {
+    this.name=sessionStorage.getItem('userName');
   }
 
 }

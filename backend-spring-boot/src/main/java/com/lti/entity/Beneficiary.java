@@ -23,7 +23,7 @@ public class Beneficiary {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
-	private User userId;
+	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="beneficiary_ac_no")
@@ -43,13 +43,6 @@ public class Beneficiary {
 		this.beneficiaryId = beneficiaryId;
 	}
 
-	public User getUserId() {
-		return userId;
-	}
-
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
 
 	public Account getAccount() {
 		return account;
@@ -74,5 +67,15 @@ public class Beneficiary {
 	public void setBeneficiaryNickName(String beneficiaryNickName) {
 		this.beneficiaryNickName = beneficiaryNickName;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 
 }

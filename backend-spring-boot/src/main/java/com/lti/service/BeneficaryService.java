@@ -1,9 +1,16 @@
 package com.lti.service;
 
-import com.lti.dto.BeneficiaryDto;
+import java.util.List;
+
+import com.lti.dto.AddBeneficiaryDto;
+import com.lti.dto.ShowBeneficiaryDto;
 
 public interface BeneficaryService {
 	
-	public void addNewBeneficiary(BeneficiaryDto beneficiaryDto);
+	public void addNewBeneficiary(AddBeneficiaryDto beneficiaryDto);
+	
+	public List<ShowBeneficiaryDto> fetchBeneficiary(int userId);
+	
+	
 
 }

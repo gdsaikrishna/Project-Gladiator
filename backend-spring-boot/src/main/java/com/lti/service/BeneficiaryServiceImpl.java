@@ -1,5 +1,6 @@
 package com.lti.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,7 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.dto.BeneficiaryDto;
+import com.lti.dto.AddBeneficiaryDto;
+import com.lti.dto.ShowBeneficiaryDto;
 import com.lti.entity.Account;
 import com.lti.entity.Beneficiary;
 import com.lti.entity.User;
@@ -28,7 +30,7 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 	private BeneficiaryRepository beneficiaryRepository;
 	
 	
-	public void addNewBeneficiary(BeneficiaryDto beneficiaryDto) {
+	public void addNewBeneficiary(AddBeneficiaryDto beneficiaryDto) {
 		
 		try {
 			if(!accountRepository.exists(beneficiaryDto.getAccountNumber())) {
@@ -48,7 +50,7 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 				  Beneficiary b=new Beneficiary();
 				  User user=beneficiaryRepository.fetchById(User.class, beneficiaryDto.getUserId());
 				
-			      b.setUserId(user); 
+			      b.setUser(user); 
 				  b.setAccount(account);
 				  b.setBeneficiaryName(beneficiaryDto.getBeneficiaryName());
 				  b.setBeneficiaryNickName(beneficiaryDto.getBeneficiaryNickName());
@@ -61,6 +63,29 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 			throw new ServiceException(e.getMessage());
 		}
 		
+	}
+	
+	public List<ShowBeneficiaryDto> fetchBeneficiary(int userId) {
+		List<ShowBeneficiaryDto> listOfBeneficiaries=new ArrayList<>();
+		try {
+			if(beneficiaryRepository.checkIfAnyBeneficiaryExist(userId)) {
+			ShowBeneficiaryDto beneficiaryDto=new ShowBeneficiaryDto();
+			List<Beneficiary> list= beneficiaryRepository.fetchBeneficiaryList(userId);
+			for(Beneficiary b:list) {
+				beneficiaryDto.setAccountNo(b.getAccount().getAccountNumber());
+				beneficiaryDto.setBeneficiaryName(b.getBeneficiaryName());
+				beneficiaryDto.setBeneficiaryNickName(b.getBeneficiaryNickName());
+				listOfBeneficiaries.add(beneficiaryDto);
+			}
+			}
+			else
+				throw new ServiceException("No Existing Beneficiary");
+		
+		 }catch (Exception e) {
+			 throw new ServiceException(e.getMessage());
+		}
+		
+		return listOfBeneficiaries;
 	}
 
 }
