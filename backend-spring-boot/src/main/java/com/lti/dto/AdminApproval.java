@@ -3,7 +3,7 @@ package com.lti.dto;
 public class AdminApproval {
 
 	private int serviceRefNo;
-	private String reponse;
+	private String response;
 	
 	public int getServiceRefNo() {
 		return serviceRefNo;
@@ -11,11 +11,11 @@ public class AdminApproval {
 	public void setServiceRefNo(int serviceRefNo) {
 		this.serviceRefNo = serviceRefNo;
 	}
-	public String getReponse() {
-		return reponse;
+	public String getResponse() {
+		return response;
 	}
-	public void setReponse(String reponse) {
-		this.reponse = reponse;
+	public void setResponse(String response) {
+		this.response = response;
 	}
 	
 }

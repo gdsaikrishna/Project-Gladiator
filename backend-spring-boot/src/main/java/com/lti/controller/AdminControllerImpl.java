@@ -2,13 +2,16 @@ package com.lti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.AdminApproval;
 import com.lti.dto.AdminLogin;
 import com.lti.dto.AdminLoginStatus;
+import com.lti.dto.CustomerRequestStatus;
 import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Admin;
 import com.lti.exception.ServiceException;
@@ -20,12 +23,11 @@ public class AdminControllerImpl {
 
 	@Autowired
 	private AdminService adminService;
-	
+
 	@PostMapping(path = "/admin-login")
 	public AdminLoginStatus login(@RequestBody AdminLogin login) {
-		System.out.println(login.getAdminId()+login.getPassword());
 		try {
-			Admin admin=adminService.login(login.getAdminId(), login.getPassword());
+			Admin admin = adminService.login(login.getAdminId(), login.getPassword());
 
 			AdminLoginStatus loginStatus = new AdminLoginStatus();
 			loginStatus.setStatusCode(StatusCode.SUCCESS);
@@ -40,11 +42,28 @@ public class AdminControllerImpl {
 			return loginStatus;
 		}
 	}
-	
-	@PostMapping(path = "/pending-requests")
-	public void acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
+
+	@GetMapping(path = "/pending-requests")
+	public CustomerRequestStatus showPendingRequests() {
 		try {
-			adminService.updatePendingRequests(apprvReject.getServiceRefNo(), apprvReject.getReponse());
+			CustomerRequestStatus status = new CustomerRequestStatus();
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Searching for pending requests...");
+			status.setCustomers(adminService.getPendingRequests());
+			return status;
+		} catch (ServiceException e) {
+			CustomerRequestStatus status = new CustomerRequestStatus();
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Could not fetch requests");
+			return status;
+		}
+	}
+
+	@PutMapping(path = "/approve")
+	public void acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
+		System.out.println(apprvReject.getServiceRefNo() + apprvReject.getResponse());
+		try {
+			adminService.updatePendingRequests(apprvReject.getServiceRefNo(), apprvReject.getResponse());
 		} catch (ServiceException e) {
 			throw new ServiceException("Some error occured while acceptance/rejection");
 		}

@@ -27,7 +27,7 @@ public class User {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="service_ref_no")
-	private Customer customer; //fk
+	private Customer customer;
 	
 	@Column(name="user_password")
 	private String userPassword;

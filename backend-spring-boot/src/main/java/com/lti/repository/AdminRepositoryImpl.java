@@ -8,6 +8,7 @@ import com.lti.entity.Customer;
 
 @Repository
 public class AdminRepositoryImpl extends GenericRepositoryImpl implements AdminRepository {
+	
 	@Override
 	public boolean exists(int adminId) {
 		return (Long) entityManager.createQuery("select count(a.id) from Admin a where a.id = :adminId")

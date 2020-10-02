@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
+import com.lti.entity.User;
 import com.lti.exception.ServiceException;
 import com.lti.repository.AdminRepository;
+import com.lti.repository.CustomerRepository;
 
 @Service
 @Transactional
@@ -19,6 +21,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminRepository repository;
+
+	@Autowired
+	private CustomerRepository customerRepository;
 
 	@Override
 	public Admin login(int id, String password) {
@@ -48,9 +53,15 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void updatePendingRequests(int serviceRefNo, String response) {
 		Customer customer = repository.fetchById(Customer.class, serviceRefNo);
-		if (customer != null) {
+		if (customerRepository.isCustomerPresent(customer.getPanCard())) {
 			customer.setIsApproved(response);
 			repository.save(customer);
+			Customer updatedCustomer = repository.fetchById(Customer.class, serviceRefNo);
+
+			User user = new User();
+			user.setCustomer(updatedCustomer);
+			user.setId(400004); // this will be auto-generated
+			repository.save(user);
 		} else
 			throw new ServiceException("Invalid response from admin, no such customer");
 	}
