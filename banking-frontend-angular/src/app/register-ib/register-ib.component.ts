@@ -1,5 +1,7 @@
+import { RegisterIb } from './../models/register-ib';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-ib',
@@ -7,32 +9,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register-ib.component.css']
 })
 export class RegisterIbComponent implements OnInit {
-  //register object
-  registerForm : FormGroup;
-  submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  register: RegisterIb = new RegisterIb();
+  model: any = {};
+  constructor(private userService: UserService , private router: Router) { }
 
-  ngOnInit(){
-    this.registerForm = this.formBuilder.group({
-      acNo: ['', Validators.required],
-      loginPassword: ['', Validators.required],
-      confirmLoginPassword: ['', Validators.required],
-      txPassword: ['', Validators.required],
-      confirmTxPassword: ['', Validators.required],
-      otp: ['', Validators.required]
-    })
-  }
-  get f() { return this.registerForm.controls; }
+  ngOnInit(){ }
   onSubmit() {
-
-    this.submitted = true;
-
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    //this.http.post
-
+    this.register.accountNumber=this.model.accountNumber;
+    this.register.userPassword=this.model.userPassword;
+    this.register.transactionPassword=this.model.transactionPassword;
+    //console.log(this.register);
+    this.userService.register(this.register).subscribe(data => {
+      console.log(data);
+      if(data.statusCode === "SUCCESS"){
+        this.router.navigate(['home']);
+        alert("Registration for Internet Banking Successful. User your Id and password to experience our bank services");
+      }
+      else{
+        alert("Registration for Internet Banking Failed");
+      }
+    })
 
   }
 

@@ -1,26 +1,29 @@
 import { FormGroup } from '@angular/forms';
 
-// custom validator to check that two fields match
-export function MustMatch(controlName: string, matchingControlName: string) {
+export function MustMatch(controlName: string, matchingControlName: string, txName: string, ctxName: string) {
     return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
+        const userPassword = formGroup.controls[controlName];
+        const cuserPassword = formGroup.controls[matchingControlName];
+        const txPassword = formGroup.controls[txName];
+        const ctxPassword = formGroup.controls[ctxName];
 
-        // return null if controls haven't initialised yet
-        if (!control || !matchingControl) {
+        if (!userPassword || !cuserPassword || !txPassword || !ctxPassword) {
           return null;
         }
 
-        // return null if another validator has already found an error on the matchingControl
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        if (cuserPassword.errors && !cuserPassword.errors.mustMatch && ctxPassword.errors && !ctxPassword.errors.mustMatch) {
             return null;
         }
 
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
+        if (userPassword.value !== cuserPassword.value) {
+            cuserPassword.setErrors({ mustMatch: true });
         } else {
-            matchingControl.setErrors(null);
+            cuserPassword.setErrors(null);
+        }
+        if (txPassword.value !== ctxPassword.value) {
+            ctxPassword.setErrors({ mustMatch: true });
+        } else {
+            ctxPassword.setErrors(null);
         }
     }
 }

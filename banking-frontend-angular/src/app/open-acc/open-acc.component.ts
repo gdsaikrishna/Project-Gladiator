@@ -57,7 +57,7 @@ export class OpenAccComponent implements OnInit {
         alert("Registration Successful and your Service Reference Number is "+data.serviceRefNo);
       }
       else{
-        alert("Registration Failed");
+        alert(data.statusMessage);
       }
     })
 

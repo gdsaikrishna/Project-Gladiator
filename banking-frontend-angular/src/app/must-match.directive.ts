@@ -7,9 +7,9 @@ import { MustMatch } from './must-match.validator';
 
 })
 export class MustMatchDirective implements Validator {
-  @Input('mustMatch') mustMatch: string[] = [];
+  @Input('appMustMatch') mustMatch: string[] = [];
 
   validate(formGroup: FormGroup): ValidationErrors {
-      return MustMatch(this.mustMatch[0], this.mustMatch[1])(formGroup);
+      return MustMatch(this.mustMatch[0], this.mustMatch[1], this.mustMatch[2] , this.mustMatch[3])(formGroup);
   }
 }
