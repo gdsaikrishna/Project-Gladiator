@@ -1,3 +1,4 @@
+import { TrackApplicationService } from './../services/track-application.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,14 +9,24 @@ import { Component } from '@angular/core';
 export class TrackApplicationComponent {
 
   serviceRefNo: number;
+  status: string;
   submitted: boolean;
-  approved: string = 'Y';
+  statusMessage: string;
+  error: boolean;
 
-  constructor() { }
+  constructor(private trackApplicationService: TrackApplicationService) { }
 
-  onSubmit() {
-    // alert(this.serviceRefNo);
-    this.submitted = true;
+  checkApplicationStatus() {
+    this.trackApplicationService.getApplicationStatus(this.serviceRefNo).subscribe(response => {
+      if (response.statusCode === "SUCCESS") {
+        this.submitted = true;
+        this.status = response.currentStatus;
+      }
+      else {
+        this.error = true;
+        this.statusMessage = response.statusMessage;
+      }
+    })
+
   }
-
 }

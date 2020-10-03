@@ -11,7 +11,6 @@ import { AdminApproval } from '../models/admin-approval';
   providedIn: 'root'
 })
 export class AdminService {
-  adminStatus: Observable<AdminStatus>;
 
   constructor(private http: HttpClient) { }
 
