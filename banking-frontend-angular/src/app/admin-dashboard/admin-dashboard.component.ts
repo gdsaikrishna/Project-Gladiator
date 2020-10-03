@@ -7,7 +7,7 @@ import { CustomerRequestStatus } from '../models/customer-request-status';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.css', '.././app.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
 
@@ -39,12 +39,12 @@ export class AdminDashboardComponent implements OnInit {
   approve() {
     this.adminService.approve(this.adminApproval).subscribe(response => {
       console.log(JSON.stringify(response));
-      if(response.statusCode === "SUCCESS"){
-        this.approvalStatus=true;
+      if (response.statusCode === "SUCCESS") {
+        this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;
       }
-      else{
-        this.approvalStatus=true;
+      else {
+        this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;
       }
     })

@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.lti.entity.Account;
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
 import com.lti.entity.User;
 import com.lti.exception.ServiceException;
 import com.lti.repository.AdminRepository;
 import com.lti.repository.CustomerRepository;
+import com.lti.repository.UserRepository;
 
 @Service
 @Transactional
@@ -24,6 +26,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public Admin login(int id, String password) {
@@ -55,13 +60,21 @@ public class AdminServiceImpl implements AdminService {
 		try {
 			Customer customer = repository.fetchById(Customer.class, serviceRefNo);
 			if (customerRepository.isCustomerPresent(customer.getPanCard())) {
-				customer.setIsApproved(response);
-				repository.save(customer);
-				if(response.equals("A")) {
-					Customer updatedCustomer = repository.fetchById(Customer.class, serviceRefNo);
-					User user = new User();
-					user.setCustomer(updatedCustomer);
-					repository.save(user);
+				if (customer.getIsApproved().equals("W")) {
+					customer.setIsApproved(response);
+					repository.save(customer);
+					if (response.equals("A")) {
+						Customer updatedCustomer = repository.fetchById(Customer.class, serviceRefNo);
+						User user = new User();
+						user.setCustomer(updatedCustomer);
+						User updatedUser = repository.save(user);
+						if (userRepository.isUserExists(updatedUser.getId())) {
+							Account account = new Account();
+							account.setUser(updatedUser);
+							account.setBalance(0);
+							repository.save(account);
+						}
+					}
 				}
 			}
 		} catch (Exception e) {
