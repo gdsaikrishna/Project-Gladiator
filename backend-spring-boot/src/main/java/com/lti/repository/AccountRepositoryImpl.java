@@ -34,4 +34,29 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				
 	}
 	
+	public String checkUserHasInternetBankingWithGivenAcno(int accountNumber) {
+		return (String)
+				entityManager
+				.createQuery(" select c.netBankingRequirement from Account a join a.user u join u.customer c where a.accountNumber = :accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+	}
+	
+	public boolean checkUserAlreadyRegistered(int accountNumber) {
+		return (boolean)
+				entityManager
+				.createQuery(" select case when u.userPassword is not null then true else false end from Account a join a.user u where a.accountNumber = :accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+	}
+	
+	public int returnUserIdWithAccountNumber(int accountNumber) {
+		return (int)
+				entityManager
+				.createQuery(" select a.user.id from Account a where a.accountNumber = :accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+				
+	}
+	
 }

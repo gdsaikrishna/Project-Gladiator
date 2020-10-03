@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lti.dto.RegisterIb;
+import com.lti.dto.Status;
 import com.lti.dto.Status.StatusCode;
 import com.lti.dto.UserLogin;
 import com.lti.dto.UserLoginStatus;
@@ -36,9 +38,36 @@ public class UserControllerImpl {
 		catch (ServiceException e) {
 			UserLoginStatus userLoginStatus = new UserLoginStatus();
 			userLoginStatus.setStatusCode(StatusCode.FAILURE);;
-			userLoginStatus.setStatusMessage("Some Error occured while logging in, Retry Login");
+			userLoginStatus.setStatusMessage(e.getMessage());
 			return userLoginStatus;
 		}
 	}
+	
+	@PostMapping("/register-ib")
+	@CrossOrigin
+	public @ResponseBody Status register(@RequestBody RegisterIb registerIb) {
+		try {
+			boolean check = userService.register(registerIb.getAccountNumber(),registerIb.getUserPassword(),registerIb.getTransactionPassword());
+			Status status= new Status();
+			if(check) {
+				status.setStatusCode(StatusCode.SUCCESS);
+				status.setStatusMessage("Registration Success");
+			}
+			else {
+				status.setStatusCode(StatusCode.FAILURE);
+				status.setStatusMessage("Registration Failed");
+			}
+			return status;
+		}
+		catch (ServiceException e) {
+			Status status= new Status();
+			status.setStatusCode(StatusCode.FAILURE);
+			status.setStatusMessage(e.getMessage());
+			return status;
+		}
+		
+	}
+	
+	
 
 }

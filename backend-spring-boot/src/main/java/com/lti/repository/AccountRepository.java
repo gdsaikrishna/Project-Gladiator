@@ -12,4 +12,7 @@ public interface AccountRepository {
 //	boolean exists(int acno);
 	
 	public Account findAccountByUserId(int userId);
+	boolean checkUserAlreadyRegistered(int accountNumber);
+	String checkUserHasInternetBankingWithGivenAcno(int accountNumber);
+	int returnUserIdWithAccountNumber(int accountNumber);
 }
