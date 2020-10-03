@@ -12,6 +12,7 @@ import com.lti.dto.AdminApproval;
 import com.lti.dto.AdminLogin;
 import com.lti.dto.AdminLoginStatus;
 import com.lti.dto.CustomerRequestStatus;
+import com.lti.dto.Status;
 import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Admin;
 import com.lti.exception.ServiceException;
@@ -60,12 +61,19 @@ public class AdminControllerImpl {
 	}
 
 	@PutMapping(path = "/approve")
-	public void acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
-		System.out.println(apprvReject.getServiceRefNo() + apprvReject.getResponse());
+	public Status acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
 		try {
 			adminService.updatePendingRequests(apprvReject.getServiceRefNo(), apprvReject.getResponse());
+			Status status=new Status();
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Approval Successful");
+			return status;
 		} catch (ServiceException e) {
-			throw new ServiceException("Some error occured while acceptance/rejection");
+			Status status=new Status();
+			status.setStatusCode(StatusCode.FAILURE);
+			status.setStatusMessage("Approval Failed, Wrong Service Ref No.");
+			e.printStackTrace();
+			return status;
 		}
 	}
 }

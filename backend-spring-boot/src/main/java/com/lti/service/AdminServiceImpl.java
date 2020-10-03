@@ -52,17 +52,20 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void updatePendingRequests(int serviceRefNo, String response) {
-		Customer customer = repository.fetchById(Customer.class, serviceRefNo);
-		if (customerRepository.isCustomerPresent(customer.getPanCard())) {
-			customer.setIsApproved(response);
-			repository.save(customer);
-			Customer updatedCustomer = repository.fetchById(Customer.class, serviceRefNo);
-
-			User user = new User();
-			user.setCustomer(updatedCustomer);
-			user.setId(400004); // this will be auto-generated
-			repository.save(user);
-		} else
+		try {
+			Customer customer = repository.fetchById(Customer.class, serviceRefNo);
+			if (customerRepository.isCustomerPresent(customer.getPanCard())) {
+				customer.setIsApproved(response);
+				repository.save(customer);
+				if(response.equals("A")) {
+					Customer updatedCustomer = repository.fetchById(Customer.class, serviceRefNo);
+					User user = new User();
+					user.setCustomer(updatedCustomer);
+					repository.save(user);
+				}
+			}
+		} catch (Exception e) {
 			throw new ServiceException("Invalid response from admin, no such customer");
+		}
 	}
 }

@@ -1,3 +1,4 @@
+import { Status } from './../models/status';
 import { CustomerRequestStatus } from './../models/customer-request-status';
 import { AdminStatus } from '../models/admin-status';
 import { AdminLogin } from '../models/admin-login';
@@ -24,8 +25,8 @@ export class AdminService {
     return this.http.get<CustomerRequestStatus>(url);
   }
 
-  approve(adminApproval: AdminApproval): Observable<any>{
+  approve(adminApproval: AdminApproval): Observable<Status>{
     let url = "http://localhost:9090/approve";
-    return this.http.put(url, adminApproval);
+    return this.http.put<Status>(url, adminApproval);
   }
 }

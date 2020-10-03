@@ -73,16 +73,17 @@
         <div *ngIf="refNo.errors.pattern">Service Reference No. must be of 4 digits</div>
       </div>
     </div>
-    <label class="col-sm-2 col-form-label" for="response">Accept(Y) / Reject(N)</label>
+    <label class="col-sm-2 col-form-label" for="response">Accept(A) / Reject(R)</label>
     <div class="col-sm-10">
       <input class="form-control" type="text" name="response" #response="ngModel" [(ngModel)]="adminApproval.response"
-        required pattern="[YN]">
+        required pattern="[AR]">
       <div class="alert alert-danger"
         *ngIf="approvalForm.submitted && response.invalid && (response.dirty || response.touched)">
         <div *ngIf="response.errors.required">Approval is required</div>
-        <div *ngIf="response.errors.pattern">Enter Y or N</div>
+        <div *ngIf="response.errors.pattern">Enter A or R</div>
       </div>
       <input type="submit" class="btn btn-primary" value="Approve">
     </div>
   </form>
+  <div class="alert alert-warning" role="alert" *ngIf="approvalStatus">{{approvalMessage}}</div>
 </div>

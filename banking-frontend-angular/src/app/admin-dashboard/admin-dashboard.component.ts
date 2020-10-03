@@ -14,6 +14,8 @@ export class AdminDashboardComponent implements OnInit {
   name: string;
   message: string;
   error: boolean;
+  approvalStatus: boolean;
+  approvalMessage: string;
   customerRequestStatus: CustomerRequestStatus = new CustomerRequestStatus();
   adminApproval: AdminApproval = new AdminApproval();
 
@@ -35,9 +37,17 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   approve() {
-    // this.adminService.approve(this.adminApproval).subscribe(response => {})
-    // this.ngOnInit();
-    this.router.navigate(['admin-dashboard']);
+    this.adminService.approve(this.adminApproval).subscribe(response => {
+      console.log(JSON.stringify(response));
+      if(response.statusCode === "SUCCESS"){
+        this.approvalStatus=true;
+        this.approvalMessage = response.statusMessage;
+      }
+      else{
+        this.approvalStatus=true;
+        this.approvalMessage = response.statusMessage;
+      }
+    })
   }
 
 }
