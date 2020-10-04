@@ -27,6 +27,15 @@ public class UserRepositoryImpl extends GenericRepositoryImpl implements UserRep
 		
 		
 	}
+	public User fetchUserWithUserId(int id) {
+		return (User)
+				entityManager
+				.createQuery("select u from User u where u.id= :id")
+				.setParameter("id", id)
+				.getSingleResult();
+		
+		
+	}
 	
 
 }
