@@ -28,7 +28,7 @@ export class LoginComponent {
       if(data.statusCode === "SUCCESS"){
         sessionStorage.setItem('userId', String(data.userId));
         sessionStorage.setItem('userName',data.userName);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['account-summary']);
       }
       else{
         alert(data.statusMessage);

@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class AddBeneficiaryComponent implements OnInit {
 
   beneficiary: Beneficiary = new Beneficiary();
+  message:string;
+  error:boolean;
+  
   constructor(private service:AddBeneficiaryService,private router:Router) { }
 
   ngOnInit() {
@@ -23,8 +26,11 @@ export class AddBeneficiaryComponent implements OnInit {
       console.log(data);
       if(data.statusCode==="SUCCESS")
         this.router.navigate(['dashboard']);  
-      else
+      else{
         console.log(data.statusMessage);
+        this.error=true;
+        this.message=data.statusMessage;
+      }
     })
     
   }

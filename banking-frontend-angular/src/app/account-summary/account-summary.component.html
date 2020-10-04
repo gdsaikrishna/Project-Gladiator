@@ -1,13 +1,10 @@
 <app-dashboard></app-dashboard>
 <div class="wrapper container">
-    <div class="card-deck">
-        <div class="card border-dark mb-3" style="max-width: 18rem;" *ngFor="let account of accounts">
-            <div class="card-header">Account</div>
+        <div class="card border-dark" style="margin: auto;">
+            <div class="card-header">Account Summary</div>
             <div class="card-body text-dark">
-                <h5 class="card-title">{{account.accountNumber}}</h5>
-                <p class="card-text">Balance: {{account.balance | currency : 'INR'}}</p>
-                <p class="card-text">Type: {{account.accountType | uppercase}}</p>
+                <h5 class="card-title">Account Number:{{account.accountNumber}}</h5>
+                <h5 class="card-text">Balance: {{account.balance | currency : 'INR'}}</h5>
             </div>
         </div>
-    </div>
 </div>
