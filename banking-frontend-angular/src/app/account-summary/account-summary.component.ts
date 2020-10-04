@@ -8,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSummaryComponent implements OnInit {
 
-  accounts = [
-    new Account(123456, 4567.25, "SAVINGS"),
-    new Account(456789, 515621.20, "SAVINGS")
-  ];
+  account = 
+    new Account(123456, 4567.25, "SAVINGS");
 
   constructor() { }
 

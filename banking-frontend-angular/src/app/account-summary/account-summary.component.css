@@ -1,11 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+body {
+    font: 14px sans-serif;
+    background-color: #d3dbe0;
+}
+
+.page-header {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+}
+
 .wrapper {
     /* background-color: #ffe2e2; */
     border-radius: 6px;
-    padding: 14px;
     width: 46%;
     position: relative;
+    margin: auto;
 }
 
-a {
-    text-decoration: none;
+.card{
+   
+    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+
 }
+.card-header{
+    font-size: x-large;
+}
+
+
