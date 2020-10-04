@@ -59,4 +59,13 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				
 	}
 	
+	public Account findAccountByAccountNumber(int accountNumber) {
+		return (Account)
+				entityManager
+				.createQuery("select a from Account a where a.accountNumber =:accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+		
+	}
+	
 }

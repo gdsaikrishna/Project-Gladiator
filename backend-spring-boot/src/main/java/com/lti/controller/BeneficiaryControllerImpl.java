@@ -26,7 +26,7 @@ import com.lti.service.BeneficaryService;
 public class BeneficiaryControllerImpl {
 	
 	@Autowired
-	BeneficaryService beneficiaryService;
+	private BeneficaryService beneficiaryService;
 	
 	@PostMapping(path="/add-beneficiary")
 	public Status addNewBeneficiary(@RequestBody AddBeneficiaryDto beneficiaryDto) {
