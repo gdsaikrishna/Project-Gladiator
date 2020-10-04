@@ -37,5 +37,14 @@ public class UserRepositoryImpl extends GenericRepositoryImpl implements UserRep
 		
 	}
 	
+	@Override
+	public String fetchUserTransactionPassword(int id) {
+		return (String)
+				entityManager
+				.createQuery("select u.transactionPassword from User u where u.id =:id")
+				.setParameter("id", id)
+				.getSingleResult();
+	}
+	
 
 }

@@ -63,9 +63,19 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				.getSingleResult();
 				
 	}
-	
+
 	@Override
 	public List<Account> fetchAccountsByUserId(int accountNumber){
 		return entityManager.createQuery("select a from Account a where a.user = :id").setParameter("id", accountNumber).getResultList();
+	}
+	
+	@Override
+	public Account findAccountByAccountNumber(int accountNumber) {
+		return (Account)
+				entityManager
+				.createQuery("select a from Account a where a.accountNumber =:accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+		
 	}
 }

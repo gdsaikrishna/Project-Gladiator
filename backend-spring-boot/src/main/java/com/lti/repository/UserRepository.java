@@ -8,5 +8,7 @@ public interface UserRepository extends GenericRepository {
 
 	User fetchUserWithUserIdAndPassword(int id, String password);
 	User fetchUserWithUserId(int id);
+	String fetchUserTransactionPassword(int id);
+	
 
 }
