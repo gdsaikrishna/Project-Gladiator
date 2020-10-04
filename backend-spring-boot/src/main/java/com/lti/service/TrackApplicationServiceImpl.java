@@ -1,7 +1,5 @@
 package com.lti.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -11,7 +9,6 @@ import com.lti.exception.ServiceException;
 import com.lti.repository.TrackApplicationRepository;
 
 @Service
-@Transactional
 public class TrackApplicationServiceImpl implements TrackApplicationService {
 
 	@Autowired

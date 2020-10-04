@@ -15,34 +15,29 @@ import com.lti.service.CustomerService;
 
 @Controller
 public class CustomerControllerImpl {
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
-	@PostMapping(path="/openAccount")
+
+	@PostMapping(path = "/openAccount")
 	@CrossOrigin
 	public @ResponseBody OpenAccStatus openAccount(@RequestBody Customer customer) {
 		try {
-			int id=customerService.register(customer);
+			int id = customerService.register(customer);
 			OpenAccStatus status = new OpenAccStatus();
 			status.setStatusCode(StatusCode.SUCCESS);
 			status.setStatusMessage("Registration Successful");
 			status.setServiceRefNo(id);
 			return status;
-			
-			
-		}
-		catch(ServiceException e) {
+
+		} catch (ServiceException e) {
 			OpenAccStatus status = new OpenAccStatus();
 			status.setStatusCode(StatusCode.FAILURE);
 			status.setStatusMessage("Registration Failed");
 			return status;
-			
+
 		}
 	}
-	
-	
-	
 	
 	
 

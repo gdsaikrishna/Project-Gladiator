@@ -20,11 +20,12 @@ import com.lti.service.AdminService;
 
 @RestController
 @CrossOrigin
-public class AdminControllerImpl {
+public class AdminControllerImpl implements AdminController {
 
 	@Autowired
 	private AdminService adminService;
 
+	@Override
 	@PostMapping(path = "/admin-login")
 	public AdminLoginStatus login(@RequestBody AdminLogin login) {
 		try {
@@ -44,6 +45,7 @@ public class AdminControllerImpl {
 		}
 	}
 
+	@Override
 	@GetMapping(path = "/pending-requests")
 	public CustomerRequestStatus showPendingRequests() {
 		try {
@@ -60,6 +62,7 @@ public class AdminControllerImpl {
 		}
 	}
 
+	@Override
 	@PutMapping(path = "/approve")
 	public Status acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
 		try {
