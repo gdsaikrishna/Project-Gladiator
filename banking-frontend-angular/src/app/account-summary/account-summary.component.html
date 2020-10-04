@@ -1,10 +1,10 @@
 <app-dashboard></app-dashboard>
 <div class="wrapper container">
-        <div class="card border-dark" style="margin: auto;">
-            <div class="card-header">Account Summary</div>
-            <div class="card-body text-dark">
-                <h5 class="card-title">Account Number:{{account.accountNumber}}</h5>
-                <h5 class="card-text">Balance: {{account.balance | currency : 'INR'}}</h5>
-            </div>
+    <div class="card border-dark" style="margin: auto;">
+        <div class="card-header">Account Summary</div>
+        <div class="card-body text-dark">
+            <h5 class="card-title">Account Number: {{accountSummaryStatus.accountNumber}}</h5>
+            <h5 class="card-text">Balance: {{accountSummaryStatus.balance | currency : 'INR'}}</h5>
         </div>
+    </div>
 </div>

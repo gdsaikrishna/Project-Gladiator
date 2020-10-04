@@ -4,15 +4,20 @@ import java.util.List;
 
 import com.lti.entity.Account;
 
-public interface AccountRepository {
+public interface AccountRepository extends GenericRepository {
 
 	boolean exists(int acno);
+
 	<T> T findUserByAccountNoAndOtp(int accountNumber, int otp);
 
-//	boolean exists(int acno);
-	
-	public Account findAccountByUserId(int userId);
-	boolean checkUserAlreadyRegistered(int accountNumber);
+	Account findAccountByUserId(int userId);
+
 	String checkUserHasInternetBankingWithGivenAcno(int accountNumber);
+
+	boolean checkUserAlreadyRegistered(int accountNumber);
+
 	int returnUserIdWithAccountNumber(int accountNumber);
+
+	List<Account> fetchAccountsByUserId(int accountNumber);
+
 }

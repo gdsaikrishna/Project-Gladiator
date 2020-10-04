@@ -8,6 +8,7 @@ import com.lti.entity.Account;
 @Repository
 public class AccountRepositoryImpl extends GenericRepositoryImpl implements AccountRepository {
 	
+	@Override
 	public boolean exists(int acno) {
 		long count=((Long) 
 				entityManager.
@@ -26,6 +27,7 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 	}
 	
 
+	@Override
 	public Account findAccountByUserId(int userId) {
 		return (Account) entityManager
 				.createQuery("select a from Account a where a.user.id= :userId")
@@ -34,6 +36,7 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				
 	}
 	
+	@Override
 	public String checkUserHasInternetBankingWithGivenAcno(int accountNumber) {
 		return (String)
 				entityManager
@@ -42,6 +45,7 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				.getSingleResult();
 	}
 	
+	@Override
 	public boolean checkUserAlreadyRegistered(int accountNumber) {
 		return (boolean)
 				entityManager
@@ -50,6 +54,7 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				.getSingleResult();
 	}
 	
+	@Override
 	public int returnUserIdWithAccountNumber(int accountNumber) {
 		return (int)
 				entityManager
@@ -59,4 +64,8 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				
 	}
 	
+	@Override
+	public List<Account> fetchAccountsByUserId(int accountNumber){
+		return entityManager.createQuery("select a from Account a where a.user = :id").setParameter("id", accountNumber).getResultList();
+	}
 }

@@ -1,5 +1,8 @@
+import { AccountSummaryStatus } from './../models/account-summary-status';
+import { AccountService } from './../services/account.service';
 import { Account } from './../models/account';
 import { Component, OnInit } from '@angular/core';
+import { UserProfileStatus } from '../models/user-profile-status';
 
 @Component({
   selector: 'app-account-summary',
@@ -8,12 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSummaryComponent implements OnInit {
 
-  account = 
-    new Account(123456, 4567.25, "SAVINGS");
+  userId: number;
+  accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
+  message: string;
+  error: boolean;
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.userId = parseInt(sessionStorage.getItem('userId'));
+    this.accountService.showAccountSummary(this.userId).subscribe(response => {
+      if (response.statusCode === "SUCCESS") {
+        this.accountSummaryStatus.accountNumber = response.accountNumber;
+        this.accountSummaryStatus.balance = response.balance;
+      }
+      else {
+        this.error = true;
+        this.message = response.statusMessage;
+      }
+    })
   }
 
 }

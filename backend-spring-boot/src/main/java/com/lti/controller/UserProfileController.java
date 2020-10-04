@@ -14,7 +14,7 @@ import com.lti.service.UserProfileService;
 
 @RestController
 @CrossOrigin
-public class UserProfileControllerImpl {
+public class UserProfileController {
 
 	@Autowired
 	private UserProfileService service;
@@ -29,10 +29,10 @@ public class UserProfileControllerImpl {
 			status.setStatusMessage("Fetched customer details successfully");
 			status.setCustomer(customer);
 			return status;
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			UserProfileStatus status=new UserProfileStatus();
 			status.setStatusCode(StatusCode.SUCCESS);
-			status.setStatusMessage("Could not fetch customer details");
+			status.setStatusMessage("Could not fetch user details");
 			return status;
 		}
 	}
