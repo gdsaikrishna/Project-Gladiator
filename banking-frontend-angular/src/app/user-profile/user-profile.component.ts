@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { UserProfileStatus } from './../models/user-profile-status';
+import { UserProfileService } from '../services/user-profile.service';
 import { Component, OnInit } from '@angular/core';
-
-import { Customer } from './../models/customer';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,11 +9,23 @@ import { Customer } from './../models/customer';
 })
 export class UserProfileComponent implements OnInit {
 
-  user=new Customer();
+  userId: number;
+  userProfileStatus: UserProfileStatus = new UserProfileStatus();
+  message: string;
+  error: boolean;
 
-  constructor() { }
+  constructor(private userProfileService: UserProfileService) { }
 
   ngOnInit(): void {
+    this.userId = parseInt(sessionStorage.getItem('userId'));
+    this.userProfileService.showUserProfile(this.userId).subscribe(response => {
+      if (response.statusCode === "SUCCESS")
+        this.userProfileStatus.customer = response.customer;
+      else {
+        this.error = true;
+        this.message = response.statusMessage;
+      }
+    })
   }
 
 }

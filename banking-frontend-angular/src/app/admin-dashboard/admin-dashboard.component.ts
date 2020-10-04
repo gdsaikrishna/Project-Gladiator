@@ -24,11 +24,8 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.name = sessionStorage.getItem('adminName');
     this.adminService.showPendingRequests().subscribe(response => {
-      console.log(JSON.stringify(this.customerRequestStatus));
-      if (response.statusCode === "SUCCESS") {
-        console.log(response.statusMessage);
+      if (response.statusCode === "SUCCESS")
         this.customerRequestStatus.customers = response.customers;
-      }
       else {
         this.error = true;
         this.message = response.statusMessage;

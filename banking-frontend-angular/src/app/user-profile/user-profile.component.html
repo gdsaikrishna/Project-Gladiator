@@ -3,14 +3,15 @@
     <div class="card border-dark w-100">
             <div class="card-header">User Profile</div>
             <div class="card-body">
-                <p class="card-text">Name:{{user.title}} {{user.firstName}} {{user.middleName}} {{user.lastName}}</p>
-                <p class="card-text">Father's Name:{{user.fatherName}}</p>
-                <p class="card-text">Mobile Number:{{user.mobileNo}}</p>
-                <p class="card-text">Email Id:{{user.emailId}}</p>
-                <p class="card-text">Aadhar Card Number:{{user.aadhaarNo}}</p>
-                <p class="card-text">Date Of Birth:{{user.dateOfBirth}}</p>
-                <p class="card-text">Residential Address:{{user.resAddress}}</p>
-                <p class="card-text">Permanent Address:{{user.perAddress}}</p>
+                <p class="card-text">Name: {{userProfileStatus.customer.title}} {{userProfileStatus.customer.firstName | uppercase}} {{userProfileStatus.customer.middleName | uppercase}} {{userProfileStatus.customer.lastName | uppercase}}</p>
+                <p class="card-text">Father's Name: {{userProfileStatus.customer.fatherName}}</p>
+                <p class="card-text">Mobile Number: {{userProfileStatus.customer.mobileNo}}</p>
+                <p class="card-text">Email Id: {{userProfileStatus.customer.emailId}}</p>
+                <p class="card-text">Aadhar Card Number: {{userProfileStatus.customer.aadhaarNo}}</p>
+                <p class="card-text">Date Of Birth: {{userProfileStatus.customer.dateOfBirth}}</p>
+                <p class="card-text">Occupation Type: {{userProfileStatus.customer.occupationType}}</p>
+                <p class="card-text">Source of Income: {{userProfileStatus.customer.sourceOfIncome}}</p>
+                <p class="card-text">Permanent Address: {{userProfileStatus.customer.perAddress.addressLine1}}, {{userProfileStatus.customer.perAddress.addressLine2}}, {{userProfileStatus.customer.perAddress.landmark}}, {{userProfileStatus.customer.perAddress.city}}, {{userProfileStatus.customer.perAddress.state}}</p>
             </div>
     </div>
 </div>
