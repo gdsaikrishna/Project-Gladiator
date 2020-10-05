@@ -1,3 +1,4 @@
+import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
 import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
@@ -44,8 +45,9 @@ const routes: Routes = [
   { path: 'add-beneficiary', component: AddBeneficiaryComponent },
   { path: 'view-beneficiary', component: ViewBeneficiaryComponent },
   { path: 'enter-otp', component: EnterOtpComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent},
-  { path: 'fund-transfer', component:FundTransferComponent }
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'fund-transfer', component: FundTransferComponent },
+  { path: 'fund-transfer-status', component: FundTransferStatusComponent }
 ];
 
 @NgModule({

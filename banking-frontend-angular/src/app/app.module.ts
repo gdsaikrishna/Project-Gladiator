@@ -28,6 +28,7 @@ import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.co
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { MustMatchDirective } from './must-match.directive';
+import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MustMatchDirective } from './must-match.directive';
     ViewBeneficiaryComponent,
     EnterOtpComponent,
     AdminDashboardComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    FundTransferStatusComponent
   ],
   imports: [
     BrowserModule,
