@@ -33,7 +33,7 @@ export class FundTransferComponent implements OnInit {
     this.transactionService.transfer(this.transaction).subscribe( data =>{
       console.log(data);
       if(data.statusCode === "SUCCESS"){
-        this.router.navigate(['home']);
+        this.router.navigate(['account-summary']);
         alert(data.statusMessage);
       }
       else{
