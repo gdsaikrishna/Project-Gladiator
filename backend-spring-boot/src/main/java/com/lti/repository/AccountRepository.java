@@ -11,7 +11,7 @@ public interface AccountRepository extends GenericRepository{
 	Account findAccountByUserId(int userId);
 	String checkUserHasInternetBankingWithGivenAcno(int accountNumber);
 	boolean checkUserAlreadyRegistered(int accountNumber);
-	int returnUserIdWithAccountNumber(int accountNumber);
+	/*int returnUserIdWithAccountNumber(int accountNumber);*/
 	List<Account> fetchAccountsByUserId(int accountNumber);
 	Account findAccountByAccountNumber(int accountNumber);
 }

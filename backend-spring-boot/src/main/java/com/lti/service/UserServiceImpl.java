@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.lti.entity.Account;
 import com.lti.entity.Customer;
 import com.lti.entity.ErrorLogin;
 import com.lti.entity.User;
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
 					if(accountRepository.checkUserAlreadyRegistered(accountNumber)) 
 						throw new ServiceException("User already Registered");
 					else {
-						User user= userRepository.fetchById(User.class,accountRepository.returnUserIdWithAccountNumber(accountNumber));
+						User user= userRepository.fetchById(User.class, accountRepository.fetchById(Account.class, accountNumber).getUser().getId());
 						user.setUserPassword(userPassword);
 						user.setTransactionPassword(transactionPassword);
 						userRepository.save(user);
