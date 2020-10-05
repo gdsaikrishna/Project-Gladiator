@@ -7,7 +7,7 @@ import { CustomerRequestStatus } from '../models/customer-request-status';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css', '.././app.component.css', './../home/home.component.css']
+  styleUrls: ['./admin-dashboard.component.css', '.././app.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
 
