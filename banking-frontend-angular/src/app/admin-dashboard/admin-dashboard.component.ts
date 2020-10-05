@@ -7,7 +7,7 @@ import { CustomerRequestStatus } from '../models/customer-request-status';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css', '.././app.component.css']
+  styleUrls: ['./admin-dashboard.component.css', '.././app.component.css', './../home/home.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
 
@@ -18,6 +18,8 @@ export class AdminDashboardComponent implements OnInit {
   approvalMessage: string;
   customerRequestStatus: CustomerRequestStatus = new CustomerRequestStatus();
   adminApproval: AdminApproval = new AdminApproval();
+  // A:string;
+  // R:string;
 
   constructor(private adminService: AdminService, private router: Router) { }
 
@@ -39,6 +41,7 @@ export class AdminDashboardComponent implements OnInit {
       if (response.statusCode === "SUCCESS") {
         this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;
+        this.ngOnInit();
       }
       else {
         this.approvalStatus = true;

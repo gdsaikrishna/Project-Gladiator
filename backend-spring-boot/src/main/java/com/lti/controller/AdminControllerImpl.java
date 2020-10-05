@@ -67,14 +67,14 @@ public class AdminControllerImpl implements AdminController {
 	public Status acceptanceOrRejection(@RequestBody AdminApproval apprvReject) {
 		try {
 			adminService.updatePendingRequests(apprvReject.getServiceRefNo(), apprvReject.getResponse());
-			Status status=new Status();
+			Status status = new Status();
 			status.setStatusCode(StatusCode.SUCCESS);
 			status.setStatusMessage("Approval Successful");
 			return status;
 		} catch (ServiceException e) {
-			Status status=new Status();
+			Status status = new Status();
 			status.setStatusCode(StatusCode.FAILURE);
-			status.setStatusMessage("Approval Failed, Wrong Service Ref No.");
+			status.setStatusMessage("Approval Failed, Wrong Service Ref. No.");
 			e.printStackTrace();
 			return status;
 		}

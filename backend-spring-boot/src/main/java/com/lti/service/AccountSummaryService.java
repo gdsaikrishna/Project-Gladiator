@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lti.entity.Account;
 
-public interface AccountService {
+public interface AccountSummaryService {
 
 	List<Account> fetchAccountSummary(int id);
 

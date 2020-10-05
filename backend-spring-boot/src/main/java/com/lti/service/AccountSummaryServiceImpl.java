@@ -12,7 +12,7 @@ import com.lti.exception.ServiceException;
 import com.lti.repository.AccountRepository;
 
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountSummaryServiceImpl implements AccountSummaryService {
 
 	@Autowired
 	private AccountRepository repository;

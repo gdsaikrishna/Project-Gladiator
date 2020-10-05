@@ -1,4 +1,4 @@
-import { AccountSummaryStatus } from './../models/account-summary-status';
+import { AccountSummaryStatus } from '../models/account-summary-status';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

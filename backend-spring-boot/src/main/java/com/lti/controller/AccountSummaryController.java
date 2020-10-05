@@ -12,13 +12,13 @@ import com.lti.dto.AccountSummaryStatus;
 import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Account;
 import com.lti.exception.ServiceException;
-import com.lti.service.AccountService;
+import com.lti.service.AccountSummaryService;
 
 @RestController
 @CrossOrigin
-public class AccountController {
+public class AccountSummaryController {
 	@Autowired
-	private AccountService service;
+	private AccountSummaryService service;
 	
 	@GetMapping(path = "/account-summary")
 	@CrossOrigin
