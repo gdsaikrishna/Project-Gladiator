@@ -42,12 +42,16 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 					Account account = accountRepository.findAccountByUserId(beneficiaryDto.getUserId());
 					if (account.getAccountNumber() == beneficiaryDto.getAccountNumber())
 						throw new ServiceException("Cannot Add Yourself as Beneficiary");
+					
+					if(!(beneficiaryDto.getBeneficiaryName()).equals(beneficiaryRepository.fetchCustomerNameFromAccountNumber(beneficiaryDto.getAccountNumber())))
+						throw new ServiceException("Beneficiary Name invalid");
 
 					Beneficiary b = new Beneficiary();
 					User user = beneficiaryRepository.fetchById(User.class, beneficiaryDto.getUserId());
+					Account beneficiaryAccount=accountRepository.findAccountByAccountNumber(beneficiaryDto.getAccountNumber());
 
 					b.setUser(user);
-					b.setAccount(account);
+					b.setAccount(beneficiaryAccount);
 					b.setBeneficiaryName(beneficiaryDto.getBeneficiaryName());
 					b.setBeneficiaryNickName(beneficiaryDto.getBeneficiaryNickName());
 					beneficiaryRepository.save(b);

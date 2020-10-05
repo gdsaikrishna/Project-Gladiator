@@ -29,10 +29,13 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private AccountRepository accountRepository;
 	
-	public void fundTransfer(TransactionDto transactionDto) {
+	public Transaction fundTransfer(TransactionDto transactionDto) {
 		try {
-			int userId=accountRepository.returnUserIdWithAccountNumber(transactionDto.getFromAccountNumber());
-			if(!(transactionDto.getTransactionPassword()).equals(userRepository.fetchUserTransactionPassword(userId)))
+			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
+			int userId=tranaccount.getUser().getId();
+			System.out.println(userId);
+			User user=userRepository.fetchById(User.class, userId);
+			if(!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
 					throw new ServiceException("Invalid Transaction Password");
 			if(transactionDto.getAmount()<=0)
 				throw new ServiceException("Enter a valid Transaction ammount");
@@ -51,7 +54,10 @@ public class TransactionServiceImpl implements TransactionService {
 			transaction.setRemarks(transactionDto.getRemarks());
 			transaction.setTransactionDateTime(LocalDateTime.now());
 			transaction.setTransactionType(transactionDto.getTransactionType());
-			transactionRepository.save(transaction);
+			
+			return transactionRepository.fetchTransactionObjectAfterSaving(transaction);
+			
+			
 			
 		}catch (Exception e) {
 			throw new ServiceException(e.getMessage());

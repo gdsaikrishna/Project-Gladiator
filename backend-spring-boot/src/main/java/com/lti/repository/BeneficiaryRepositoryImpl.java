@@ -15,12 +15,14 @@ import com.lti.entity.User;
 public class BeneficiaryRepositoryImpl extends GenericRepositoryImpl implements BeneficiaryRepository  {
 	
 	public boolean checkIfAlreadyPresent(int userId,int beneficiaryAccountNumber) {
-		return (Long)
+		long count= (Long)
 				entityManager
 				.createQuery("select count(b.id) from Beneficiary b where b.user.id = :userId and b.account.accountNumber =:beneficiaryAccountNumber")
 				.setParameter("userId", userId)
 				.setParameter("beneficiaryAccountNumber", beneficiaryAccountNumber)
-				.getSingleResult() == 0 ? false : true;
+				.getSingleResult();
+		System.out.println(count);
+		return count== 0 ? false : true;
 	}
 	
 	public List<Beneficiary> fetchBeneficiaryList(int userId) {
@@ -38,7 +40,14 @@ public class BeneficiaryRepositoryImpl extends GenericRepositoryImpl implements 
 				.setParameter("userId", userId)
 				.getSingleResult() == 0 ? false : true;
 	}
-
+	
+	public String fetchCustomerNameFromAccountNumber(int accountNumber) {
+		return (String)
+				entityManager
+				.createQuery("select a.user.customer.firstName+a.user.customer.lastName from Account a where a.accountNumber =:accountNumber")
+				.setParameter("accountNumber", accountNumber)
+				.getSingleResult();
+	}
 
 
 	
