@@ -34,7 +34,7 @@ public class BeneficiaryServiceImpl implements BeneficaryService {
 			if (!accountRepository.exists(beneficiaryDto.getAccountNumber())) {
 				throw new ServiceException("Beneficiary Account Does not exist");
 			} else {
-				if (!beneficiaryRepository.checkIfAlreadyPresent(beneficiaryDto.getUserId(),
+				if (beneficiaryRepository.checkIfAlreadyPresent(beneficiaryDto.getUserId(),
 						beneficiaryDto.getAccountNumber())) {
 
 					throw new ServiceException("Beneficiary Already Exists");

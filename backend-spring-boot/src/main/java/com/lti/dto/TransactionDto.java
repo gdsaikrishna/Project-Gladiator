@@ -2,7 +2,7 @@ package com.lti.dto;
 
 public class TransactionDto {
 	
-	private int userId;
+	private int fromAccountNumber;
 	private int toAccountNumber;
 	private double amount;
 	private String remarks;
@@ -10,17 +10,17 @@ public class TransactionDto {
 	private String transactionType;
 	
 	
+	public int getFromAccountNumber() {
+		return fromAccountNumber;
+	}
+	public void setFromAccountNumber(int fromAccountNumber) {
+		this.fromAccountNumber = fromAccountNumber;
+	}
 	public String getTransactionType() {
 		return transactionType;
 	}
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	public int getToAccountNumber() {
 		return toAccountNumber;
