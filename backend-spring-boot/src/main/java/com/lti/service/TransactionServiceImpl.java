@@ -40,13 +40,14 @@ public class TransactionServiceImpl implements TransactionService {
 			if(transactionDto.getAmount()<=0)
 				throw new ServiceException("Enter a valid Transaction ammount");
 			Transaction transaction=new Transaction();
-			Account creditAccount=accountRepository.findAccountByAccountNumber(transactionDto.getToAccountNumber());
-			Account debitAccount=accountRepository.findAccountByUserId(transactionDto.getFromAccountNumber());
+			Account creditAccount=accountRepository.fetchById(Account.class, transactionDto.getToAccountNumber());
+			Account debitAccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
+			
 			if(debitAccount.getBalance()<transactionDto.getAmount())
 				throw new ServiceException("Insufficient Balance in your acount");
 			if(transactionDto.getAmount()>=20000)
 				throw new ServiceException("Tranaction greater than 20000 is not allowed");
-			transaction.setAmount(transactionDto.getAmount());			
+			transaction.setAmount(transactionDto.getAmount());	
 			debit(debitAccount,transactionDto.getAmount());
 			credit(creditAccount,transactionDto.getAmount());
 			transaction.setDebitAccount(debitAccount);
