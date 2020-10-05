@@ -41,7 +41,6 @@ export class AdminDashboardComponent implements OnInit {
       if (response.statusCode === "SUCCESS") {
         this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;
-        this.ngOnInit();
       }
       else {
         this.approvalStatus = true;

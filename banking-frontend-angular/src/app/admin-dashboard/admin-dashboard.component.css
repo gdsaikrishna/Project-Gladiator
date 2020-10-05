@@ -1,9 +1,34 @@
+.header {
+    overflow: hidden;
+    background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
+    padding: 10px;
+    width: 100%;
+    top: 0;
+    font-weight: 500;
+}
+
+.header a {
+    float: left;
+    color: rgb(58, 56, 56);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.header a:hover {
+    opacity: 60%;
+}
+
 .scrollme {
     overflow-x: auto;
 }
-.table{
+
+.table {
     margin-top: 20px;
 }
-.btn{
+
+.btn {
     width: 100%;
 }
