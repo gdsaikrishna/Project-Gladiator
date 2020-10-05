@@ -18,6 +18,7 @@ import com.lti.dto.ShowBeneficiaryDto;
 import com.lti.dto.ShowBeneficiaryStatus;
 import com.lti.dto.Status;
 import com.lti.dto.Status.StatusCode;
+import com.lti.entity.Beneficiary;
 import com.lti.exception.ServiceException;
 import com.lti.service.BeneficaryService;
 
