@@ -351,8 +351,8 @@
                             placeholder="Enter Annual Income" [(ngModel)]="newAccount.grossAnnualIncome"
                             #grossAnnualIncome="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && grossAnnualIncome.invalid }">
-                        <div *ngIf="f.submitted && resPincode.invalid" class="invalid-feedback">
-                            <div *ngIf="resPincode.errors.type">Income must be number</div>
+                        <div *ngIf="f.submitted && grossAnnualIncome.invalid" class="invalid-feedback">
+                            <div *ngIf="grossAnnualIncome.errors.type">Income must be number</div>
                         </div>
                     </div>
                 </div>
