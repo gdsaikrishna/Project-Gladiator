@@ -58,8 +58,7 @@ public class UserServiceImpl implements UserService {
 					if(accountRepository.checkUserAlreadyRegistered(accountNumber)) 
 						throw new ServiceException("User already Registered");
 					else {
-						User user= new User();
-						user.setId(accountRepository.returnUserIdWithAccountNumber(accountNumber));
+						User user= userRepository.fetchById(User.class,accountRepository.returnUserIdWithAccountNumber(accountNumber));
 						user.setUserPassword(userPassword);
 						user.setTransactionPassword(transactionPassword);
 						userRepository.save(user);
@@ -76,6 +75,19 @@ public class UserServiceImpl implements UserService {
 		}
 		catch(Exception e) {
 			throw new ServiceException("Some Error occured while registering");
+		}
+	}
+	
+	public boolean changePassword(int userId, String userPassword , String transactionPassword) {
+		if(userRepository.isUserExists(userId)) {
+			User user = userRepository.fetchById(User.class, userId);
+			user.setUserPassword(userPassword);
+			user.setTransactionPassword(transactionPassword);
+			userRepository.save(user);
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 

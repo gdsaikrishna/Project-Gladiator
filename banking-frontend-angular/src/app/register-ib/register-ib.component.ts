@@ -26,7 +26,7 @@ export class RegisterIbComponent implements OnInit {
         alert("Registration for Internet Banking Successful. User your Id and password to experience our bank services");
       }
       else{
-        alert("Registration for Internet Banking Failed");
+        alert(data.statusMessage);
       }
     })
 

@@ -1,5 +1,7 @@
+import { ChangePassword } from './../models/changePassword';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -7,16 +9,30 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-
-  constructor(private fb:FormBuilder) { }
+  model: any = {};
+  changePassword: ChangePassword= new ChangePassword();
+  constructor(private userService: UserService , private router: Router) { }
 
   ngOnInit(): void {
+
+    
+  }
+  onSubmit(){
+    this.changePassword.userId=parseInt(sessionStorage.getItem('userId'));
+    this.changePassword.userPassword=this.model.userPassword;
+    this.changePassword.transactionPassword=this.model.transactionPassword;
+    this.userService.changePassword(this.changePassword).subscribe(data => {
+      console.log(data);
+      if(data.statusCode === "SUCCESS"){
+        this.router.navigate(['account-summary']);
+        alert("Passwords changed successfully");
+      }
+      else{
+        alert(data.statusMessage);
+      }
+    })
   }
 
-  changePasswordForm=this.fb.group({
-    oldPassword:['',Validators.required],
-   password:['',Validators.required],
-   confirmPassword:['',Validators.required]
- });
+  
 
 }

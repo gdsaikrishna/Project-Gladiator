@@ -1,3 +1,4 @@
+import { ChangePassword } from './../models/changePassword';
 import { Status } from './../models/status';
 import { RegisterIb } from './../models/register-ib';
 import { UserLoginStatus } from './../models/user-login-status';
@@ -20,5 +21,9 @@ export class UserService {
 
   register(register: RegisterIb): Observable<Status>{
     return this.http.post<any>('http://localhost:9090/register-ib',register);
+  }
+
+  changePassword(changePassword: ChangePassword): Observable<Status>{
+    return this.http.post<any>('http://localhost:9090/change-password',changePassword);
   }
 }
