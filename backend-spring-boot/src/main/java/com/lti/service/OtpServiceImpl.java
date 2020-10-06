@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Otp;
+import com.lti.entity.User;
 import com.lti.exception.ServiceException;
 import com.lti.repository.OtpRepository;
 import com.lti.repository.UserRepository;
@@ -26,15 +27,19 @@ public class OtpServiceImpl implements OtpService {
 	@Autowired
 	private OtpRepository otpRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	@Override
 	public boolean generateOtp(int userId) {
 		if(userRepository.isUserExists(userId)) {
+			User user= userRepository.fetchById(User.class, userId);
 			Otp otp =new Otp();
 			otp.setOtp(otpGenerator.generateOtp());
 			otp.setUserId(userId);
 			otp.setDateTime(LocalDateTime.now());
 			otpRepository.save(otp);
-			//emailService
+			emailService.sendMailForOtp(otp.getOtp(), user);
 			return true;
 		}
 		else {
