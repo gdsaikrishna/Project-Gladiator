@@ -32,7 +32,6 @@ public class TransactionServiceImpl implements TransactionService {
 	
 	public TransactionSuccessDto fundTransfer(TransactionDto transactionDto) {
 		try {
-			
 			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
 			int userId=tranaccount.getUser().getId();
 			System.out.println(userId);
