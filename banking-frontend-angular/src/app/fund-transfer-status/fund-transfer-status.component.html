@@ -2,8 +2,15 @@
     <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
 </div>
 <div class="wrapper container" style="width: 46%; position: relative;">
-    <div class="h2">Wohoo! Fund Transfer was Successful.</div>
-    <div class="h2">Ohn no! Fund Transfer Failed.</div>
+    <div class="h2" *ngIf="transactionStataus === SUCCESS; else failureBlock">Wohoo! Fund Transfer was Successful.
+        <div class="p">{{transactionId}}</div>
+        <div class="p">{{fromAccountNumber}}</div>
+        <div class="p">{{toAccountNumber}}</div>
+        <div class="p">{{transactionAmount}}</div>
+        <div class="p">{{transactionType}}</div>
+        <div class="p">{{remarks}}</div>
+    </div>
+    <div class="h2" #failureBlock>Ohn no! Fund Transfer Failed.</div>
     <br>
     <div class="h5">You were inactive for some time.</div>
     <br>
