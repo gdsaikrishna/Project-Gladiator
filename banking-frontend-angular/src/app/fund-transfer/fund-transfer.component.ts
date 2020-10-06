@@ -54,6 +54,7 @@ export class FundTransferComponent implements OnInit {
         sessionStorage.setItem('remarks',this.transactionDetails.remarks);
         sessionStorage.setItem('transactionAmount',String(this.transactionDetails.amount));
         sessionStorage.setItem('transactionType',this.transactionDetails.transactionType);
+        sessionStorage.setItem('transactionStatus',data.statusCode);
         this.router.navigate(['fund-transfer-status']);
         
         
