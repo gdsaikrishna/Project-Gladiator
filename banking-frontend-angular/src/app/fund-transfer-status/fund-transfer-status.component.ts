@@ -20,6 +20,7 @@ export class FundTransferStatusComponent implements OnInit {
   ngOnInit(): void {
     this.transactionStatus=sessionStorage.getItem('transactionStatus');
     if(this.transactionStatus === "SUCCESS"){
+      this.transactionId=parseInt(sessionStorage.getItem('transactionId'));
       this.fromAccountNumber=parseInt(sessionStorage.getItem('fromAccountNumber'));
       this.toAccountNumber=parseInt(sessionStorage.getItem('toAccountNumber'));
       this.transactionAmount=parseFloat(sessionStorage.getItem('transactionAmount'));

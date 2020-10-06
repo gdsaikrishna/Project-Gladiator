@@ -1,5 +1,5 @@
 import {Transaction} from './transaction'
-export class TransactionStatus{
+export class TransactionSuccessfulDto{
 
     public transactionSuccessDto:Transaction=new Transaction();
     public statusCode:string;

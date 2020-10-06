@@ -34,7 +34,6 @@ public class TransactionServiceImpl implements TransactionService {
 		try {
 			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
 			int userId=tranaccount.getUser().getId();
-			System.out.println(userId);
 			User user=userRepository.fetchById(User.class, userId);
 			if(!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
 					throw new ServiceException("Invalid Transaction Password");
@@ -47,7 +46,7 @@ public class TransactionServiceImpl implements TransactionService {
 			if(debitAccount.getBalance()<transactionDto.getAmount())
 				throw new ServiceException("Insufficient Balance in your acount");
 			if(transactionDto.getAmount()>=20000)
-				throw new ServiceException("Tranaction greater than 20000 is not allowed");
+				throw new ServiceException("Transaction greater than 20000 is not allowed");
 			transaction.setAmount(transactionDto.getAmount());	
 			debit(debitAccount,transactionDto.getAmount());
 			credit(creditAccount,transactionDto.getAmount());
