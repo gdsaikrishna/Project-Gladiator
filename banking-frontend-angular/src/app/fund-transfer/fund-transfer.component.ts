@@ -32,7 +32,9 @@ export class FundTransferComponent implements OnInit {
     this.accountService.showAccountSummary(this.userId).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.accountSummaryStatus.accountNumber = response.accountNumber;
+        
         sessionStorage.setItem("accountNumber",String(response.accountNumber));
+        this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
       }
       else {
         this.error = true;
@@ -87,6 +89,11 @@ export class FundTransferComponent implements OnInit {
       else
       alert("OTP Generation Failed!!Click to try again");
     })
+  }
+
+  goToAddBeneficiary($event:any){
+    $event.preventDefault();
+    this.router.navigate(['add-beneficiary']);
   }
 
 }
