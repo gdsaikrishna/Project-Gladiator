@@ -1,3 +1,8 @@
 export class Transaction {
-    constructor(public transactionId: number, public amount: number, public txType: string, public date: string, public balance: number, public remarks: string) { }
+    public id: number;
+    public fromAccountNumber: number;
+    public toAccountNumber: number;
+    public amount: number;
+    public remarks: string;
+    public transactionType: string;
 }

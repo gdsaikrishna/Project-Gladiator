@@ -8,8 +8,7 @@ public class TransactionDto {
 	private String remarks;
 	private String transactionPassword;
 	private String transactionType;
-	
-	
+
 	public int getFromAccountNumber() {
 		return fromAccountNumber;
 	}

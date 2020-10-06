@@ -23,7 +23,7 @@ public class TransactionControllerImpl {
 	private TransactionService transactionService;
 	
 	@PostMapping(path = "/fund-transfer")
-	public Status fundTransfer(@RequestBody TransactionDto transactionDto) {
+	public TransactionSuccessfulDto fundTransfer(@RequestBody TransactionDto transactionDto) {
 		try {
 			TransactionSuccessDto transaction=transactionService.fundTransfer(transactionDto);
 		    

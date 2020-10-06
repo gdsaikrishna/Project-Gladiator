@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.lti.dto.TransactionDto;
 import com.lti.dto.TransactionSuccessDto;
-import com.lti.dto.TransactionSuccessfulDto;
 import com.lti.entity.Account;
 import com.lti.entity.Transaction;
 import com.lti.entity.User;
