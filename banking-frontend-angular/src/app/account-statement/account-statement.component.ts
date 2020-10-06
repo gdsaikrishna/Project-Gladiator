@@ -1,7 +1,6 @@
 import { Transaction } from './../models/transaction';
 import { Component, OnInit, ElementRef ,ViewChild } from '@angular/core';
-import * as jspdf from 'jspdf';  
-import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-account-statement',
   templateUrl: './account-statement.component.html',

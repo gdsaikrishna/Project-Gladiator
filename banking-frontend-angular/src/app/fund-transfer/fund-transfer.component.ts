@@ -24,6 +24,7 @@ export class FundTransferComponent implements OnInit {
   error: boolean;
   transactionDetails:Transaction=new Transaction();
   userId:number;
+  otp:number;
 
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class FundTransferComponent implements OnInit {
     this.accountService.showAccountSummary(this.userId).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.accountSummaryStatus.accountNumber = response.accountNumber;
+        sessionStorage.setItem("accountNumber",String(response.accountNumber));
       }
       else {
         this.error = true;
@@ -41,6 +43,7 @@ export class FundTransferComponent implements OnInit {
     
   }
   onSubmit(){
+    this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
     console.log(this.transaction);
     this.transactionService.transfer(this.transaction).subscribe( data =>{
       console.log(data);
@@ -60,6 +63,7 @@ export class FundTransferComponent implements OnInit {
         
       }
       else{
+        sessionStorage.setItem('transactionStatus',data.statusCode);
         alert(data.statusMessage);
       }
     })
@@ -73,6 +77,10 @@ export class FundTransferComponent implements OnInit {
       else
         alert(data.statusMessage);
     })
+  }
+
+  onClick($event){
+    $event.preventDefault();
   }
 
 }
