@@ -8,6 +8,7 @@ import { AccountService } from '../services/account.service';
 import { AccountSummaryStatus } from '../models/account-summary-status';
 import { Transaction } from '../models/transaction';
 import { GenerateOtpService } from '../services/generate-otp.service';
+import { BnNgIdleService } from 'bn-ng-idle';
 @Component({
   selector: 'app-fund-transfer',
   templateUrl: './fund-transfer.component.html',
@@ -19,7 +20,15 @@ export class FundTransferComponent implements OnInit {
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
   beneficiaries: BeneficiaryDetails[];
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
-     private router : Router, private accountService: AccountService,private otpService:GenerateOtpService) { };
+     private router : Router, private accountService: AccountService,private otpService:GenerateOtpService ,
+     private bnIdle: BnNgIdleService) {
+      this.bnIdle.startWatching(300).subscribe((res) => {
+        if(res) {
+          console.log("Session Expired");
+          this.router.navigate(['session-expired']);
+        }
+      })
+    };
   message: string;
   error: boolean;
   transactionDetails:Transaction=new Transaction();

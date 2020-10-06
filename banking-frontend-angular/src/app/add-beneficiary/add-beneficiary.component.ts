@@ -2,6 +2,7 @@ import { Beneficiary } from './../models/beneficiary';
 import { Component, OnInit } from '@angular/core';
 import{ AddBeneficiaryService} from './../services/add-beneficiary.service'
 import { Router } from '@angular/router';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-add-beneficiary',
@@ -14,7 +15,14 @@ export class AddBeneficiaryComponent implements OnInit {
   message:string;
   error:boolean;
   
-  constructor(private service:AddBeneficiaryService,private router:Router) { }
+  constructor(private service:AddBeneficiaryService,private router:Router , private bnIdle: BnNgIdleService ) {
+    this.bnIdle.startWatching(300).subscribe((res) => {
+      if(res) {
+        console.log("Session Expired");
+        this.router.navigate(['session-expired']);
+      }
+    })
+   }
 
   ngOnInit() {
    

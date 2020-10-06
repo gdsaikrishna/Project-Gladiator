@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionExpiredComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    sessionStorage.clear();
+   }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,7 @@ import { Account } from './../models/account';
 import { Component, OnInit } from '@angular/core';
 import { UserProfileStatus } from '../models/user-profile-status';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-summary',
@@ -17,10 +18,11 @@ export class AccountSummaryComponent implements OnInit {
   message: string;
   error: boolean;
 
-  constructor(private accountService: AccountService , private bnIdle: BnNgIdleService) { 
-    this.bnIdle.startWatching(30).subscribe((res) => {
+  constructor(private accountService: AccountService , private bnIdle: BnNgIdleService ,private router: Router) { 
+    this.bnIdle.startWatching(300).subscribe((res) => {
       if(res) {
-          console.log("session expired");
+        console.log("Session Expired");
+        this.router.navigate(['session-expired']);
       }
     })
   }
