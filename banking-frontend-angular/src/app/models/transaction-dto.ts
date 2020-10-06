@@ -4,5 +4,6 @@ export class TransactionDto{
     public amount: number;
 	public remarks: string;
 	public transactionPassword: string;
-	public transactionType: string;
+    public transactionType: string;
+    public otp:string;
 }

@@ -7,7 +7,7 @@ import { BeneficiaryDetails } from '../models/show-beneficiary';
 import { AccountService } from '../services/account.service';
 import { AccountSummaryStatus } from '../models/account-summary-status';
 import { Transaction } from '../models/transaction';
-
+import { GenerateOtpService } from '../services/generate-otp.service';
 @Component({
   selector: 'app-fund-transfer',
   templateUrl: './fund-transfer.component.html',
@@ -19,12 +19,11 @@ export class FundTransferComponent implements OnInit {
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
   beneficiaries: BeneficiaryDetails[];
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
-     private router : Router, private accountService: AccountService) { };
+     private router : Router, private accountService: AccountService,private otpService:GenerateOtpService) { };
   message: string;
   error: boolean;
   transactionDetails:Transaction=new Transaction();
   userId:number;
-  otp:number;
 
 
   ngOnInit(): void {
@@ -79,8 +78,15 @@ export class FundTransferComponent implements OnInit {
     })
   }
 
-  onClick($event){
+  onClick($event:any){
     $event.preventDefault();
+    this.otpService.generateOtp().subscribe(data=>{
+      console.log(data);
+      if(data.statusCode=="SUCCESS")
+      alert("OTP has been sent to your registered Email ID");
+      else
+      alert("OTP Generation Failed!!Click to try again");
+    })
   }
 
 }

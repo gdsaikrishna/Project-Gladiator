@@ -30,11 +30,16 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private AccountRepository accountRepository;
 	
+	@Autowired
+	private OtpService otpService;
+	
 	public TransactionSuccessDto fundTransfer(TransactionDto transactionDto) {
 		try {
 			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
 			int userId=tranaccount.getUser().getId();
 			User user=userRepository.fetchById(User.class, userId);
+			if(!otpService.checkOtp(userId, transactionDto.getOtp()))
+				throw new ServiceException("Incorrect Otp entered");
 			if(!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
 					throw new ServiceException("Invalid Transaction Password");
 			if(transactionDto.getAmount()<=0)

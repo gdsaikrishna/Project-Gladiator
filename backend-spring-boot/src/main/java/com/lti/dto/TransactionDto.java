@@ -8,6 +8,7 @@ public class TransactionDto {
 	private String remarks;
 	private String transactionPassword;
 	private String transactionType;
+	private String otp;
 
 	public int getFromAccountNumber() {
 		return fromAccountNumber;
@@ -45,6 +46,13 @@ public class TransactionDto {
 	public void setTransactionPassword(String transactionPassword) {
 		this.transactionPassword = transactionPassword;
 	}
+	public String getOtp() {
+		return otp;
+	}
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+	
 	
 	
 	

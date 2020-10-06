@@ -25,7 +25,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 
 
 const routes: Routes = [
-  /*{ path: '', redirectTo: 'home', pathMatch: 'full' },*/
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin-login', component: AdminLoginComponent },
