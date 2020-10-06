@@ -7,5 +7,6 @@ import com.lti.entity.Transaction;
 public interface AccountStatement extends GenericRepository {
 	
 	public List<Transaction> getAllRecords(int accNumber);
+	public List<Transaction> getAccountHistory(int accNumber);
 
 }
