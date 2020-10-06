@@ -23,6 +23,7 @@ export class FundTransferComponent implements OnInit {
   message: string;
   error: boolean;
 
+
   ngOnInit(): void {
     this.userId=parseInt(sessionStorage.getItem('userId'));
     this.showBeneficiary();
@@ -39,6 +40,7 @@ export class FundTransferComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.transaction);
+    this.transaction.userId=parseInt(sessionStorage.getItem('userId'));
     this.transactionService.transfer(this.transaction).subscribe( data =>{
       console.log(data);
       if(data.statusCode === "SUCCESS"){

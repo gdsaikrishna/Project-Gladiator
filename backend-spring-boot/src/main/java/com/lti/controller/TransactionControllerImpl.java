@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.Status;
 import com.lti.dto.TransactionDto;
+import com.lti.dto.TransactionSuccessDto;
 import com.lti.dto.TransactionSuccessfulDto;
 import com.lti.entity.Transaction;
 import com.lti.dto.Status.StatusCode;
@@ -24,17 +25,17 @@ public class TransactionControllerImpl {
 	@PostMapping(path = "/fund-transfer")
 	public Status fundTransfer(@RequestBody TransactionDto transactionDto) {
 		try {
-			Transaction transaction=transactionService.fundTransfer(transactionDto);
+			TransactionSuccessDto transaction=transactionService.fundTransfer(transactionDto);
 		    
 			TransactionSuccessfulDto status=new TransactionSuccessfulDto();
-			status.setTransaction(transaction);
+			status.setTransactionSuccessDto(transaction);
 			status.setStatusCode(StatusCode.SUCCESS);
 			status.setStatusMessage("Transaction Successful");
 			return status;
 			
 		}catch (ServiceException e) {
 			TransactionSuccessfulDto status=new TransactionSuccessfulDto();
-			status.setTransaction(null);
+			status.setTransactionSuccessDto(null);
 			status.setStatusCode(StatusCode.FAILURE);
 			status.setStatusMessage(e.getMessage());
 			return status;
