@@ -24,10 +24,9 @@ public class EmailServiceImpl implements EmailService {
 	}
 	@Override
 	public void sendMailForOtp(String otp ,User user) {
-		System.out.println("Here");
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom("do-not-reply@hfdc.com");
-		message.setTo("dummyAdyasha@outlook.com");
+		message.setTo(user.getCustomer().getEmailId());
 		message.setSubject("Otp for the transaction");
 		message.setText("Greetings "+ user.getCustomer().getFirstName()+" "+user.getCustomer().getMiddleName()+" "+user.getCustomer().getLastName()+" ,  Your Otp for the transaction is "+otp);
 		mailSender.send(message);
