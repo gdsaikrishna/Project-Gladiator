@@ -29,11 +29,23 @@ public class AccountStatementServiceImpl implements AccountStatementService{
 	}
 	  
   }
+
+@Override
+public List<Transaction> accountHistory(int userId) {
+	Account acc = (Account) accountRepository.fetchAccountsByUserId(userId);
+	try {
+		List<Transaction> transactions = accountStatement.getAccountHistory(acc.getAccountNumber());
+		return transactions;
+	} catch (Exception e) {
+		throw new ServiceException("Error occured while fetching transactions");
+	}
+}
   
-	 
+  
+}	 
 	  
   
 
 
 
-}
+

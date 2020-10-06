@@ -18,4 +18,17 @@ public class AccountStatementImpl extends GenericRepositoryImpl implements Accou
                 .getResultList();
 	}
 
+	@Override
+	public List<Transaction> getAccountHistory(int accNumber) {
+		return(List<Transaction>)
+		       entityManager
+		      .createQuery("select t from Transaction t where (t.fromAccountNumber=:accNumber or t.toAccountNumber=:accNumber) and t.transactionDate between :fromDate and :toDate")
+		      .setParameter("accNumber", accNumber)
+		      .getResultList();
+		
+		
+	}
+	
+	
+
 }

@@ -7,5 +7,6 @@ import com.lti.entity.Transaction;
 public interface AccountStatementService {
 	
 	public List<Transaction> accountStatment(int userId);
+	public List<Transaction> accountHistory(int userId);
 
 }
