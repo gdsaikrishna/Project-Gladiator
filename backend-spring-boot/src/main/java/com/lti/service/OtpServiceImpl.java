@@ -1,8 +1,11 @@
 package com.lti.service;
 
+import java.time.LocalDateTime;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Otp;
@@ -29,6 +32,7 @@ public class OtpServiceImpl implements OtpService {
 			Otp otp =new Otp();
 			otp.setOtp(otpGenerator.generateOtp());
 			otp.setUserId(userId);
+			otp.setDateTime(LocalDateTime.now());
 			otpRepository.save(otp);
 			//emailService
 			return true;
@@ -36,6 +40,21 @@ public class OtpServiceImpl implements OtpService {
 		else {
 			throw new ServiceException("User does not exists");
 		}
+	}
+	
+	public boolean checkOtp(int userId , String otp) {
+		try {
+			if(userRepository.isUserExists(userId)) {
+				return otp.equals(otpRepository.getOtp(userId));
+			}
+			else {
+				throw new ServiceException("User does not exists");
+			}
+		}
+		catch(EmptyResultDataAccessException e) {
+			throw new ServiceException("Invalid Otp");
+		}
+		
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.lti.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,17 @@ public class Otp {
 	
 	@Column(name="user_id")
 	private int userId;
+	
+	@Column(name="date_time")
+	private LocalDateTime dateTime;
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
 
 	public int getId() {
 		return id;
