@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.dto.TransactionDto;
+import com.lti.dto.TransactionSuccessDto;
+import com.lti.dto.TransactionSuccessfulDto;
 import com.lti.entity.Account;
 import com.lti.entity.Transaction;
 import com.lti.entity.User;
@@ -29,7 +31,7 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private AccountRepository accountRepository;
 	
-	public Transaction fundTransfer(TransactionDto transactionDto) {
+	public TransactionSuccessDto fundTransfer(TransactionDto transactionDto) {
 		try {
 			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
 			int userId=tranaccount.getUser().getId();
@@ -55,9 +57,15 @@ public class TransactionServiceImpl implements TransactionService {
 			transaction.setRemarks(transactionDto.getRemarks());
 			transaction.setTransactionDateTime(LocalDateTime.now());
 			transaction.setTransactionType(transactionDto.getTransactionType());
-			
-			return transactionRepository.fetchTransactionObjectAfterSaving(transaction);
-			
+			TransactionSuccessDto transactionSuccessDto=new TransactionSuccessDto();
+			Transaction updated =transactionRepository.fetchTransactionObjectAfterSaving(transaction);
+			transactionSuccessDto.setId(updated.getTransactionId());
+			transactionSuccessDto.setFromAccountNumber(updated.getDebitAccount().getAccountNumber());
+			transactionSuccessDto.setToAccountNumber(updated.getCreditAccount().getAccountNumber());
+			transactionSuccessDto.setTransactionType(updated.getTransactionType());
+			transactionSuccessDto.setAmount(updated.getAmount());
+			transactionSuccessDto.setRemarks(updated.getRemarks());
+			return transactionSuccessDto;
 			
 			
 		}catch (Exception e) {

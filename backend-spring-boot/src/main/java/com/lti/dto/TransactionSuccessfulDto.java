@@ -6,14 +6,14 @@ import com.lti.entity.Transaction;
 
 public class TransactionSuccessfulDto extends Status{
 	
-	private Transaction transaction;
+	private TransactionSuccessDto transactionSuccessDto;
 
-	public Transaction getTransaction() {
-		return transaction;
+	public TransactionSuccessDto getTransactionSuccessDto() {
+		return transactionSuccessDto;
 	}
 
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
+	public void setTransactionSuccessDto(TransactionSuccessDto transactionSuccessDto) {
+		this.transactionSuccessDto = transactionSuccessDto;
 	}
 	
 	
