@@ -10,6 +10,10 @@ export class FundTransferStatusComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('transactionId'));
+    console.log(sessionStorage.getItem('fromAccountNumber'));
   }
+
+
 
 }

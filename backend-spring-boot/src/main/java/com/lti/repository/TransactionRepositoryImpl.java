@@ -18,5 +18,4 @@ public class TransactionRepositoryImpl extends GenericRepositoryImpl implements 
 		Transaction updatedTransaction=(Transaction)entityManager.merge(transaction);
 		return updatedTransaction;
 	}
-	
 }
