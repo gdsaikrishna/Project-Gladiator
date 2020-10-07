@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.lti.dto.AccountStatementDto;
+import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Transaction;
 import com.lti.exception.ServiceException;
 import com.lti.service.AccountStatementService;
@@ -22,23 +23,24 @@ public class  AccountStatementController {
 	private AccountStatementService accountStatementService;
 
 	@GetMapping(path = "/AccountStatement/{userId}")
-	public  List<Transaction>  getStatement(@PathVariable(value = "accountNumber") int userId) {
+	public AccountStatementDto  getStatement(@PathVariable(value = "accountNumber") int userId) {
 		try {
-			List<Transaction> list = accountStatementService.accountStatment(userId);
-			return list;
+			AccountStatementDto accountstate = new AccountStatementDto();
+			accountstate.setStatusCode(StatusCode.SUCCESS);
+			accountstate.setStatusMessage("Success");
+			accountstate.setStatementTransactionDto(accountStatementService.accountStatment(userId));
+			return accountstate;
 
 		} catch (ServiceException e) {
-          return null;
+			AccountStatementDto accountstate = new AccountStatementDto();
+			accountstate.setStatusCode(StatusCode.FAILURE);
+			accountstate.setStatusMessage("SuccessFail");
+			accountstate.setStatementTransactionDto(null);
+			return accountstate;
+          
 		}
        
 	}
-	public List<Transaction> getStatementHistory(@PathVariable(value = "accountNumber") int userId){
-		try {
-			List<Transaction> list = accountStatementService.accountHistory(userId);
-			return list;
-			
-		}catch (ServiceException e) {
-			return null;
-		}
-	}
+	
+	
 }
