@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ForgotUserIdService } from './../services/forgot-user-id.service';
 import { ForgotUserId } from './../models/forgot-user-id';
 import { Component } from '@angular/core';
@@ -15,15 +16,14 @@ export class EnterOtpComponent {
   error: boolean;
   message: string;
 
-  constructor(private forgotUserIdService: ForgotUserIdService) { }
+  constructor(private forgotUserIdService: ForgotUserIdService, private spinnerService: NgxSpinnerService) { }
 
   verifyOtp() {
     this.forgotUserId.userId = parseInt(sessionStorage.getItem('userId'));
-    alert(this.forgotUserId.otp);
+    this.spinnerService.show();
     this.forgotUserIdService.verifyOtp(this.forgotUserId).subscribe(response => {
-      alert(this.forgotUserId.otp);
       if (response.statusCode) {
-        alert(this.forgotUserId.otp);
+        this.spinnerService.hide();
         if (response.otp) {
           this.flag = true;
           this.otpIsCorrect = true;
@@ -34,6 +34,7 @@ export class EnterOtpComponent {
         }
       }
       else {
+        this.spinnerService.hide();
         this.message = response.statusMessage;
         this.error = true;
       }

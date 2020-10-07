@@ -99,8 +99,8 @@
       <label class="col-sm-4"> From Account <span style="color:red">*</span></label>
       <div class="col-sm-8">
         <input type="" [(ngModel)]="transaction.fromAccountNumber" class="form-control" name="fromAccountNumber"
-         #fromAccountNumber="ngModel" placeholder="{{accountSummaryStatus.accountNumber}}" readonly>
-          <!--<option value=""></option>
+          #fromAccountNumber="ngModel" placeholder="{{accountSummaryStatus.accountNumber}}" readonly>
+        <!--<option value=""></option>
           <option value="{{accountSummaryStatus.accountNumber}}"> {{accountSummaryStatus.accountNumber}} </option>
         </select>
         <div *ngIf="f.submitted && fromAccountNumber.invalid" class="invalid-feedback">
@@ -113,14 +113,15 @@
       <div class="col-sm-6">
         <select [(ngModel)]="transaction.toAccountNumber" class="form-control" name="toAccountNumber"
           #toAccountNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && toAccountNumber.invalid }" required>
-          <option *ngFor="let beneficiary of beneficiaries" value="{{beneficiary.accountNo}}">{{beneficiary.accountNo}} :
+          <option *ngFor="let beneficiary of beneficiaries" value="{{beneficiary.accountNo}}">{{beneficiary.accountNo}}
+            :
             {{beneficiary.beneficiaryName}} </option>
         </select>
         <div *ngIf="f.submitted && toAccountNumber.invalid" class="invalid-feedback">
           <div *ngIf="toAccountNumber.errors.required">Account Number is required</div>
         </div>
       </div>
-      <div class="col-sm-2"><button (click)="goToAddBeneficiary($event)"class="btn btn-primary">Add +</button></div>
+      <div class="col-sm-2"><button (click)="goToAddBeneficiary($event)" class="btn btn-primary">Add +</button></div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4"> Amount<span style="color:red">*</span></label>
@@ -156,19 +157,19 @@
     <div class="form-group row">
       <label class="col-sm-4"> Enter OTP<span style="color:red">*</span></label>
       <div class="col-sm-8">
-        <input class="form-control" type="text" name="otp" placeholder="Enter  OTP" 
-          [(ngModel)]="transaction.otp" #otp="ngModel" required minlength="4">
-       <div *ngIf="f.submitted && otp.invalid" class="invalid-feedback">  
-         <div *ngIf="otp.errors.minlength">OTP should of 4 digits</div> 
+        <input class="form-control" type="text" name="otp" placeholder="Enter  OTP" [(ngModel)]="transaction.otp"
+          #otp="ngModel" required minlength="4">
+        <div *ngIf="f.submitted && otp.invalid" class="invalid-feedback">
+          <div *ngIf="otp.errors.minlength">OTP should of 4 digits</div>
         </div>
         <button class="btn btn-link" (click)="onClick($event)">Generate otp</button>
-        
+
       </div>
     </div>
 
     <button [disabled]="!f.form.valid" type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
   </form>
 </div>
-<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">  
-  <p style="color: white">Please Wait. </p>  
-  </ngx-spinner> 
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
