@@ -9,6 +9,7 @@
 </div>
 <div class="wrapper container center">
     <p class="h3">Register for Internet Banking</p>
+    <div class="alert alert-danger" *ngIf="error">{{message}}</div>
     <form class="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" [appMustMatch]="['userPassword', 'cuserPassword' ,'txPassword', 'ctxPassword']" #f="ngForm">
         <div class="form-group">
             <label> User ID</label>
