@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BnNgIdleService } from 'bn-ng-idle'; 
+import { NgxSpinnerModule } from "ngx-spinner";  
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -63,7 +64,8 @@ import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfe
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule 
   ],
   providers: [BnNgIdleService],
   bootstrap: [AppComponent]
