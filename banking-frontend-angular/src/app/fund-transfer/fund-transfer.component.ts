@@ -22,6 +22,7 @@ export class FundTransferComponent implements OnInit {
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
      private router : Router, private accountService: AccountService,private otpService:GenerateOtpService ,
      private bnIdle: BnNgIdleService) {
+      
       this.bnIdle.startWatching(300).subscribe((res) => {
         if(res) {
           console.log("Session Expired");
@@ -33,6 +34,7 @@ export class FundTransferComponent implements OnInit {
   error: boolean;
   transactionDetails:Transaction=new Transaction();
   userId:number;
+
 
 
   ngOnInit(): void {
@@ -104,5 +106,6 @@ export class FundTransferComponent implements OnInit {
     $event.preventDefault();
     this.router.navigate(['add-beneficiary']);
   }
+
 
 }

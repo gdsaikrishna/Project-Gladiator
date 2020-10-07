@@ -66,7 +66,10 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 
 	@Override
 	public List<Account> fetchAccountsByUserId(int accountNumber){
-		return entityManager.createQuery("select a from Account a where a.user = :id").setParameter("id", accountNumber).getResultList();
+		return entityManager
+				.createQuery("select a from Account a where a.user.id = :id")
+				.setParameter("id", accountNumber)
+				.getResultList();
 	}
 	
 	@Override

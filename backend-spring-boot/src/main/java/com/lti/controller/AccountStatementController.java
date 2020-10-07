@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -22,7 +23,7 @@ public class  AccountStatementController {
 	private AccountStatementService accountStatementService;
 
 	@GetMapping(path = "/AccountStatement/{userId}")
-	public  List<Transaction>  getStatement(@PathVariable(value = "accountNumber") int userId) {
+	public  List<Transaction>  getStatement(@PathVariable(value = "userId") int userId) {
 		try {
 			List<Transaction> list = accountStatementService.accountStatment(userId);
 			return list;
