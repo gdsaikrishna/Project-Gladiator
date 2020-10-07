@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.ChangePassword;
 import com.lti.dto.RegisterIb;
@@ -17,14 +18,14 @@ import com.lti.entity.User;
 import com.lti.exception.ServiceException;
 import com.lti.service.UserService;
 
-@Controller
+@RestController
+@CrossOrigin
 public class UserControllerImpl {
 
 	@Autowired
 	private UserService userService;
 
 	@PostMapping("/user-login")
-	@CrossOrigin
 	public @ResponseBody UserLoginStatus login(@RequestBody UserLogin login) {
 
 		try {
@@ -35,7 +36,8 @@ public class UserControllerImpl {
 			userLoginStatus.setUserId(user.getId());
 			userLoginStatus.setUserName(user.getCustomer().getFirstName());
 			return userLoginStatus;
-		} catch (ServiceException e) {
+		}
+		catch (ServiceException e) {
 			UserLoginStatus userLoginStatus = new UserLoginStatus();
 			userLoginStatus.setStatusCode(StatusCode.FAILURE);
 			;
@@ -45,7 +47,6 @@ public class UserControllerImpl {
 	}
 
 	@PostMapping("/register-ib")
-	@CrossOrigin
 	public @ResponseBody Status register(@RequestBody RegisterIb registerIb) {
 		try {
 			boolean check = userService.register(registerIb.getAccountNumber(), registerIb.getUserPassword(),
@@ -59,7 +60,8 @@ public class UserControllerImpl {
 				status.setStatusMessage("Registration Failed");
 			}
 			return status;
-		} catch (ServiceException e) {
+		} 
+		catch (ServiceException e) {
 			Status status = new Status();
 			status.setStatusCode(StatusCode.FAILURE);
 			status.setStatusMessage(e.getMessage());
@@ -69,7 +71,6 @@ public class UserControllerImpl {
 	}
 
 	@PostMapping("/change-password")
-	@CrossOrigin
 	public @ResponseBody Status changePassword(@RequestBody ChangePassword changePassoword) {
 
 		boolean check = userService.changePassword(changePassoword.getUserId(), changePassoword.getUserPassword(),
