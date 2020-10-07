@@ -1,8 +1,10 @@
+import { AdminSearchCustomerStatus } from './../models/admin-search-customer-status';
 import { Router } from '@angular/router';
 import { AdminApproval } from './../models/admin-approval';
 import { AdminService } from './../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { CustomerRequestStatus } from '../models/customer-request-status';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -18,6 +20,11 @@ export class AdminDashboardComponent implements OnInit {
   approvalMessage: string;
   customerRequestStatus: CustomerRequestStatus = new CustomerRequestStatus();
   adminApproval: AdminApproval = new AdminApproval();
+  serviceReferenceNumber: number;
+  searchError: boolean;
+  generatedCustomer: AdminSearchCustomerStatus = new AdminSearchCustomerStatus();
+  wrongServicerefNo: boolean;
+  searched: boolean;
 
   constructor(private adminService: AdminService, private router: Router) { }
 
@@ -43,6 +50,20 @@ export class AdminDashboardComponent implements OnInit {
         this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;
       }
+    })
+  }
+
+  search() {
+    this.adminService.searchCustomerByServRefNo(this.serviceReferenceNumber).subscribe(response => {
+      if (response.statusCode === "SUCCESS") {
+        this.generatedCustomer.customer = response.customer;
+        if (this.generatedCustomer.customer === null)
+          this.wrongServicerefNo = true;
+        else
+          this.searched = true;
+      }
+      else
+        this.searchError = true;
     })
   }
 

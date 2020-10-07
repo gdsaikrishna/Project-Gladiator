@@ -1,3 +1,4 @@
+import { AdminSearchCustomerStatus } from './../models/admin-search-customer-status';
 import { Status } from './../models/status';
 import { CustomerRequestStatus } from './../models/customer-request-status';
 import { AdminStatus } from '../models/admin-status';
@@ -27,5 +28,9 @@ export class AdminService {
   approve(adminApproval: AdminApproval): Observable<Status>{
     let url = "http://localhost:9090/approve";
     return this.http.put<Status>(url, adminApproval);
+  }
+
+  searchCustomerByServRefNo(serviceReferenceNumber: number): Observable<AdminSearchCustomerStatus>{
+    return this.http.get<AdminSearchCustomerStatus>("http://localhost:9090/search-customer?serviceReferenceNumber="+serviceReferenceNumber);
   }
 }

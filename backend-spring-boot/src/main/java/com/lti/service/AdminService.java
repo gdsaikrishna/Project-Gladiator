@@ -10,4 +10,5 @@ public interface AdminService {
 	Admin login(int id, String password);
 	List<Customer> getPendingRequests();
 	void updatePendingRequests(int serviceRefNo, String response);
+	Customer searchCustomerByServRefNo(int servRefNo);
 }
