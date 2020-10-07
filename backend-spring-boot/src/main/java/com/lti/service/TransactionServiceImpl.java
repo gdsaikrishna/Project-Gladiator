@@ -1,6 +1,8 @@
 package com.lti.service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -38,6 +40,15 @@ public class TransactionServiceImpl implements TransactionService {
 			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
 			int userId=tranaccount.getUser().getId();
 			User user=userRepository.fetchById(User.class, userId);
+			if(!((transactionDto.getTransactionType()).equals("NEFT"))) {
+				Calendar cal = Calendar.getInstance(); 
+				cal.setTime(new Date());               
+				int hour = cal.get(Calendar.HOUR_OF_DAY); 
+				if(hour <= 8 && hour >= 17)             
+				{
+				    throw new ServiceException("NEFT can only be perforemed between 8AM to 5PM");
+				}
+			}
 			if(!otpService.checkOtp(userId, transactionDto.getOtp()))
 				throw new ServiceException("Incorrect Otp entered");
 			if(!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
