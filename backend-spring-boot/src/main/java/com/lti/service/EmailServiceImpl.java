@@ -60,12 +60,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setFrom("do-not-reply@hfdc.com");
 		message.setTo(customer.getEmailId());
 		message.setSubject("Thank you for Registering to open a Savings account");
-<<<<<<< HEAD
-		message.setText(
-				"Greetings " + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-=======
 		message.setText("Greetings "+ customer.getFirstName()+" "+customer.getLastName());
->>>>>>> 9ed26d1b54d9f4776456e455df1ac69be8f75f72
 		mailSender.send(message);
 	}
 
@@ -75,12 +70,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setFrom("do-not-reply@hfdc.com");
 		message.setTo("dummyAdyasha@outlook.com");
 		message.setSubject("Otp for the transaction");
-<<<<<<< HEAD
-		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getMiddleName()
-				+ " " + user.getCustomer().getLastName() + " ,  Your Otp is " + otp);
-=======
 		message.setText("Greetings "+ user.getCustomer().getFirstName()+" "+user.getCustomer().getLastName()+" ,  Your Otp for the transaction is "+otp);
->>>>>>> 9ed26d1b54d9f4776456e455df1ac69be8f75f72
 		mailSender.send(message);
 	}
 

@@ -42,6 +42,7 @@ export class FundTransferComponent implements OnInit {
   userId:number;
 
 
+
   ngOnInit(): void {
     this.userId=parseInt(sessionStorage.getItem('userId'));
     this.showBeneficiary();
@@ -116,5 +117,6 @@ export class FundTransferComponent implements OnInit {
     $event.preventDefault();
     this.router.navigate(['add-beneficiary']);
   }
+
 
 }
