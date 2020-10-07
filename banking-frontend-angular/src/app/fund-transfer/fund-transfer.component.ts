@@ -10,6 +10,7 @@ import { Transaction } from '../models/transaction';
 import { GenerateOtpService } from '../services/generate-otp.service';
 import { BnNgIdleService } from 'bn-ng-idle';
 
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-fund-transfer',
   templateUrl: './fund-transfer.component.html',
@@ -22,7 +23,7 @@ export class FundTransferComponent implements OnInit {
   beneficiaries: BeneficiaryDetails[];
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
      private router : Router, private accountService: AccountService,private otpService:GenerateOtpService ,
-     private bnIdle: BnNgIdleService) {
+     private bnIdle: BnNgIdleService ,private SpinnerService: NgxSpinnerService) {
       this.bnIdle.startWatching(300).subscribe((res) => {
         if(res) {
           console.log("Session Expired");
@@ -55,11 +56,10 @@ export class FundTransferComponent implements OnInit {
   }
   onSubmit(){
     this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
-    console.log(this.transaction);
+    this.SpinnerService.show();
     this.transactionService.transfer(this.transaction).subscribe( data =>{
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
-       
+        this.SpinnerService.hide(); 
         this.transactionDetails=data.transactionSuccessDto;
         alert(data.statusMessage);
         sessionStorage.setItem('transactionId',String(this.transactionDetails.id));
@@ -74,6 +74,7 @@ export class FundTransferComponent implements OnInit {
         
       }
       else{
+        this.SpinnerService.hide(); 
         sessionStorage.setItem('transactionStatus',data.statusCode);
         alert(data.statusMessage);
       }
@@ -92,12 +93,17 @@ export class FundTransferComponent implements OnInit {
 
   onClick($event:any){
     $event.preventDefault();
+    this.SpinnerService.show();
     this.otpService.generateOtp().subscribe(data=>{
       console.log(data);
-      if(data.statusCode=="SUCCESS")
-      alert("OTP has been sent to your registered Email ID");
-      else
-      alert("OTP Generation Failed!!Click to try again");
+      if(data.statusCode=="SUCCESS"){
+        this.SpinnerService.hide(); 
+        alert("OTP has been sent to your registered Email ID");
+      }
+      else{
+        this.SpinnerService.hide(); 
+        alert("OTP Generation Failed!!Click to try again");
+      }
     })
   }
 
