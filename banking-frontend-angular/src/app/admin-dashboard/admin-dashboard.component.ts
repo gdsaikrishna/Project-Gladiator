@@ -18,8 +18,6 @@ export class AdminDashboardComponent implements OnInit {
   approvalMessage: string;
   customerRequestStatus: CustomerRequestStatus = new CustomerRequestStatus();
   adminApproval: AdminApproval = new AdminApproval();
-  // A:string;
-  // R:string;
 
   constructor(private adminService: AdminService, private router: Router) { }
 
@@ -37,7 +35,6 @@ export class AdminDashboardComponent implements OnInit {
 
   approve() {
     this.adminService.approve(this.adminApproval).subscribe(response => {
-      console.log(JSON.stringify(response));
       if (response.statusCode === "SUCCESS") {
         this.approvalStatus = true;
         this.approvalMessage = response.statusMessage;

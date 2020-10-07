@@ -49,12 +49,12 @@ public class UserControllerImpl {
 	@PostMapping("/register-ib")
 	public @ResponseBody Status register(@RequestBody RegisterIb registerIb) {
 		try {
-			boolean check = userService.register(registerIb.getAccountNumber(), registerIb.getUserPassword(),
-					registerIb.getTransactionPassword());
+			boolean check = userService.register(registerIb.getUserId(), registerIb.getUserPassword(),
+					registerIb.getTransactionPassword(), registerIb.getOtp());
 			Status status = new Status();
 			if (check) {
 				status.setStatusCode(StatusCode.SUCCESS);
-				status.setStatusMessage("Registration Success");
+				status.setStatusMessage("Registration Successful");
 			} else {
 				status.setStatusCode(StatusCode.FAILURE);
 				status.setStatusMessage("Registration Failed");

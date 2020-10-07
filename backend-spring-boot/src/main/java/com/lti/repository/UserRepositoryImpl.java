@@ -46,5 +46,22 @@ public class UserRepositoryImpl extends GenericRepositoryImpl implements UserRep
 				.getSingleResult();
 	}
 	
+	public boolean checkUserAlreadyRegistered(int userId) {
+		return (boolean)
+				entityManager
+				.createQuery(" select case when u.userPassword is not null then true else false end from User u where u.id = :userId")
+				.setParameter("userId", userId)
+				.getSingleResult();
+	}
+	
+	public String checkUserHasInternetBanking(int userId) {
+		return (String)
+				entityManager
+				.createQuery(" select c.netBankingRequirement from User u join u.customer c where u.id = :userId")
+				.setParameter("userId", userId)
+				.getSingleResult();
+	}
+	
+	
 
 }
