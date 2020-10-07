@@ -20,3 +20,6 @@
     <div class="alert alert-danger" *ngIf="flag===true && otpIsCorrect===false">OTP you entered is incorrect</div>
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">
+    <p style="color: white">Please Wait...</p>
+</ngx-spinner>
