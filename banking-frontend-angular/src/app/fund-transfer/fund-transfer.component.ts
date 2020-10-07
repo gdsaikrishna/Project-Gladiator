@@ -9,6 +9,7 @@ import { AccountSummaryStatus } from '../models/account-summary-status';
 import { Transaction } from '../models/transaction';
 import { GenerateOtpService } from '../services/generate-otp.service';
 import { BnNgIdleService } from 'bn-ng-idle';
+
 @Component({
   selector: 'app-fund-transfer',
   templateUrl: './fund-transfer.component.html',

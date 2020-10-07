@@ -17,11 +17,11 @@ import com.lti.service.AccountSummaryService;
 @RestController
 @CrossOrigin
 public class AccountSummaryController {
+	
 	@Autowired
 	private AccountSummaryService service;
 	
 	@GetMapping(path = "/account-summary")
-	@CrossOrigin
 	public AccountSummaryStatus showUserProfile(@RequestParam("userId") int id) {
 		try {
 			List<Account> accounts=service.fetchAccountSummary(id);

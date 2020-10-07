@@ -11,10 +11,11 @@
         <div class="h4">Transaction Remarks:{{remarks}}</div>
     </div>
     <ng-template class="h2" #failureBlock>Ohn no! Fund Transfer Failed.
-    <div>Please retry.</div>
+        <div>Please retry.</div>
     </ng-template>
     <div style="margin-bottom: 3%;">
-        <a [routerLink]="['/account-summary']"><button class="btn btn-primary" type="submit">Back to Dashboard</button></a>&nbsp;
+        <a [routerLink]="['/account-summary']"><button class="btn btn-primary" type="submit">Back to
+                Dashboard</button></a>&nbsp;
         <a [routerLink]="['/home']"><button class="btn btn-success" type="submit">Back to Home</button></a>
     </div>
 </div>

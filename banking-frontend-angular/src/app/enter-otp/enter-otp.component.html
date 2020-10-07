@@ -5,13 +5,18 @@
 
     <p>Enter OTP (One Time Password) sent to your Email ID</p>
     <br>
-        <form #f="ngForm">
-            <div class="form-group">
-                <input type="text"  class="form-control" name="otp">
+    <form (ngSubmit)="verifyOtp()" #f="ngForm">
+        <div class="form-group">
+            <input type="text" class="form-control" name="otp" #otp="ngModel" [(ngModel)]="forgotUserId.otp" required>
+            <div class="alert alert-danger" *ngIf="f.submitted && otp.invalid && (otp.dirty || otp.touched)">
+                <div *ngIf="otp.errors.required">OTP is required</div>
             </div>
-            
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit" style="margin: auto;">
-            </div>
-        </form>
-</div>       
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Submit" style="width: 100%;">
+        </div>
+    </form>
+    <div class="alert alert-success" *ngIf="flag===true && otpIsCorrect===true">User ID is sent to your Email ID</div>
+    <div class="alert alert-danger" *ngIf="flag===true && otpIsCorrect===false">OTP you entered is incorrect</div>
+    <div class="alert alert-danger" *ngIf="error">{{message}}</div>
+</div>

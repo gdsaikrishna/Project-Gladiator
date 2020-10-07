@@ -21,7 +21,7 @@ public class OtpControllerImpl {
 	private OtpService otpService;
 
 	@GetMapping(path = "/generate-otp")
-	public @ResponseBody Status login(@RequestParam(name="userId") int userId) {
+	public Status getOtp(@RequestParam(name="userId") int userId) {
 
 		try {
 			boolean check = otpService.generateOtp(userId);

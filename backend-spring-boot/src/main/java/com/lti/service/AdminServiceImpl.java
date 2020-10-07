@@ -13,6 +13,7 @@ import com.lti.entity.Admin;
 import com.lti.entity.Customer;
 import com.lti.entity.User;
 import com.lti.exception.ServiceException;
+import com.lti.repository.AccountRepository;
 import com.lti.repository.AdminRepository;
 import com.lti.repository.CustomerRepository;
 import com.lti.repository.UserRepository;
@@ -29,6 +30,12 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private AccountRepository accountRepository;
+
+	@Autowired
+	private EmailService emailService;
 
 	@Override
 	public Admin login(int id, String password) {
@@ -68,17 +75,32 @@ public class AdminServiceImpl implements AdminService {
 						User user = new User();
 						user.setCustomer(updatedCustomer);
 						User updatedUser = repository.save(user);
-						if (userRepository.isUserExists(updatedUser.getId())) {
-							Account account = new Account();
-							account.setUser(updatedUser);
-							account.setBalance(0);
-							repository.save(account);
+						try {
+							if (userRepository.isUserExists(updatedUser.getId())) {
+								Account account = new Account();
+								account.setUser(updatedUser);
+								account.setBalance(0);
+								Account updatedAccount = repository.save(account);
+								if (accountRepository.exists(updatedAccount.getAccountNumber())) {
+									try {
+										if (response.equals("A"))
+											emailService.sendEmailOnAcceptance(updatedCustomer, updatedUser.getId(),
+													updatedAccount.getAccountNumber());
+										else
+											emailService.sendEmailOnRejection(updatedCustomer);
+									} catch (Exception e) {
+										throw new ServiceException("Could not send email");
+									}
+								}
+							}
+						} catch (Exception e) {
+							throw new ServiceException("Approval Failed");
 						}
 					}
 				}
 			}
 		} catch (Exception e) {
-			throw new ServiceException("Invalid response from admin, no such customer");
+			throw new ServiceException("Could not approve");
 		}
 	}
 }

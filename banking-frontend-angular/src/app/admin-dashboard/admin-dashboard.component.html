@@ -75,34 +75,27 @@
   <form (ngSubmit)="approvalForm.valid && approve()" #approvalForm="ngForm">
     <div class="form-group">
       <label for="refNo">Service Reference No.</label>
-      <input class="form-control" type="text" name="refNo" #refNo="ngModel" [(ngModel)]="adminApproval.serviceRefNo"
-        required pattern="^[0-9]{4}$">
+      <select [(ngModel)]="adminApproval.serviceRefNo" class="form-control" name="refNo"
+          #refNo="ngModel" [ngClass]="{ 'is-invalid': approvalForm.submitted && refNo.invalid }" required>
+          <option *ngFor="let customer of customerRequestStatus.customers" value="{{customer.serviceRefNo}}">
+            {{customer.serviceRefNo}}
+          </option>
+        </select>
       <div class="alert alert-danger" *ngIf="approvalForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
         <div *ngIf="refNo.errors.required">Service Reference No. is required</div>
-        <div *ngIf="refNo.errors.pattern">Service Reference No. must be of 4 digits</div>
       </div>
     </div>
     <div class="form-group">
       <label for="response">Accept(A) / Reject(R)</label>
-      <input class="form-control" type="text" name="response" #response="ngModel" [(ngModel)]="adminApproval.response"
-        required pattern="[AR]">
-      <div class="alert alert-danger"
-        *ngIf="approvalForm.submitted && response.invalid && (response.dirty || response.touched)">
-        <div *ngIf="response.errors.required">Approval is required</div>
-        <div *ngIf="response.errors.pattern">Enter A or R</div>
+      <select [(ngModel)]="adminApproval.response" class="form-control" name="response"
+          #response="ngModel" [ngClass]="{ 'is-invalid': approvalForm.submitted && response.invalid }" required>
+          <option value="A">A</option>
+          <option value="R">R</option>
+        </select>
+      <div class="alert alert-danger" *ngIf="approvalForm.submitted && response.invalid && (response.dirty || response.touched)">
+        <div *ngIf="response.errors.required">Please select a response</div>
       </div>
     </div>
-
-    <!-- <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Select Approval Response
-      </button>
-      <select class="dropdown-menu" [(ngModel)]="adminApproval.response">
-        <option class="dropdown-item" [ngValue]="A">A</option>
-        <option class="dropdown-item" [ngValue]="R">R</option>
-      </select>
-    </div> -->
-
     <div class="form-group">
       <input type="submit" class="btn btn-primary" value="Approve">
     </div>
