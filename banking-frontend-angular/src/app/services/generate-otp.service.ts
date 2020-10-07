@@ -16,4 +16,8 @@ export class GenerateOtpService {
     this.userId=parseInt(sessionStorage.getItem('userId'));
    return this.http.get<Status>("http://localhost:9090/generate-otp?userId="+this.userId);
   }
+
+  generateOtpBanking(userId: number):Observable<Status>{
+   return this.http.get<Status>("http://localhost:9090/generate-otp?userId="+userId);
+  }
 }

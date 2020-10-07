@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ErrorLoginRepository errorLoginRepository;
 	
+	@Autowired OtpService otpSerivce;
+	
 	@Override
 	public User login(int id, String password) {
 		try {
@@ -52,14 +54,14 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	public boolean register(int accountNumber , String userPassword , String transactionPassword) {
+	public boolean register(int userId , String userPassword , String transactionPassword, String otp) {
 		try {
-			if(accountRepository.exists(accountNumber)) {
-				if(accountRepository.checkUserHasInternetBankingWithGivenAcno(accountNumber).equals("Y")) {
-					if(accountRepository.checkUserAlreadyRegistered(accountNumber)) 
+			if(userRepository.isUserExists(userId) && otpSerivce.checkOtp(userId, otp)) {
+				if(userRepository.checkUserHasInternetBanking(userId).equals("Y")) {
+					if(userRepository.checkUserAlreadyRegistered(userId)) 
 						throw new ServiceException("User already Registered");
 					else {
-						User user= userRepository.fetchById(User.class, accountRepository.fetchById(Account.class, accountNumber).getUser().getId());
+						User user= userRepository.fetchById(User.class, userId);
 						user.setUserPassword(userPassword);
 						user.setTransactionPassword(transactionPassword);
 						userRepository.save(user);
@@ -72,7 +74,7 @@ public class UserServiceImpl implements UserService {
 					throw new ServiceException("Customer didn't opt for Net-Banking when opening an account");
 			}
 			else 
-				throw new ServiceException("Account Number Invalid");
+				throw new ServiceException("Invalid UserId/OTP");
 		}
 		catch(Exception e) {
 			throw new ServiceException("Some Error occured while registering");

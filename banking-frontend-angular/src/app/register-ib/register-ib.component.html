@@ -11,14 +11,14 @@
     <p class="h3">Register for Internet Banking</p>
     <form class="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" [appMustMatch]="['userPassword', 'cuserPassword' ,'txPassword', 'ctxPassword']" #f="ngForm">
         <div class="form-group">
-            <label> Account Number</label>
-            <input input type="number" class="form-control" name="accountNumber"
-           [(ngModel)]="model.accountNumber"
-            #accountNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && accountNumber.invalid }"
-            required placeholder="Your Account Number" minlength="7" maxlength="7">
-            <div *ngIf="f.submitted && accountNumber.invalid" class="invalid-feedback">
-                <div *ngIf="accountNumber.errors.required">Account Number is required</div>
-                <div *ngIf="accountNumber.errors.minlength || accountNumber.errors.maxlength">Enter Valid Account Number</div>
+            <label> User ID</label>
+            <input input type="number" class="form-control" name="userId"
+           [(ngModel)]="model.userId"
+            #userId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userId.invalid }"
+            required placeholder="Your User Id" minlength="7" maxlength="7">
+            <div *ngIf="f.submitted && userId.invalid" class="invalid-feedback">
+                <div *ngIf="userId.errors.required">Account Number is required</div>
+                <div *ngIf="userId.errors.minlength || userId.errors.maxlength">Enter Valid Account Number</div>
             </div>
         </div>
         <div class="form-group">
@@ -61,10 +61,18 @@
                 <div *ngIf="ctxPassword.errors.mustMatch">Passwords must match</div>
             </div>
         </div>
-        <div class="form-group">
-            <label> Enter OTP</label>
-            <input class="form-control" type="number" name="otp" placeholder="Enter  OTP">
-        </div>
+        <div class="form-group row">
+            <label class="col-sm-4"> Enter OTP<span style="color:red">*</span></label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" name="otp" placeholder="Enter  OTP" 
+                [(ngModel)]="model.otp" #otp="ngModel" required minlength="4">
+             <div *ngIf="f.submitted && otp.invalid" class="invalid-feedback">  
+               <div *ngIf="otp.errors.minlength">OTP should of 4 digits</div> 
+              </div>
+              <button class="btn btn-link" (click)="onClick($event)">Generate otp</button>
+              
+            </div>
+          </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
     </form>
