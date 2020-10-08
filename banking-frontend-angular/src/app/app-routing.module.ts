@@ -22,6 +22,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'enter-otp', component: EnterOtpComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'fund-transfer', component: FundTransferComponent },
-  { path: 'fund-transfer-status', component: FundTransferStatusComponent }
+  { path: 'fund-transfer-status', component: FundTransferStatusComponent },
+  { path: 'forgot-password-otp', component: ForgotPasswordOtpComponent }
 ];
 
 @NgModule({

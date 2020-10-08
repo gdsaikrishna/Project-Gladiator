@@ -4,7 +4,7 @@ import { AdminApproval } from './../models/admin-approval';
 import { AdminService } from './../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { CustomerRequestStatus } from '../models/customer-request-status';
-import { Customer } from '../models/customer';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -29,7 +29,14 @@ export class AdminDashboardComponent implements OnInit {
   showApprovalToggle: boolean;
   showSearchToggle: boolean;
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router, private bnIdle: BnNgIdleService) {
+    this.bnIdle.startWatching(600).subscribe((res) => {
+      if(res) {
+        console.log("Session Expired");
+        this.router.navigate(['session-expired']);
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.name = sessionStorage.getItem('adminName');

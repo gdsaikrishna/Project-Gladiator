@@ -31,6 +31,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { MustMatchDirective } from './must-match.directive';
 import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
     EnterOtpComponent,
     AdminDashboardComponent,
     MustMatchDirective,
-    FundTransferStatusComponent
+    FundTransferStatusComponent,
+    ForgotPasswordOtpComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import com.lti.entity.Customer;
 import com.lti.entity.User;
 
 public interface EmailService {
+	
 	void sendEmailForUserId(int userId);
 
 	void sendEmailOnAcceptance(Customer customer, int userId, int accountNumber);
