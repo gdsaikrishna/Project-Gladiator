@@ -6,6 +6,7 @@ import { UserLogin } from './../models/user-login';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { SetNewPassword } from '../models/set-new-password';
 
 
 @Injectable({
@@ -25,5 +26,9 @@ export class UserService {
 
   changePassword(changePassword: ChangePassword): Observable<Status>{
     return this.http.post<any>('http://localhost:9090/change-password',changePassword);
+  }
+
+  setNewPassword(setNewPassword:SetNewPassword):Observable<Status>{
+    return this.http.post<any>('http://localhost:9090/set-new-password',setNewPassword);
   }
 }

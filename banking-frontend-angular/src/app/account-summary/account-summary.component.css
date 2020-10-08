@@ -16,11 +16,14 @@ body {
     width: 46%;
     position: relative;
     margin: auto;
+    padding: 0%;
+    border: .2rem solid #428BCA;
 }
 
 .card{
    
     background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    border-style: none;
 
 }
 .card-header{

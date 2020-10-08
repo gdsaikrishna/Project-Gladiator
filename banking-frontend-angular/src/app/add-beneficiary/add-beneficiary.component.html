@@ -1,16 +1,36 @@
 <app-dashboard></app-dashboard>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Status</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{statusMessage}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 <div class="wrapper container ben">
+    
     <p class="h3">Add Beneficiary</p>
     <form (ngSubmit)="beneficiaryForm.valid && showDetails()" #beneficiaryForm="ngForm">
         <div class="form-group ">
-            <label>Name</label>
+            <label>Name<span style="color:red">*</span></label>
             <input class="form-control" type="text" name="name" placeholder="Beneficiary name" [(ngModel)]=beneficiary.beneficiaryName #name="ngModel" required>
             <div class="alert alert-danger" *ngIf="beneficiaryForm.submitted && name.invalid && (name.dirty || name.touched)">
                 <div *ngIf="name.errors.required">Name is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label>Account Number</label>
+            <label>Account Number<span style="color:red">*</span></label>
             <input class="form-control" type="text" name="accNo" placeholder="Account number" [(ngModel)]=beneficiary.accountNumber
                 #accNo="ngModel" required pattern="^[0-9]{7}$">
             <div class="alert alert-danger" *ngIf="beneficiaryForm.submitted && accNo.invalid && (accNo.dirty || accNo.touched)">
@@ -24,7 +44,7 @@
                 #nick="ngModel">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn" value="Add" style="width: 100%;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
         </div>
     </form>
     <div *ngIf="error">{{message}}</div>

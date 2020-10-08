@@ -41,13 +41,6 @@ public class BeneficiaryRepositoryImpl extends GenericRepositoryImpl implements 
 				.getSingleResult() == 0 ? false : true;
 	}
 	
-	public String fetchCustomerNameFromAccountNumber(int accountNumber) {
-		return (String)
-				entityManager
-				.createQuery("select a.user.customer.firstName+a.user.customer.lastName from Account a where a.accountNumber =:accountNumber")
-				.setParameter("accountNumber", accountNumber)
-				.getSingleResult();
-	}
 
 
 	

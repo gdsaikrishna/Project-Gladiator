@@ -14,6 +14,8 @@ export class AddBeneficiaryComponent implements OnInit {
   beneficiary: Beneficiary = new Beneficiary();
   message:string;
   error:boolean;
+  statusMessage:string;
+
   
   constructor(private service:AddBeneficiaryService,private router:Router , private bnIdle: BnNgIdleService ) {
     this.bnIdle.startWatching(300).subscribe((res) => {
@@ -31,15 +33,19 @@ export class AddBeneficiaryComponent implements OnInit {
   showDetails() {
     this.beneficiary.userId=parseInt(sessionStorage.getItem('userId'));
     this.service.addBeneficiary(this.beneficiary).subscribe(data=>{
-      console.log(data);
-      if(data.statusCode==="SUCCESS")
+      if(data.statusCode==="SUCCESS"){
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
         this.router.navigate(['dashboard']);  
+      }
       else{
-        console.log(data.statusMessage);
         this.error=true;
-        this.message=data.statusMessage;
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
     })
     
   }
+
+  
 }

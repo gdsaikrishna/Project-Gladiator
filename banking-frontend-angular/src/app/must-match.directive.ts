@@ -12,4 +12,10 @@ export class MustMatchDirective implements Validator {
   validate(formGroup: FormGroup): ValidationErrors {
       return MustMatch(this.mustMatch[0], this.mustMatch[1], this.mustMatch[2] , this.mustMatch[3])(formGroup);
   }
+
+  /*@Input('passMustMatch') shouldMatch: string[] = [];
+
+  check(formGroup: FormGroup): ValidationErrors {
+      return ShouldMatch(this.shouldMatch[0], this.shouldMatch[1])(formGroup);
+  }*/
 }

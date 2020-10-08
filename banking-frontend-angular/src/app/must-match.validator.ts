@@ -27,3 +27,23 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
         }
     }
 }
+
+/*export function ShouldMatch(controlName: string, matchingControlName:string) {
+    return (formGroup: FormGroup) => {
+        const newPassword = formGroup.controls[controlName];
+        const cnewPassword = formGroup.controls[matchingControlName];
+        if (!newPassword || !cnewPassword) {
+          return null;
+        }
+
+        if (cnewPassword.errors && !cnewPassword.errors.shouldMatch) {
+            return null;
+        }
+
+        if (newPassword.value !== cnewPassword.value) {
+            cnewPassword.setErrors({ shouldMatch: true });
+        } else {
+            cnewPassword.setErrors(null);
+        }
+    }
+}*/
