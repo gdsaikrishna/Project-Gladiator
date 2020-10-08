@@ -9,7 +9,6 @@ import { AccountSummaryStatus } from '../models/account-summary-status';
 import { Transaction } from '../models/transaction';
 import { GenerateOtpService } from '../services/generate-otp.service';
 import { BnNgIdleService } from 'bn-ng-idle';
-import { LocationStrategy } from '@angular/common';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
@@ -24,17 +23,14 @@ export class FundTransferComponent implements OnInit {
   beneficiaries: BeneficiaryDetails[];
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
      private router : Router, private accountService: AccountService,private otpService:GenerateOtpService ,
-     private bnIdle: BnNgIdleService ,private SpinnerService: NgxSpinnerService, private location: LocationStrategy) {
+     private bnIdle: BnNgIdleService ,private SpinnerService: NgxSpinnerService) {
       this.bnIdle.startWatching(300).subscribe((res) => {
         if(res) {
           console.log("Session Expired");
           this.router.navigate(['session-expired']);
         }
       })
-      history.pushState(null, null, window.location.href);  
-      this.location.onPopState(() => {
-      history.pushState(null, null, window.location.href);
-      });  
+      
     };
   message: string;
   error: boolean;
