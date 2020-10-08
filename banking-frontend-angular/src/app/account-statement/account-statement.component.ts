@@ -1,5 +1,7 @@
+import { AccountStatementService } from './../services/account-statement.service';
+import { StatementTransactionDto } from './../models/account-statement';
 import { Transaction } from './../models/transaction';
-import { Component, OnInit, ElementRef ,ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-account-statement',
@@ -8,12 +10,24 @@ import { Component, OnInit, ElementRef ,ViewChild } from '@angular/core';
 })
 export class AccountStatementComponent implements OnInit {
 
-  transactions = []
-  count: number = 0;
+  accountstatement: StatementTransactionDto[];
+  userId:number;
 
-  constructor() { }
+  constructor(private service:AccountStatementService) { }
 
   ngOnInit(): void {
+    this.userId=parseInt(sessionStorage.getItem('userId'));
+    this.accountStatement();
+
+    
+  }
+  accountStatement(){
+    this.service.fetchStatement(this.userId).subscribe(data =>{
+      if(data.statusCode==="SUCCESS")
+      this.accountstatement=data.statementTransaction;
+      else
+         alert(data.statusMessage);
+    })
   }
 
 }

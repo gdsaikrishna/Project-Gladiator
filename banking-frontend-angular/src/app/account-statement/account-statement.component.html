@@ -1,10 +1,10 @@
-<!--<app-dashboard></app-dashboard>
-<div class="wrapper container transaction">-->
-  <!-- <ul class="list-group transaction" *ngFor="let transaction of transactions">
+<app-dashboard></app-dashboard>
+<div class="wrapper container transaction">
+   <!--<ul class="list-group transaction" *ngFor="let transaction of transactions">
     <li class="list-group-item list-group-item-dark">{{transaction.transactionId}} {{transaction.txType | uppercase}} {{transaction.amount | currency : 'INR'}}
       {{transaction.date}} {{transaction.remarks}}</li>
-  </ul> -->
- <!-- <form (ngSubmit)="account-statementForm.valid && showDetails()" #accountStatementForm="ngForm"></form>
+  </ul> 
+  <form (ngSubmit)="account-statementForm.valid && showDetails()" #accountStatementForm="ngForm"></form>-->
   <div class="btn-group dropright" style="padding-bottom: 2%;">
     <button type="button" class="btn btn-secondary">
       Show last
@@ -30,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of transactions; let i = index">
+      <tr *ngFor="let transaction of accountstatement; let i = index">
         <th scope="row">{{i + 1}}</th>
         <td>{{transaction.transactionId}}</td>
         <td>{{transaction.txType | uppercase}}</td>
@@ -41,4 +41,4 @@
       </tr>
     </tbody>
   </table>
-</div>-->
+</div>
