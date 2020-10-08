@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public boolean register(int userId , String userPassword , String transactionPassword, String otp) {
-		try {
 			if(userRepository.isUserExists(userId) && otpSerivce.checkOtp(userId, otp)) {
 				if(userRepository.checkUserHasInternetBanking(userId).equals("Y")) {
 					if(userRepository.checkUserAlreadyRegistered(userId)) 
@@ -75,10 +74,6 @@ public class UserServiceImpl implements UserService {
 			}
 			else 
 				throw new ServiceException("Invalid UserId/OTP");
-		}
-		catch(Exception e) {
-			throw new ServiceException("Some Error occured while registering");
-		}
 	}
 	
 	public boolean changePassword(int userId, String userPassword , String transactionPassword) {
