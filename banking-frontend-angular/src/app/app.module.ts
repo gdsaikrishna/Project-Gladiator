@@ -30,6 +30,7 @@ import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { MustMatchDirective } from './must-match.directive';
 import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,10 @@ import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfe
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxSpinnerModule 
+    NgxSpinnerModule,
+    BackButtonDisableModule.forRoot({
+      preserveScrollPosition: true
+    })
   ],
   providers: [BnNgIdleService],
   bootstrap: [AppComponent]

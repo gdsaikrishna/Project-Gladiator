@@ -22,57 +22,64 @@ import com.lti.repository.UserRepository;
 @Service
 @Transactional
 public class TransactionServiceImpl implements TransactionService {
-	
+
 	@Autowired
 	private TransactionRepository transactionRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private AccountRepository accountRepository;
-	
+
 	@Autowired
 	private OtpService otpService;
-	
+
 	public TransactionSuccessDto fundTransfer(TransactionDto transactionDto) {
 		try {
-			Account tranaccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
-			int userId=tranaccount.getUser().getId();
-			User user=userRepository.fetchById(User.class, userId);
-			if(!((transactionDto.getTransactionType()).equals("NEFT"))) {
-				Calendar cal = Calendar.getInstance(); 
-				cal.setTime(new Date());               
-				int hour = cal.get(Calendar.HOUR_OF_DAY); 
-				if(hour <= 8 && hour >= 17)             
-				{
-				    throw new ServiceException("NEFT can only be perforemed between 8AM to 5PM");
+			Account tranaccount = accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
+			int userId = tranaccount.getUser().getId();
+			User user = userRepository.fetchById(User.class, userId);
+			if ((transactionDto.getTransactionType()).equals("RTGS")) {
+				if (transactionDto.getAmount() > 200000) {
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(new Date());
+					int hour = cal.get(Calendar.HOUR_OF_DAY);
+					if (hour <= 8 && hour >= 17) {
+						throw new ServiceException("RTGS can only be performed between 8AM to 5PM");
+					}
+				}
+				else {
+					throw new ServiceException("RTGS minimum transfer value is 200000(2 lakh) ");
 				}
 			}
-			if(!otpService.checkOtp(userId, transactionDto.getOtp()))
+			if((transactionDto.getTransactionType()).equals("IMPS") && transactionDto.getAmount() >= 200000 ) {
+				throw new ServiceException("IMPS maximum transfer value is 200000(2 lakh) ");
+			}
+			if (!otpService.checkOtp(userId, transactionDto.getOtp()))
 				throw new ServiceException("Incorrect Otp entered");
-			if(!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
-					throw new ServiceException("Invalid Transaction Password");
-			if(transactionDto.getAmount()<=0)
+			if (!(transactionDto.getTransactionPassword()).equals(user.getTransactionPassword()))
+				throw new ServiceException("Invalid Transaction Password");
+			if (transactionDto.getAmount() <= 0)
 				throw new ServiceException("Enter a valid Transaction ammount");
-			Transaction transaction=new Transaction();
-			Account creditAccount=accountRepository.fetchById(Account.class, transactionDto.getToAccountNumber());
-			Account debitAccount=accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
-			
-			if(debitAccount.getBalance()<transactionDto.getAmount())
+			Transaction transaction = new Transaction();
+			Account creditAccount = accountRepository.fetchById(Account.class, transactionDto.getToAccountNumber());
+			Account debitAccount = accountRepository.fetchById(Account.class, transactionDto.getFromAccountNumber());
+
+			if (debitAccount.getBalance() < transactionDto.getAmount())
 				throw new ServiceException("Insufficient Balance in your acount");
-			if(transactionDto.getAmount()>=20000)
+			if (transactionDto.getAmount() >= 20000)
 				throw new ServiceException("Transaction greater than 20000 is not allowed");
-			transaction.setAmount(transactionDto.getAmount());	
-			debit(debitAccount,transactionDto.getAmount());
-			credit(creditAccount,transactionDto.getAmount());
+			transaction.setAmount(transactionDto.getAmount());
+			debit(debitAccount, transactionDto.getAmount());
+			credit(creditAccount, transactionDto.getAmount());
 			transaction.setDebitAccount(debitAccount);
 			transaction.setCreditAccount(creditAccount);
 			transaction.setRemarks(transactionDto.getRemarks());
 			transaction.setTransactionDateTime(LocalDateTime.now());
 			transaction.setTransactionType(transactionDto.getTransactionType());
-			TransactionSuccessDto transactionSuccessDto=new TransactionSuccessDto();
-			Transaction updated =transactionRepository.fetchTransactionObjectAfterSaving(transaction);
+			TransactionSuccessDto transactionSuccessDto = new TransactionSuccessDto();
+			Transaction updated = transactionRepository.fetchTransactionObjectAfterSaving(transaction);
 			transactionSuccessDto.setId(updated.getTransactionId());
 			transactionSuccessDto.setFromAccountNumber(updated.getDebitAccount().getAccountNumber());
 			transactionSuccessDto.setToAccountNumber(updated.getCreditAccount().getAccountNumber());
@@ -80,20 +87,19 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionSuccessDto.setAmount(updated.getAmount());
 			transactionSuccessDto.setRemarks(updated.getRemarks());
 			return transactionSuccessDto;
-			
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			throw new ServiceException(e.getMessage());
 		}
 	}
-	
-	public void debit(Account account,double amount) {
-		account.setBalance(account.getBalance()-amount);
+
+	public void debit(Account account, double amount) {
+		account.setBalance(account.getBalance() - amount);
 		accountRepository.save(account);
 	}
-	
-	public void credit(Account account,double amount) {
-		account.setBalance(account.getBalance()+amount);
+
+	public void credit(Account account, double amount) {
+		account.setBalance(account.getBalance() + amount);
 		accountRepository.save(account);
 	}
 
