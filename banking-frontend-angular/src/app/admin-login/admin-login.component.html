@@ -1,6 +1,7 @@
 <div class="text-center">
     <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
 </div>
+<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" >Home</button></a></div>
 <div class="wrapper container" style="width: 28%;">
     <p class="h3">Admin Login</p>
     <br>
@@ -8,25 +9,29 @@
     <form (ngSubmit)="adminLoginForm.valid && loginCheck()" #adminLoginForm="ngForm">
         <div class="form-group">
             <label>Admin ID</label>
-            <input class="form-control" type="text" name="id" placeholder="Your 5-digit admin id" [(ngModel)]="adminLogin.adminId" #id="ngModel" required pattern="^[0-9]{5}$">
-            <div class="alert alert-danger" *ngIf="adminLoginForm.submitted && id.invalid && (id.dirty || id.touched)">
+            <input class="form-control" type="text" name="id" placeholder="Your 5-digit admin id"
+                [(ngModel)]="adminLogin.adminId" #id="ngModel"
+                [ngClass]="{ 'is-invalid': adminLoginForm.submitted && id.invalid }" required pattern="^[0-9]{5}$">
+            <div class="invalid-feedback" *ngIf="adminLoginForm.submitted && id.invalid && (id.dirty || id.touched)">
                 <div *ngIf="id.errors.required">Admin ID is required</div>
                 <div *ngIf="id.errors.pattern">Admin ID must be of 5 digits</div>
             </div>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input class="form-control" type="password" name="pwd" placeholder="Your password" [(ngModel)]="adminLogin.password"
-                #pwd="ngModel" required>
-            <div class="alert alert-danger" *ngIf="adminLoginForm.submitted && pwd.invalid && (pwd.dirty || pwd.touched)">
+            <input class="form-control" type="password" name="pwd" placeholder="Your password"
+                [(ngModel)]="adminLogin.password" #pwd="ngModel"
+                [ngClass]="{ 'is-invalid': adminLoginForm.submitted && id.invalid }" required>
+            <div class="invalid-feedback" *ngIf="adminLoginForm.submitted && pwd.invalid && (pwd.dirty || pwd.touched)">
                 <div *ngIf="pwd.errors.required">Password is required</div>
             </div>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login" style="width: 100%;">
         </div>
-        <!-- <p>Forgot Admin ID? <a href="">Click here</a>.</p>
-        <p>Forgot Password? <a href="">Click here</a>.</p> -->
     </form>
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

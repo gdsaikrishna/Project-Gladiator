@@ -26,7 +26,8 @@ public class EmailServiceImpl implements EmailService {
 		message.setTo(user.getCustomer().getEmailId());
 		message.setSubject("Your User ID");
 		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getLastName()
-				+ ". Your User ID is " + userId);
+				+ ". Your User ID is " + userId
+				+ ". If you have opted for Internet Banking, go to: http://localhost:4200/register-ib or visit our website.");
 		mailSender.send(message);
 	}
 
@@ -62,7 +63,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setSubject("Thank you for Registering to open a Savings account");
 		message.setText(
 				"Greetings " + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-		message.setText("Greetings "+ customer.getFirstName()+" "+customer.getLastName());
+		message.setText("Greetings " + customer.getFirstName() + " " + customer.getLastName());
 		mailSender.send(message);
 	}
 
@@ -74,7 +75,8 @@ public class EmailServiceImpl implements EmailService {
 		message.setSubject("Otp for the transaction");
 		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getMiddleName()
 				+ " " + user.getCustomer().getLastName() + " ,  Your Otp is " + otp);
-		message.setText("Greetings "+ user.getCustomer().getFirstName()+" "+user.getCustomer().getLastName()+" ,  Your Otp for the transaction is "+otp);
+		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getLastName()
+				+ " ,  Your Otp for the transaction is " + otp);
 		mailSender.send(message);
 	}
 

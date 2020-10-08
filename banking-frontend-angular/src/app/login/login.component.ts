@@ -31,7 +31,6 @@ export class LoginComponent {
         this.SpinnerService.hide(); 
         this.error = true;
         this.message = data.statusMessage;
-
       }
     })
   }

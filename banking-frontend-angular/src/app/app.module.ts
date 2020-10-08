@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BnNgIdleService } from 'bn-ng-idle'; 
 import { NgxSpinnerModule } from "ngx-spinner";  
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -63,7 +63,6 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     NgxSpinnerModule,

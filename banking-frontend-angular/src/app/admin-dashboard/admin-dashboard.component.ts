@@ -25,11 +25,18 @@ export class AdminDashboardComponent implements OnInit {
   generatedCustomer: AdminSearchCustomerStatus = new AdminSearchCustomerStatus();
   wrongServicerefNo: boolean;
   searched: boolean;
+  requestsToggle: boolean;
+  showApprovalToggle: boolean;
+  showSearchToggle: boolean;
 
   constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.name = sessionStorage.getItem('adminName');
+  }
+
+  showPendingRequests() {
+    this.requestsToggle = !this.requestsToggle;
     this.adminService.showPendingRequests().subscribe(response => {
       if (response.statusCode === "SUCCESS")
         this.customerRequestStatus.customers = response.customers;
@@ -38,6 +45,14 @@ export class AdminDashboardComponent implements OnInit {
         this.message = response.statusMessage;
       }
     })
+  }
+
+  showApprovalForm() {
+    this.showApprovalToggle = !this.showApprovalToggle;
+  }
+
+  showSearchForm() {
+    this.showSearchToggle = !this.showSearchToggle;
   }
 
   approve() {
