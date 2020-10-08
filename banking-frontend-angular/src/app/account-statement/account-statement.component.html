@@ -23,21 +23,23 @@
         <th scope="col">#</th>
         <th scope="col">ID</th>
         <th scope="col">Type</th>
+        <th scope="col">Account</th>
+        <th scope="col">Credit/Debit</th>
         <th scope="col">Amount</th>
         <th scope="col">Date</th>
-        <th scope="col">Balance</th>
         <th scope="col">Remarks</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of accountstatement; let i = index">
+      <tr *ngFor="let transaction of transactions; let i = index">
         <th scope="row">{{i + 1}}</th>
         <td>{{transaction.transactionId}}</td>
-        <td>{{transaction.txType | uppercase}}</td>
+        <td>{{transaction.transactionType}}</td>
+        <td>{{transaction.accountNumber}}</td>
+        <td>{{transaction.check}}</td>
         <td>{{transaction.amount | currency : 'INR'}}</td>
-        <td>{{transaction.date}}</td>
-        <td>{{transaction.balance | currency: 'INR'}}</td>
-        <td>{{transaction.remarks}}</td>
+        <td>{{transaction.dateTime}}</td>
+        <td>{{transaction.remark}}</td>
       </tr>
     </tbody>
   </table>

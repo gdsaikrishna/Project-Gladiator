@@ -14,7 +14,7 @@ export class AccountStatementService {
   constructor(private http: HttpClient) { }
 
   fetchStatement(userId:number):Observable<AccountStatementStatus>{
-    return this.http.get<AccountStatementStatus>('http://localhost:9090/account-statement?userId='+userId);
+    return this.http.get<AccountStatementStatus>("http://localhost:9090/account-statement?userId="+userId);
   }
     
 

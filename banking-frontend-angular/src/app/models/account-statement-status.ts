@@ -1,7 +1,7 @@
 import { StatementTransactionDto } from './account-statement';
 
 export class  AccountStatementStatus{
-    statusCode:string;
-    statusMessage:string;
-    statementTransaction:StatementTransactionDto[];
+    public statusCode:string;
+    public statusMessage:string;
+    public statementTransactionDto:StatementTransactionDto[];
 }

@@ -20,13 +20,15 @@ import com.lti.repository.TransactionRepository;
 public class AccountStatementServiceImpl implements AccountStatementService{
   @Autowired
   private AccountStatement accountStatement;
+  
+  @Autowired
   private AccountRepository accountRepository;
   
   
   @Override
   
   public  List<StatementTransactionDto> accountStatment(int userId){
-	  Account acc = (Account) accountRepository.findAccountByUserId(userId);
+	  Account acc = accountRepository.findAccountByUserId(userId);
 	  try {
 		  List<Transaction> transactions= accountStatement.getAllRecords(acc.getAccountNumber());
 		  List<StatementTransactionDto> statementTransactionDto = new ArrayList<>();
@@ -38,7 +40,7 @@ public class AccountStatementServiceImpl implements AccountStatementService{
 			  stateTransaction.setTransactionId(t.getTransactionId());
 			  stateTransaction.setRemark(t.getRemarks());
 			  stateTransaction.setTransactionType(t.getTransactionType());
-			  
+			  stateTransaction.setAmount(t.getAmount());
 			  statementTransactionDto.add(stateTransaction);
 		  }
 		  return statementTransactionDto;
