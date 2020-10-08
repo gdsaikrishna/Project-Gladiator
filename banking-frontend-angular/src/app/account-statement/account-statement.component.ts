@@ -39,13 +39,13 @@ export class AccountStatementComponent implements OnInit {
         this.message = response.statusMessage;
       }
     })
-    this.accountStatement();
 
     
   }
   accountStatement(){
     this.service.fetchStatement(this.statementDuration).subscribe(data =>{
       if(data.statusCode==="SUCCESS"){
+        this.searched=true;
         console.log(data);
         this.accountstatement=data.statementTransactionDto;
         for(let s of this.accountstatement){
