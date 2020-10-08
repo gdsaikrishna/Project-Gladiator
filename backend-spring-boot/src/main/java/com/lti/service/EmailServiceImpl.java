@@ -26,8 +26,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setTo(user.getCustomer().getEmailId());
 		message.setSubject("Your User ID");
 		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getLastName()
-				+ ". Your User ID is " + userId
-				+ ". If you have opted for Internet Banking, go to: http://localhost:4200/register-ib or visit our website.");
+				+ ". Your User ID is " + userId);
 		mailSender.send(message);
 	}
 
@@ -39,7 +38,8 @@ public class EmailServiceImpl implements EmailService {
 		message.setSubject("Your request to open an account was approved");
 		message.setText("Greetings " + customer.getFirstName() + " " + customer.getLastName()
 				+ ". Your request for opening an account was accepted. User ID: " + userId + ". Account Number: "
-				+ accountNumber);
+				+ accountNumber
+				+ ". If you have opted for Internet Banking, go to: http://localhost:4200/register-ib or visit our website.");
 		mailSender.send(message);
 	}
 

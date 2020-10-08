@@ -48,7 +48,6 @@ public class ForgotPasswordController {
 	
 	@PostMapping(path = "/verify-otp")
 	public CheckOtpStatus verifyOtp(@RequestBody ForgotPassword forgotPassword) {
-		System.out.println(forgotPassword.getUserId()+forgotPassword.getOtp());
 		try {
 			CheckOtpStatus status=new CheckOtpStatus();
 			status.setStatusCode(StatusCode.SUCCESS);
