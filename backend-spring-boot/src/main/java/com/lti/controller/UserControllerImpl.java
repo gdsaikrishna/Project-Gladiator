@@ -90,7 +90,6 @@ public class UserControllerImpl {
 	
 	@PostMapping("/set-new-password")
 	public @ResponseBody Status setNewPassword(@RequestBody SetNewPassword setNewPassword) {
-
 		boolean check = userService.setNewPassword(setNewPassword.getUserId(), setNewPassword.getNewPassword());
 		Status status = new Status();
 		if (check) {

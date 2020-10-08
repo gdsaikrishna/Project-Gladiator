@@ -1,3 +1,6 @@
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
@@ -22,6 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
 
 
 const routes: Routes = [
@@ -47,7 +51,11 @@ const routes: Routes = [
   { path: 'enter-otp', component: EnterOtpComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'fund-transfer', component: FundTransferComponent },
-  { path: 'fund-transfer-status', component: FundTransferStatusComponent }
+  { path: 'fund-transfer-status', component: FundTransferStatusComponent },
+  { path: 'forgot-password-otp', component: ForgotPasswordOtpComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent }
 ];
 
 @NgModule({

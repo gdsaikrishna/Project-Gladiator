@@ -31,6 +31,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { MustMatchDirective } from './must-match.directive';
 import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
     EnterOtpComponent,
     AdminDashboardComponent,
     MustMatchDirective,
-    FundTransferStatusComponent
+    FundTransferStatusComponent,
+    ForgotPasswordOtpComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,

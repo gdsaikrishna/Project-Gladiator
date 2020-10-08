@@ -1,6 +1,7 @@
+import { ForgotPasswordService } from './../services/forgot-password.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ForgotPassword } from '../export-class';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,17 +10,36 @@ import { ForgotPassword } from '../export-class';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  forgotPassword:ForgotPassword=new ForgotPassword();
-  constructor(private router:Router) { }
+  model: any = {};
+  userId: number;
+  userDoesntExist: boolean;
+  error: boolean;
+  message: string;
+
+  constructor(private forgotPasswordService: ForgotPasswordService, private router: Router, private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
-
-
-  onSubmit(){
-    this.router.navigate(['/enter-otp']);
-    
+  sendOtp() {
+    this.spinnerService.show();
+    this.forgotPasswordService.verifyUserIdAndSendOtp(this.model.userId).subscribe(response => {
+      if (response.statusCode === "SUCCESS") {
+        if (response.userExists) {
+          sessionStorage.setItem('userId', String(this.model.userId));
+          this.spinnerService.hide();
+          this.router.navigate(['/forgot-password-otp']);
+        }
+        else{
+          this.userDoesntExist = true;
+          this.spinnerService.hide();
+        }
+      }
+      else {
+        this.error = true;
+        this.message = response.statusMessage;
+        this.spinnerService.hide();
+      }
+    })
   }
-
 }
