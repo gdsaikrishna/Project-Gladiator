@@ -36,7 +36,7 @@ export class AddBeneficiaryComponent implements OnInit {
       if(data.statusCode==="SUCCESS"){
         this.statusMessage=data.statusMessage;
         document.getElementById("openModalButton").click();
-        this.router.navigate(['dashboard']);  
+        
       }
       else{
         this.error=true;
@@ -45,6 +45,10 @@ export class AddBeneficiaryComponent implements OnInit {
       }
     })
     
+  }
+
+  onClick($event:any){
+    this.router.navigate(['dashboard']);  
   }
 
   

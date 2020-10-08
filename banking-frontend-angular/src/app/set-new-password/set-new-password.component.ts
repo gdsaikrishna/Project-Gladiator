@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class SetNewPasswordComponent implements OnInit {
 
   model: any = {};
+  statusMessage:string;
   setNewPassword: SetNewPassword= new SetNewPassword();
   constructor(private userService: UserService , private router: Router) { }
 
@@ -23,10 +24,9 @@ export class SetNewPasswordComponent implements OnInit {
     this.setNewPassword.userId=parseInt(sessionStorage.getItem('userId'));
     this.setNewPassword.newPassword=this.model.newPassword;
     this.userService.setNewPassword(this.setNewPassword).subscribe(data => {
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
-        this.router.navigate(['home']);
-        alert("Password changed successfully");
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
       else{
         alert(data.statusMessage);
@@ -34,11 +34,9 @@ export class SetNewPasswordComponent implements OnInit {
     })
   }
 
+  onClick($event:any){
+    this.router.navigate(['home']);  
+  }
 
-
-   /* setNewPasswordForm=this.fb.group({
-     password:['',Validators.required],
-     confirmPassword:['',Validators.required]
-   });*/
 }
 

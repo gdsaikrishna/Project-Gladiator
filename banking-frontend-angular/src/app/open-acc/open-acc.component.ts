@@ -23,11 +23,9 @@ export class OpenAccComponent implements OnInit {
     
   }
   add(e){
-    //console.log(e.target.checked);
     if(e.target.checked){
       this.newAccount.perAddress=this.newAccount.resAddress;
-      //console.log(JSON.stringify(this.newAccount.perAddress));
-      //console.log(this.newAccount.netBankingRequirement);
+  
     }
     else{
       this.newAccount.perAddress=new Address();
@@ -51,10 +49,7 @@ export class OpenAccComponent implements OnInit {
   }
 
   onSubmit(){
-    //call service
-    //console.log(JSON.stringify(this.newAccount));
     this.customerService.openAcc(this.newAccount).subscribe(data => {
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
         this.statusCode=data.statusCode;
         this.statusMessage ="Registration Successful /n Service Reference Number is "+data.serviceRefNo;

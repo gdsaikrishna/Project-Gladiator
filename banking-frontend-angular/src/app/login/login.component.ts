@@ -20,7 +20,6 @@ export class LoginComponent {
   loginCheck(){
     this.SpinnerService.show();
     this.userService.login(this.userLogin).subscribe(data => {
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
         sessionStorage.setItem('userId', String(data.userId));
         sessionStorage.setItem('userName',data.userName);

@@ -1,5 +1,10 @@
-.ben{
+.wrapper{
     position: relative;
     margin-left: 25%;
     width: 72%;
 }
+
+.modal-content{
+    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+      border: .2rem solid #428BCA;
+  }
