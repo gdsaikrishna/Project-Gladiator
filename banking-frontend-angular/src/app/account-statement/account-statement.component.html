@@ -5,18 +5,18 @@
       {{transaction.date}} {{transaction.remarks}}</li>
   </ul> 
   <form (ngSubmit)="account-statementForm.valid && showDetails()" #accountStatementForm="ngForm"></form>-->
-  <div class="btn-group dropright" style="padding-bottom: 2%;">
-    <button type="button" class="btn btn-secondary">
-      Show last
-    </button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    </button>
-    <div class="dropdown-menu">
-      <button class="dropdown-item" type="button"> transactions</button>
-      <button class="dropdown-item" type="button"> Monthtransactions</button>
-      
+  <form class="form-inline" name="form" (ngSubmit)="f.form.valid && accountStatement()" #f="ngForm">
+    <div class="form-group">
+      <label for="from-date">From:</label>
+      <input type="date" class="form-control" name="fromDate" [(ngModel)]="statementDuration.fromDate" #fromDate="ngModel">
     </div>
-  </div>
+    <div class="form-group">
+      <label for="from-date">To:</label>
+      <input type="date" class="form-control" name="toDate" [(ngModel)]="statementDuration.toDate" #toDate="ngModel">
+    </div>
+    <button type="submit" class="btn btn-default" >Submit</button>
+  </form>
+  <div *ngIf="searched">
   <table class="table table-striped table-active table-responsive-md">
     <thead style="background-color: #adb0c5;">
       <tr>
@@ -43,4 +43,5 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>

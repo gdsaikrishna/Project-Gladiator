@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.lti.dto.StatementDuration;
 import com.lti.dto.StatementTransactionDto;
 import com.lti.entity.Account;
 import com.lti.entity.Transaction;
@@ -27,10 +28,10 @@ public class AccountStatementServiceImpl implements AccountStatementService{
   
   @Override
   
-  public  List<StatementTransactionDto> accountStatment(int userId){
-	  Account acc = accountRepository.findAccountByUserId(userId);
+  public  List<StatementTransactionDto> accountStatment(StatementDuration statementDuration){
+	  Account acc = accountRepository.findAccountByUserId(statementDuration.getUserId());
 	  try {
-		  List<Transaction> transactions= accountStatement.getAllRecords(acc.getAccountNumber());
+		  List<Transaction> transactions= accountStatement.getAllRecords(acc.getAccountNumber(),statementDuration.getFromDate(),statementDuration.getToDate());
 		  List<StatementTransactionDto> statementTransactionDto = new ArrayList<>();
 		  for(Transaction t: transactions) {
 			  StatementTransactionDto stateTransaction = new StatementTransactionDto();
@@ -53,9 +54,23 @@ public class AccountStatementServiceImpl implements AccountStatementService{
   }
 
 
+@Override
+public List<StatementTransactionDto> accountStatment(int userId) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 
 @Override
+public List<StatementTransactionDto> accountHistory(int userId) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+
+
+/*@Override
 public List<StatementTransactionDto> accountHistory(int userId) {
 	 Account acc = (Account) accountRepository.findAccountByUserId(userId);
 	  try {
@@ -80,7 +95,7 @@ public List<StatementTransactionDto> accountHistory(int userId) {
 	throw new ServiceException("Error occured while fetching transactions");
 	
 }
-}
+}*/
 }
 	  
 	  

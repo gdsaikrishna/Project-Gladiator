@@ -1,9 +1,9 @@
 import { AccountStatementService } from './../services/account-statement.service';
-import { StatementTransactionDto } from './../models/account-statement';
+import { StatementTransactionDto,TransactionDisplay } from './../models/account-statement';
 import { Component, OnInit } from '@angular/core';
 import { AccountSummaryStatus } from '../models/account-summary-status';
 import { AccountService } from '../services/account.service';
-
+import {StatementDuration} from '../models/statement-duration';
 @Component({
   selector: 'app-account-statement',
   templateUrl: './account-statement.component.html',
@@ -11,17 +11,20 @@ import { AccountService } from '../services/account.service';
 })
 export class AccountStatementComponent implements OnInit {
 
+  statementDuration:StatementDuration=new StatementDuration()
+
   accountstatement: StatementTransactionDto[];
   transactions: TransactionDisplay[] =[];
   userId:number;
   message: string;
   error: boolean;
+  searched:boolean;
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
 
   constructor(private service:AccountStatementService , private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.userId=parseInt(sessionStorage.getItem('userId'));
+    this.statementDuration.userId=parseInt(sessionStorage.getItem('userId'));
     this.accountService.showAccountSummary(this.userId).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.accountSummaryStatus.accountNumber = response.accountNumber;
@@ -37,7 +40,7 @@ export class AccountStatementComponent implements OnInit {
     
   }
   accountStatement(){
-    this.service.fetchStatement(this.userId).subscribe(data =>{
+    this.service.fetchStatement(this.statementDuration).subscribe(data =>{
       if(data.statusCode==="SUCCESS"){
         console.log(data);
         this.accountstatement=data.statementTransactionDto;
@@ -56,6 +59,7 @@ export class AccountStatementComponent implements OnInit {
           this.transactions.push(t);
         }
         this.transactions = this.transactions.sort((a : TransactionDisplay,b: TransactionDisplay) => (a.dateTime > b.dateTime ? -1 : 1));
+        this.searched=true;
       }
       else
          alert(data.statusMessage);
@@ -64,14 +68,3 @@ export class AccountStatementComponent implements OnInit {
 
 }
 
-export class TransactionDisplay{
-
-  public accountNumber: number;
-	public  amount: number;
-	public  transactionType: string;
-	public transactionId: number;
-	public  remark: string;
-  public  dateTime: number;
-  public check: string;
-
-}
