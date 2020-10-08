@@ -11,8 +11,7 @@ public interface BeneficiaryRepository extends GenericRepository {
 	public List<Beneficiary> fetchBeneficiaryList(int userId);
 	
 	public boolean checkIfAnyBeneficiaryExist(int userId);
-	
-	public String fetchCustomerNameFromAccountNumber(int accountNumber);
+
 
 
 }

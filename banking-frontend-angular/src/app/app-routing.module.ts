@@ -1,3 +1,6 @@
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { FundTransferStatusComponent } from './fund-transfer-status/fund-transfer-status.component';
 import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { ViewBeneficiaryComponent } from './view-beneficiary/view-beneficiary.component';
@@ -49,7 +52,10 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'fund-transfer', component: FundTransferComponent },
   { path: 'fund-transfer-status', component: FundTransferStatusComponent },
-  { path: 'forgot-password-otp', component: ForgotPasswordOtpComponent }
+  { path: 'forgot-password-otp', component: ForgotPasswordOtpComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent }
 ];
 
 @NgModule({

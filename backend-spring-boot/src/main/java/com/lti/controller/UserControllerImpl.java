@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.ChangePassword;
 import com.lti.dto.RegisterIb;
+import com.lti.dto.SetNewPassword;
 import com.lti.dto.Status;
 import com.lti.dto.Status.StatusCode;
 import com.lti.dto.UserLogin;
@@ -40,7 +41,6 @@ public class UserControllerImpl {
 		catch (ServiceException e) {
 			UserLoginStatus userLoginStatus = new UserLoginStatus();
 			userLoginStatus.setStatusCode(StatusCode.FAILURE);
-			;
 			userLoginStatus.setStatusMessage(e.getMessage());
 			return userLoginStatus;
 		}
@@ -86,5 +86,20 @@ public class UserControllerImpl {
 		return status;
 
 	}
+	
+	
+	@PostMapping("/set-new-password")
+	public @ResponseBody Status setNewPassword(@RequestBody SetNewPassword setNewPassword) {
+		boolean check = userService.setNewPassword(setNewPassword.getUserId(), setNewPassword.getNewPassword());
+		Status status = new Status();
+		if (check) {
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Password change successful");
+		} else {
+			status.setStatusCode(StatusCode.FAILURE);
+			status.setStatusMessage("Password change failed");
+		}
+		return status;
 
+	}
 }

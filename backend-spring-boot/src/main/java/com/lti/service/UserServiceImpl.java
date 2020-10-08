@@ -89,4 +89,17 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public boolean setNewPassword(int userId, String newPassword) {
+		if(userRepository.isUserExists(userId)) {
+			User user = userRepository.fetchById(User.class, userId);
+			user.setUserPassword(newPassword);
+			userRepository.save(user);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 }

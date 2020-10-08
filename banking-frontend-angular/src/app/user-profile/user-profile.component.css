@@ -1,12 +1,20 @@
 .wrapper {
     /* background-color: #ffe2e2; */
     border-radius: 6px;
-    padding: 14px;
+    padding: 0%;
     width: 50%;
     position: relative;
+    border: .2rem solid #428BCA;
 }
 
-.wrapper card{
+.card{
     margin-top: 0px;
     padding: 0px;
+    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    border-style: none;
+    
+}
+
+.card-text{
+    padding: 4px;
 }
