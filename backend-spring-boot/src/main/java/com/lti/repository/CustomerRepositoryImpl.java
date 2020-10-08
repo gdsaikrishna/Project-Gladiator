@@ -26,8 +26,5 @@ public class CustomerRepositoryImpl extends GenericRepositoryImpl implements Cus
 				.setParameter("panCard", panCard)
 				.getSingleResult() == 1 ?true : false;
 	}
-	
-	
-
 
 }

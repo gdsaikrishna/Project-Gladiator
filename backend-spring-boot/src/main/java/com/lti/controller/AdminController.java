@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.AdminApproval;
 import com.lti.dto.AdminLogin;
 import com.lti.dto.AdminLoginStatus;
+import com.lti.dto.AdminSearchCustomerStatus;
 import com.lti.dto.CustomerRequestStatus;
 import com.lti.dto.Status;
 import com.lti.dto.Status.StatusCode;
 import com.lti.entity.Admin;
+import com.lti.entity.Customer;
 import com.lti.exception.ServiceException;
 import com.lti.service.AdminService;
 
@@ -29,7 +32,6 @@ public class AdminController {
 	public AdminLoginStatus login(@RequestBody AdminLogin login) {
 		try {
 			Admin admin = adminService.login(login.getAdminId(), login.getPassword());
-
 			AdminLoginStatus loginStatus = new AdminLoginStatus();
 			loginStatus.setStatusCode(StatusCode.SUCCESS);
 			loginStatus.setStatusMessage("Login Successful");
@@ -73,6 +75,23 @@ public class AdminController {
 			status.setStatusCode(StatusCode.FAILURE);
 			status.setStatusMessage(e.getMessage());
 			e.printStackTrace();
+			return status;
+		}
+	}
+
+	@GetMapping(path = "/search-customer")
+	public AdminSearchCustomerStatus searchCustomer(@RequestParam("serviceReferenceNumber") int servRefNo) {
+		try {
+			Customer customer = adminService.searchCustomerByServRefNo(servRefNo);
+			AdminSearchCustomerStatus status = new AdminSearchCustomerStatus();
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Searching for customer...");
+			status.setCustomer(customer);
+			return status;
+		} catch (Exception e) {
+			AdminSearchCustomerStatus status = new AdminSearchCustomerStatus();
+			status.setStatusCode(StatusCode.SUCCESS);
+			status.setStatusMessage("Could not find customer");
 			return status;
 		}
 	}

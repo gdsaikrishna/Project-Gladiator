@@ -103,4 +103,14 @@ public class AdminServiceImpl implements AdminService {
 			throw new ServiceException("Could not approve");
 		}
 	}
+	
+	@Override
+	public Customer searchCustomerByServRefNo(int servRefNo) {
+		try {
+			Customer customer=customerRepository.fetchById(Customer.class, servRefNo);
+			return customer;
+		} catch (Exception e) {
+			throw new ServiceException("Invalid service ref. no.");
+		}
+	}
 }
