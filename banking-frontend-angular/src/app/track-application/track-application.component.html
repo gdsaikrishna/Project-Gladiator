@@ -1,16 +1,19 @@
 <div class="text-center">
     <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
 </div>
-<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" > Home</button></a></div>
+<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit"> Home</button></a>
+</div>
 <div class="wrapper container" style="width: 28%;">
     <p class="h3">Track Application</p>
     <br>
     <form (ngSubmit)="trackApplicationForm.valid && checkApplicationStatus()" #trackApplicationForm="ngForm">
         <div class="form-group ">
             <label>Service Reference Number</label>
-            <input class="form-control" type="text" name="adminId" placeholder="Your 4-digit service reference number"
-                [(ngModel)]=serviceRefNo #refNo="ngModel" required pattern="^[0-9]{4}$">
-            <div class="alert alert-danger"
+            <input class="form-control" type="text" name="refNo" placeholder="Your 4-digit service reference number"
+                [(ngModel)]=serviceRefNo #refNo="ngModel"
+                [ngClass]="{ 'is-invalid': trackApplicationForm.submitted && refNo.invalid }" required
+                pattern="^[0-9]{4}$">
+            <div class="invalid-feedback"
                 *ngIf="trackApplicationForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
                 <div *ngIf="refNo.errors.required">Service reference number is required</div>
                 <div *ngIf="refNo.errors.pattern">Invalid service reference number</div>
@@ -27,7 +30,8 @@
         Wohoo! Your application was approved.
     </div>
     <div *ngIf="status == 'W'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated"
-        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 94%" #notApproved>Hold tight! Your application is pending for approval. You will be notified once approved.
+        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 94%" #notApproved>Hold
+        tight! Your application is pending for approval. You will be notified once approved.
     </div>
     <div *ngIf="status == 'R'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-danger"
         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 94%">
@@ -35,3 +39,6 @@
     </div>
     <div class="alert alert-warning" role="alert" *ngIf="error">{{statusMessag}}</div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>
