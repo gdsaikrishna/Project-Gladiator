@@ -25,10 +25,8 @@ export class RegisterIbComponent implements OnInit {
     this.register.userPassword=this.model.userPassword;
     this.register.transactionPassword=this.model.transactionPassword;
     this.register.otp=this.model.otp;
-    //console.log(this.register);
     this.SpinnerService.show();
     this.userService.register(this.register).subscribe(data => {
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
        
         this.SpinnerService.hide(); 
@@ -47,7 +45,6 @@ export class RegisterIbComponent implements OnInit {
   }
   onClick($event:any){
     $event.preventDefault();
-    console.log(this.model.userId);
     if(typeof this.model.userId === "undefined" || !this.model.userId){
         this.error=true;
         this.message = "UserId required to generate OTP"
@@ -56,7 +53,6 @@ export class RegisterIbComponent implements OnInit {
     }
     this.SpinnerService.show();
     this.otpService.generateOtpBanking(this.model.userId).subscribe(data=>{
-      console.log(data);
       if(data.statusCode=="SUCCESS"){
         this.SpinnerService.hide(); 
         this.statusMessage="OTP has been sent to your registered Email ID";

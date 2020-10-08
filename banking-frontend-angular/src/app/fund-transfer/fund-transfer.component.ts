@@ -27,7 +27,6 @@ export class FundTransferComponent implements OnInit {
      private bnIdle: BnNgIdleService ,private SpinnerService: NgxSpinnerService) {
       this.bnIdle.startWatching(300).subscribe((res) => {
         if(res) {
-          console.log("Session Expired");
           this.router.navigate(['session-expired']);
         }
       })
@@ -79,7 +78,7 @@ export class FundTransferComponent implements OnInit {
       else{
         this.SpinnerService.hide(); 
         sessionStorage.setItem('transactionStatus',data.statusCode);
-        alert(data.statusMessage);
+
       }
     })
   }
@@ -87,7 +86,6 @@ export class FundTransferComponent implements OnInit {
     this.service.showBeneficiary(this.userId).subscribe(data =>{
       if(data.statusCode==="SUCCESS"){
         this.beneficiaries=data.beneficiaryDto;
-        console.log(this.beneficiaries)
       }
       else
         alert(data.statusMessage);
@@ -98,7 +96,6 @@ export class FundTransferComponent implements OnInit {
     $event.preventDefault();
     this.SpinnerService.show();
     this.otpService.generateOtp().subscribe(data=>{
-      console.log(data);
       if(data.statusCode=="SUCCESS"){
         this.SpinnerService.hide(); 
         alert("OTP has been sent to your registered Email ID");

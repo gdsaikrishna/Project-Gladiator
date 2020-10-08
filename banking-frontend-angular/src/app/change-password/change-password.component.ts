@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
   model: any = {};
+  statusMessage:string;
   changePassword: ChangePassword= new ChangePassword();
   constructor(private userService: UserService , private router: Router) { }
 
@@ -24,11 +25,13 @@ export class ChangePasswordComponent implements OnInit {
     this.userService.changePassword(this.changePassword).subscribe(data => {
       console.log(data);
       if(data.statusCode === "SUCCESS"){
+        this.statusMessage="Passwords changed successfully";
+        document.getElementById("openModalButton").click();
         this.router.navigate(['account-summary']);
-        alert("Passwords changed successfully");
       }
       else{
-        alert(data.statusMessage);
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
     })
   }

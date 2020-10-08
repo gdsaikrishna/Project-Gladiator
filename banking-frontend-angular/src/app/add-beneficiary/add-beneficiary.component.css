@@ -11,7 +11,6 @@ body {
 }
 
 .wrapper {
-    /* background-color: #ecf4f3; */
     position: relative;
     background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
     border: .2rem solid #428BCA;
@@ -21,7 +20,11 @@ body {
     padding: 14px;
     width: 600px;
 }
-
+.modal-content{
+    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+      border: .2rem solid #428BCA;
+  }
+  
 
 
 input[type="text"], input[type="password"] {

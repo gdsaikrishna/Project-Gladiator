@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ForgotPassword } from '../export-class';
 
@@ -16,10 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*forgotPasswordForm=this.fb.group({
-    userId:['',[Validators.required]],
-    otp:['',[Validators.required,Validators.minLength(6),Validators.maxLength(6)]]
-  })*/
+
 
   onSubmit(){
     this.router.navigate(['/enter-otp']);
