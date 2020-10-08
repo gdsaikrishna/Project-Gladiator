@@ -28,7 +28,7 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
     }
 }
 
-/*export function ShouldMatch(controlName: string, matchingControlName:string) {
+export function ShouldMatch(controlName: string, matchingControlName:string) {
     return (formGroup: FormGroup) => {
         const newPassword = formGroup.controls[controlName];
         const cnewPassword = formGroup.controls[matchingControlName];
@@ -46,4 +46,4 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
             cnewPassword.setErrors(null);
         }
     }
-}*/
+}
