@@ -13,6 +13,10 @@ body {
     border-radius: 10px;
     padding: 14px;
 }
+.modal-content{
+  background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    border: .2rem solid #428BCA;
+}
 
 a {
     text-decoration: none;

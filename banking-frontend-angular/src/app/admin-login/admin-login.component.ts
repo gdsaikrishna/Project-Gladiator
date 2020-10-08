@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { AdminService } from './../services/admin.service';
 import { AdminLogin } from './../models/admin-login';
@@ -14,16 +15,19 @@ export class AdminLoginComponent {
   message: string;
   error: boolean;
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router, private spinnerService: NgxSpinnerService) { }
 
   loginCheck() {
+    this.spinnerService.show();
     this.adminService.login(this.adminLogin).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         sessionStorage.setItem('adminId', String(response.adminId));
         sessionStorage.setItem('adminName', response.name);
+        this.spinnerService.hide();  
         this.router.navigate(['admin-dashboard']);
       }
       else {
+        this.spinnerService.hide();  
         this.error = true;
         this.message = response.statusMessage;
       }

@@ -17,7 +17,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./fund-transfer.component.css']
 })
 export class FundTransferComponent implements OnInit {
-
+  statusMessage: string;
+  statusCode : string;
   transaction: TransactionDto = new TransactionDto();
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
   beneficiaries: BeneficiaryDetails[];

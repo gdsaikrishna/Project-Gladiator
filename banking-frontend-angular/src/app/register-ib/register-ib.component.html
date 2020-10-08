@@ -7,6 +7,26 @@
         <a href="#" routerLink="/admin-login">Admin Login</a>
     </div>
 </div>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Status</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{statusMessage}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
 <div class="wrapper container center">
     <p class="h3">Register for Internet Banking</p>
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
@@ -23,13 +43,16 @@
             </div>
         </div>
         <div class="form-group">
-            <label> Set Login Password</label>
+            <label> Set Login Password </label>
             <input class="form-control" type="password" name="userPassword" 
             placeholder="Enter Password" [(ngModel)]="model.userPassword" #userPassword="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && userPassword.invalid }" required minlength="8">
+            [ngClass]="{ 'is-invalid': f.submitted && userPassword.invalid }" required minlength="8"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,})">
+            <p class="font-italic"><small>*Atleast 8 characters long with UpperCase ,LowerCase ,digit ,special characters</small></p>
             <div *ngIf="f.submitted && userPassword.invalid" class="invalid-feedback">
                 <div *ngIf="userPassword.errors.required">Password is required</div>
                 <div *ngIf="userPassword.errors.minlength">Password must be at least 8 characters</div>
+                <div *ngIf="userPassword.errors.pattern">Password pattern is not valid</div>
             </div>
         </div>
         <div class="form-group">

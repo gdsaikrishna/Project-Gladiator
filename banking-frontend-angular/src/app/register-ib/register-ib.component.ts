@@ -14,6 +14,7 @@ export class RegisterIbComponent implements OnInit {
   register: RegisterIb = new RegisterIb();
   message: string;
   error: boolean;
+  statusMessage: string;
   model: any = {};
   constructor(private userService: UserService , private router: Router ,private SpinnerService: NgxSpinnerService,
     private otpService:GenerateOtpService) { }
@@ -29,13 +30,16 @@ export class RegisterIbComponent implements OnInit {
     this.userService.register(this.register).subscribe(data => {
       console.log(data);
       if(data.statusCode === "SUCCESS"){
-        this.router.navigate(['home']);
+       
         this.SpinnerService.hide(); 
-        alert("Registration for Internet Banking Successful. User your Id and password to experience our bank services");
+        this.statusMessage="Registration for Internet Banking Successful.\n User your Id and password to experience our bank services";
+        document.getElementById("openModalButton").click();
+        this.router.navigate(['home']);
       }
       else{
         this.SpinnerService.hide(); 
-        alert(data.statusMessage);
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
       this.SpinnerService.hide(); 
     })
@@ -43,9 +47,11 @@ export class RegisterIbComponent implements OnInit {
   }
   onClick($event:any){
     $event.preventDefault();
-    if(typeof this.model.userId!='undefined' && this.model.userId){
+    console.log(this.model.userId);
+    if(typeof this.model.userId === "undefined" || !this.model.userId){
         this.error=true;
         this.message = "UserId required to generate OTP"
+        return;
 
     }
     this.SpinnerService.show();
@@ -53,11 +59,13 @@ export class RegisterIbComponent implements OnInit {
       console.log(data);
       if(data.statusCode=="SUCCESS"){
         this.SpinnerService.hide(); 
-        alert("OTP has been sent to your registered Email ID");
+        this.statusMessage="OTP has been sent to your registered Email ID";
+        document.getElementById("openModalButton").click();
       }
       else{
         this.SpinnerService.hide(); 
-        alert("OTP Generation Failed!!Click to try again");
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
       this.SpinnerService.hide(); 
     })

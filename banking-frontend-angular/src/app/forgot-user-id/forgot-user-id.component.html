@@ -1,6 +1,7 @@
 <div class="text-center">
     <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
 </div>
+<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" >Home</button></a></div>
 <div class="wrapper container" style="width: 28%;">
     <h4>Trouble Logging In - Forgot User ID?</h4>
     <br>
@@ -9,8 +10,8 @@
     <form (ngSubmit)="f.valid && checkAccountNumber()" #f="ngForm">
         <div class="form-group">
             <label for="accountNumber">Account Number</label>
-            <input class="form-control" type="text" name="accountNumber" placeholder="Your 7-digit account number" [(ngModel)]="model.accountNumber" #accountNumber="ngModel" required pattern="^[0-9]{7}$">
-            <div class="alert alert-danger" *ngIf="f.submitted && accountNumber.invalid && (accountNumber.dirty || accountNumber.touched)">
+            <input class="form-control" type="text" name="accountNumber" placeholder="Your 7-digit account number" [(ngModel)]="model.accountNumber" #accountNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && accountNumber.invalid }" required pattern="^[0-9]{7}$">
+            <div class="invalid-feedback" *ngIf="f.submitted && accountNumber.invalid && (accountNumber.dirty || accountNumber.touched)">
                 <div *ngIf="accountNumber.errors.required">Account number is required</div>
                 <div *ngIf="accountNumber.errors.pattern">Account number must be of 7 digits</div>
             </div>

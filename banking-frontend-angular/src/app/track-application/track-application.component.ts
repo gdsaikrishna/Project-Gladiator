@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { TrackApplicationService } from './../services/track-application.service';
 import { Component } from '@angular/core';
 
@@ -14,15 +15,18 @@ export class TrackApplicationComponent {
   statusMessage: string;
   error: boolean;
 
-  constructor(private trackApplicationService: TrackApplicationService) { }
+  constructor(private trackApplicationService: TrackApplicationService, private spinnerService: NgxSpinnerService) { }
 
   checkApplicationStatus() {
+    this.spinnerService.show();
     this.trackApplicationService.getApplicationStatus(this.serviceRefNo).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
+        this.spinnerService.hide();
         this.submitted = true;
         this.status = response.currentStatus;
       }
       else {
+        this.spinnerService.hide();
         this.error = true;
         this.statusMessage = response.statusMessage;
       }

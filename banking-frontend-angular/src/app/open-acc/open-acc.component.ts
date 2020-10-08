@@ -3,7 +3,7 @@ import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../models/address';
 import { Router } from '@angular/router';
-
+declare var $: any;
 @Component({
   selector: 'app-open-acc',
   templateUrl: './open-acc.component.html',
@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 export class OpenAccComponent implements OnInit {
 
   newAccount : Customer= new Customer();
-  constructor(private customerService: CustomerService , private router: Router) { }
+  statusMessage: string;
+  statusCode:string;
+  constructor(
+    private customerService: CustomerService , private router: Router) { }
   ngOnInit() {
     this.newAccount.netBankingRequirement="N";
     this.newAccount.debitCardRequirement="N";
@@ -53,14 +56,21 @@ export class OpenAccComponent implements OnInit {
     this.customerService.openAcc(this.newAccount).subscribe(data => {
       console.log(data);
       if(data.statusCode === "SUCCESS"){
-        this.router.navigate(['home']);
-        alert("Registration Successful and your Service Reference Number is "+data.serviceRefNo);
+        this.statusCode=data.statusCode;
+        this.statusMessage ="Registration Successful /n Service Reference Number is "+data.serviceRefNo;
+        document.getElementById("openModalButton").click();
+        
+        
       }
       else{
-        alert(data.statusMessage);
+        this.statusMessage=data.statusMessage;
+        document.getElementById("openModalButton").click();
       }
     })
 
 
   } 
+  onClick($event:any){
+    this.router.navigate(['home']);
+  }
 }
