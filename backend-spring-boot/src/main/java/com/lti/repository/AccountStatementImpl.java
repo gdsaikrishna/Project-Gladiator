@@ -13,7 +13,7 @@ public class AccountStatementImpl extends GenericRepositoryImpl implements Accou
 	public List<Transaction> getAllRecords(int accNumber) {
 		return(List<Transaction>)
 				entityManager
-				.createQuery("select t from Transaction t where t.fromAccountNumber=:accNumber or t.toAccountNumber=:accNumber")
+				.createQuery("select t from Transaction t where t.debitAccount.accountNumber =:accNumber or t.creditAccount.accountNumber=:accNumber")
                 .setParameter("accNumber", accNumber)
                 .getResultList();
 	}

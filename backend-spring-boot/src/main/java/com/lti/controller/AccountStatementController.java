@@ -23,8 +23,8 @@ public class  AccountStatementController {
 	@Autowired
 	private AccountStatementService accountStatementService;
 
-	@GetMapping(path = "/AccountStatement/{userId}")
-	public AccountStatementDto  getStatement(@PathVariable(value = "accountNumber") int userId) {
+	@GetMapping(path = "/account-statement")
+	public AccountStatementDto  getStatement(@RequestParam(name="userId") int userId) {
 		try {
 			AccountStatementDto accountstate = new AccountStatementDto();
 			accountstate.setStatusCode(StatusCode.SUCCESS);
@@ -35,7 +35,7 @@ public class  AccountStatementController {
 		} catch (ServiceException e) {
 			AccountStatementDto accountstate = new AccountStatementDto();
 			accountstate.setStatusCode(StatusCode.FAILURE);
-			accountstate.setStatusMessage("SuccessFail");
+			accountstate.setStatusMessage(e.getMessage());
 			accountstate.setStatementTransactionDto(null);
 			return accountstate;
           
