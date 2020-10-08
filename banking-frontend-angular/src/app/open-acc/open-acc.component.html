@@ -1,6 +1,25 @@
 <!--<div class="text-center">
     <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="180" height="180">
 </div> -->
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{statusCode}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{statusMessage}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClick($event)">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 <div class="header">
     <a href="#">HFDC Bank</a>
     <div style="float: right;">
@@ -145,7 +164,7 @@
                     <div class="col-sm-6">
                         <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dateOfBirth"
                             [(ngModel)]="newAccount.dateOfBirth" #dateOfBirth="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }" required date>
+                            [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }" required date max="2002-01-01">
                         <div *ngIf="f.submitted && dateOfBirth.invalid" class="invalid-feedback">
                             <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
                         </div>

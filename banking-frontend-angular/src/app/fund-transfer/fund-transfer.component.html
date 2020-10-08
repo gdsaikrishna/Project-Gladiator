@@ -1,82 +1,22 @@
-<!-- <div class="text">
-  <h3>
-    Fund Transfer
-  </h3>
-</div>
-<div class="wrapper">
-  <div class="card" style="width:60%">
-    <form class="form" #transaction="ngForm" (ngSubmit)="send(transaction)">
-      <div class="form-group row">
-        <label for="From_Account" class="col-sm-4 col-form-label">From Account <span style="color:red">*</span></label>
-        <div class="col-sm3">
-          <input type="text" class="form-control" id="To_Account" [value]="AccNo" disabled>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{statusCode}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{statusMessage}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClick($event)">Close</button>
         </div>
       </div>
-
-      <div class="form-group row">
-        <label for="To_Account" class="col-sm-4 col-form-label">To Account <span style="color:red">*</span></label>
-        <div class="btn-group">
-          <select class="form-control" name="beneficiary" ngModel>
-            <option [value]="addto[1]" *ngFor="let addto of add">{{addto[0]}}</option>
-          </select>
-
-        </div>
-        <div style="margin-left:10px">
-          <a routerLink="/addbeneficiary"> <button type="button" class="btn btn-primary">Add Beneficiary </button> </a>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="Amount" class="col-sm-4 col-form-label">Amount <span style="color:red">*</span></label>
-        <div class="col-sm3">
-          <input type="number" class="form-control" placeholder="Enter The Amount" name="amount" ngModel>
-        </div>
-      </div>
-      <div class="error-messages">
-        <ng-container *ngFor="let error of error_messages.lname">
-          <div class="error-message"
-            *ngIf="loginForm.get('lname').hasError(error.type) && (loginForm.get('lname').dirty || loginForm.get('lname').touched)">
-            {{ error.message }}
-          </div>
-        </ng-container>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label">Transaction Type <span style="color:red">*</span></label>
-        <div class="btn-group">
-          <select class="form-control" name="transactionType" ngModel>
-            <option value="NEFT">NEFT</option>
-            <option value="IMPS">IMPS</option>
-            <option value="RTGS">RTGS</option>
-          </select>
-        </div>
-      </div>
-
-
-
-      <div class="form-group row">
-        <label for="Remarks" class="col-sm-4 col-form-label">Transaction Password<span
-            style="color:red">*</span></label>
-        <div class="col-sm3">
-          <input type="password" class="form-control" placeholder="Enter Pin" name="pin" ngModel>
-        </div>
-      </div>
-      <div class="error-messages">
-        <ng-container *ngFor="let error of error_messages.rname">
-          <div class="error-message"
-            *ngIf="loginForm.get('rname').hasError(error.type) && (loginForm.get('rname').dirty || loginForm.get('rname').touched)">
-            {{ error.message }}
-          </div>
-        </ng-container>
-      </div>
-
-      <div id="mydiv">
-        <button type="submit" class="btn btn-primary">Transfer</button>
-      </div>
-
-    </form>
-
+  
+    </div>
   </div>
-</div> -->
 <app-dashboard></app-dashboard>
 <div class="wrapper container center">
   <p class="h3">Fund Transfer</p>
