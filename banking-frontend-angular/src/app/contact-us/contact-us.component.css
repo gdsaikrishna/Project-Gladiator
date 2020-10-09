@@ -6,6 +6,10 @@
     top: 0;
     font-weight: 500;
   }
+
+  .wrapper{
+    margin-bottom: 20px;
+  }
   
   .header a {
     float: left;

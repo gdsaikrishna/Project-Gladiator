@@ -19,7 +19,7 @@ export class AccountSummaryComponent implements OnInit {
   error: boolean;
 
   constructor(private accountService: AccountService , private bnIdle: BnNgIdleService ,private router: Router) { 
-    this.bnIdle.startWatching(300).subscribe((res) => {
+    this.bnIdle.startWatching(1500).subscribe((res) => {
       if(res) {
         console.log("Session Expired");
         this.router.navigate(['session-expired']);

@@ -61,7 +61,4 @@ public class OtpServiceImpl implements OtpService {
 		}
 		
 	}
-	
-	
-
 }
