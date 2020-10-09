@@ -25,11 +25,11 @@ public class Transaction {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="debt_ac_no")
-	private Account debitAccount; // FK
+	private Account debitAccount; 
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="credit_ac_no")
-	private Account creditAccount; // FK
+	private Account creditAccount; 
 	
 	@Column(name = "tx_amount")
 	private double amount;

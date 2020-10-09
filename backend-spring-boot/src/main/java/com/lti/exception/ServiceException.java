@@ -1,5 +1,6 @@
 package com.lti.exception;
 
+
 public class ServiceException extends RuntimeException{
 
 	public ServiceException() {

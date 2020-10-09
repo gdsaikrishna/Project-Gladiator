@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lti.dto.Status;
 import com.lti.dto.TransactionDto;
 import com.lti.dto.TransactionSuccessDto;
 import com.lti.dto.TransactionSuccessfulDto;
-import com.lti.entity.Transaction;
 import com.lti.dto.Status.StatusCode;
 import com.lti.exception.ServiceException;
 import com.lti.service.TransactionService;

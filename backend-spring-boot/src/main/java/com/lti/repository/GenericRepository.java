@@ -1,6 +1,5 @@
 package com.lti.repository;
 
-import org.springframework.transaction.annotation.Transactional;
 
 public interface GenericRepository {
 

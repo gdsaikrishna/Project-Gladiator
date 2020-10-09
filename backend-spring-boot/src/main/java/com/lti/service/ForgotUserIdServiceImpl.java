@@ -13,8 +13,6 @@ public class ForgotUserIdServiceImpl implements ForgotUserIdService {
 	@Autowired
 	private AccountRepository repository;
 	
-	@Autowired
-	private OtpService otpService;
 	
 	@Autowired
 	private EmailService emailService;

@@ -23,6 +23,6 @@ public class AdminRepositoryImpl extends GenericRepositoryImpl implements AdminR
 
 	@Override
 	public List<Customer> fetchPendingRequests() {
-		return entityManager.createQuery("select c from Customer c where c.isApproved = :apvd").setParameter("apvd", "W").getResultList();
+		return entityManager.createQuery("select c from Customer c where c.isApproved = :apvd",Customer.class).setParameter("apvd", "W").getResultList();
 	}
 }
