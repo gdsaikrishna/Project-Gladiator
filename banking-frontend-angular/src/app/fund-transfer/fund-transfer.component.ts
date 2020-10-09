@@ -98,11 +98,13 @@ export class FundTransferComponent implements OnInit {
     this.otpService.generateOtp().subscribe(data=>{
       if(data.statusCode=="SUCCESS"){
         this.SpinnerService.hide(); 
-        alert("OTP has been sent to your registered Email ID");
+        this.statusMessage="OTP has been sent to your registered Email ID";
+        document.getElementById("openModalButton").click();
       }
       else{
         this.SpinnerService.hide(); 
-        alert("OTP Generation Failed!!Click to try again");
+        this.statusMessage="OTP Generation Failed!!Click to try again";
+        document.getElementById("openModalButton").click();
       }
     })
   }
