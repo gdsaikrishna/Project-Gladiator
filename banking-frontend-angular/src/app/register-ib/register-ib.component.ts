@@ -30,14 +30,13 @@ export class RegisterIbComponent implements OnInit {
       if(data.statusCode === "SUCCESS"){
        
         this.SpinnerService.hide(); 
-        this.statusMessage="Registration for Internet Banking Successful.\n Use your Id and password to experience our bank services";
-        document.getElementById("openModalButton").click();
+        alert("Registration for Internet Banking Successful. Use your Id and password to experience our bank services");
+        
         this.router.navigate(['home']);
       }
       else{
         this.SpinnerService.hide(); 
-        this.statusMessage=data.statusMessage;
-        document.getElementById("openModalButton").click();
+        alert(data.statusMessage);
       }
       this.SpinnerService.hide(); 
     })

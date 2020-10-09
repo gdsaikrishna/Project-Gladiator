@@ -52,7 +52,7 @@ export class OpenAccComponent implements OnInit {
     this.customerService.openAcc(this.newAccount).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         this.statusCode=data.statusCode;
-        this.statusMessage ="Registration Successful /n Service Reference Number is "+data.serviceRefNo;
+        this.statusMessage ="Registration Successful ,Service Reference Number is "+data.serviceRefNo;
         document.getElementById("openModalButton").click();
         
         

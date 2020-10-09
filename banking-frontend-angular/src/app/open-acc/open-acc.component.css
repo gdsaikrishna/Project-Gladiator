@@ -36,6 +36,10 @@ input{
     background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
    
 }
+.modal-content{
+  background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    border: .2rem solid #428BCA;
+}
 .pos{
     margin-left: 10px;
 }

@@ -78,6 +78,7 @@ export class FundTransferComponent implements OnInit {
       else{
         this.SpinnerService.hide(); 
         sessionStorage.setItem('transactionStatus',data.statusCode);
+        alert(data.statusMessage);
 
       }
     })
@@ -87,8 +88,7 @@ export class FundTransferComponent implements OnInit {
       if(data.statusCode==="SUCCESS"){
         this.beneficiaries=data.beneficiaryDto;
       }
-      else
-        alert(data.statusMessage);
+        
     })
   }
 
@@ -106,6 +106,7 @@ export class FundTransferComponent implements OnInit {
       }
     })
   }
+  
 
   goToAddBeneficiary($event:any){
     $event.preventDefault();

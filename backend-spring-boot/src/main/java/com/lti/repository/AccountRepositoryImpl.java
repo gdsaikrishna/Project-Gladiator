@@ -20,14 +20,6 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 	}
 
 	@Override
-	public <T> T findUserByAccountNoAndOtp(int accountNumber, int otp) {
-		return (T) entityManager
-				.createQuery(
-						"select distinct u from User u join u.accounts.accountNumber a where a.accountNumber = :acno")
-				.setParameter("acno", accountNumber).getSingleResult();
-	}
-
-	@Override
 	public Account findAccountByUserId(int userId) {
 		return (Account) entityManager.createQuery("select a from Account a where a.user.id= :userId")
 				.setParameter("userId", userId).getSingleResult();
@@ -48,18 +40,9 @@ public class AccountRepositoryImpl extends GenericRepositoryImpl implements Acco
 				.setParameter("accountNumber", accountNumber).getSingleResult();
 	}
 
-	/*
-	 * @Override public int returnUserIdWithAccountNumber(int accountNumber) {
-	 * return (int) entityManager
-	 * .createQuery(" select u.id from Account a join a.user u where a.accountNumber = :accountNumber"
-	 * ) .setParameter("accountNumber", accountNumber) .getSingleResult();
-	 * 
-	 * }
-	 */
-
 	@Override
 	public List<Account> fetchAccountsByUserId(int accountNumber) {
-		return entityManager.createQuery("select a from Account a where a.user = :id").setParameter("id", accountNumber)
+		return entityManager.createQuery("select a from Account a where a.user = :id",Account.class).setParameter("id", accountNumber)
 				.getResultList();
 	}
 
