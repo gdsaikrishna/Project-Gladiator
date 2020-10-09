@@ -40,7 +40,7 @@ public class EmailServiceImpl implements EmailService {
 				+ ". Your request for opening an account was accepted. User ID: " + userId + ". Account Number: "
 				+ accountNumber
 				+ ". If you have opted for Internet Banking, go to: http://localhost:4200/register-ib or visit our website.");
-		mailSender.send(message);
+		mailSender.send(message); 
 	}
 
 	@Override
