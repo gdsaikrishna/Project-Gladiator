@@ -20,7 +20,6 @@ export class AddBeneficiaryComponent implements OnInit {
   constructor(private service:AddBeneficiaryService,private router:Router , private bnIdle: BnNgIdleService ) {
     this.bnIdle.startWatching(300).subscribe((res) => {
       if(res) {
-        console.log("Session Expired");
         this.router.navigate(['session-expired']);
       }
     })

@@ -15,25 +15,14 @@ public class AccountStatementImpl extends GenericRepositoryImpl implements Accou
 		System.out.println("Asili");
 		return(List<Transaction>)
 				entityManager
-				.createQuery("select t from Transaction t where (t.debitAccount.accountNumber=:accountNumber or t.creditAccount.accountNumber=:accountNumber) and t.transactionDateTime between to_date(:fromDate) and to_date(:toDate)")
+				.createQuery("select t from Transaction t where (t.debitAccount.accountNumber=:accountNumber or t.creditAccount.accountNumber=:accountNumber) and t.transactionDateTime between to_date(:fromDate) and to_date(:toDate)",Transaction.class)
                 .setParameter("accountNumber", accNumber)
                 .setParameter("fromDate", fromDate)
                 .setParameter("toDate", toDate)
                 .getResultList();
 	}
 
-	@Override
-	public List<Transaction> getAccountHistory(int accNumber) {
-		return(List<Transaction>)
-		       entityManager
-		      .createQuery("select t from Transaction t where (t.fromAccountNumber=:accNumber or t.toAccountNumber=:accNumber) and t.transactionDate between :fromDate and :toDate")
-		      .setParameter("accNumber", accNumber)
-		      .getResultList();
 		
-		
-	}
-	
-	
 	
 	
 

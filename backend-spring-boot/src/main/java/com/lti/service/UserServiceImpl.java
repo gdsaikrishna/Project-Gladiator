@@ -8,12 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.lti.entity.Account;
-import com.lti.entity.Customer;
 import com.lti.entity.ErrorLogin;
 import com.lti.entity.User;
 import com.lti.exception.ServiceException;
-import com.lti.repository.AccountRepository;
 import com.lti.repository.ErrorLoginRepository;
 import com.lti.repository.UserRepository;
 
@@ -23,9 +20,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private AccountRepository accountRepository;
+
 	
 	@Autowired
 	private ErrorLoginRepository errorLoginRepository;

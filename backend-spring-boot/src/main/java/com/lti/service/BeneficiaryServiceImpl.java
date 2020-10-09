@@ -16,7 +16,6 @@ import com.lti.entity.User;
 import com.lti.exception.ServiceException;
 import com.lti.repository.AccountRepository;
 import com.lti.repository.BeneficiaryRepository;
-import com.lti.repository.GenericRepository;
 
 @Service
 @Transactional
