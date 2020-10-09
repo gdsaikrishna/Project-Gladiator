@@ -35,6 +35,7 @@ import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-passwor
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { MatchingDirective } from './matching.directive';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     ForgotPasswordOtpComponent,
     AboutUsComponent,
     ContactUsComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    MatchingDirective
   ],
   imports: [
     BrowserModule,

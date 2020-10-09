@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 
 export function MustMatch(controlName: string, matchingControlName: string, txName: string, ctxName: string) {
     return (formGroup: FormGroup) => {
@@ -8,7 +8,7 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
         const ctxPassword = formGroup.controls[ctxName];
 
         if (!userPassword || !cuserPassword || !txPassword || !ctxPassword) {
-          return null;
+            return null;
         }
 
         if (cuserPassword.errors && !cuserPassword.errors.mustMatch && ctxPassword.errors && !ctxPassword.errors.mustMatch) {
@@ -25,25 +25,42 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
         } else {
             ctxPassword.setErrors(null);
         }
+        if (!userPassword) {
+            return null;
+        }
+        /*
+        const regex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}');
+        const valid = regex.test(controlName);
+        return valid ? null : { invalidPassword: true };*/
     }
 }
 
-/*export function ShouldMatch(controlName: string, matchingControlName:string) {
-    return (formGroup: FormGroup) => {
-        const newPassword = formGroup.controls[controlName];
-        const cnewPassword = formGroup.controls[matchingControlName];
-        if (!newPassword || !cnewPassword) {
-          return null;
-        }
 
-        if (cnewPassword.errors && !cnewPassword.errors.shouldMatch) {
-            return null;
-        }
 
-        if (newPassword.value !== cnewPassword.value) {
-            cnewPassword.setErrors({ shouldMatch: true });
-        } else {
-            cnewPassword.setErrors(null);
+    export function ShouldMatch(controlName: string, matchingControlName: string) {
+        return (formGroup: FormGroup) => {
+            const newPassword = formGroup.controls[controlName];
+            const cnewPassword = formGroup.controls[matchingControlName];
+            if (!newPassword || !cnewPassword) {
+                return null;
+            }
+
+            if (cnewPassword.errors && !cnewPassword.errors.shouldMatch) {
+                return null;
+            }
+
+            if (newPassword.value !== cnewPassword.value) {
+                cnewPassword.setErrors({ shouldMatch: true });
+            } else {
+                cnewPassword.setErrors(null);
+            }
+            if (!controlName) {
+                return null;
+            }
+            /*const regex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}');
+            console.log("Here1")
+            const valid = regex.test(controlName);
+            console.log("Here")
+            return valid ? null : { shouldMatch: true };*/
         }
     }
-}*/

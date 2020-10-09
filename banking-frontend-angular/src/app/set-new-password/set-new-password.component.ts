@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class SetNewPasswordComponent implements OnInit {
 
   model: any = {};
+  statusCode: string;
   statusMessage:string;
   setNewPassword: SetNewPassword= new SetNewPassword();
   constructor(private userService: UserService , private router: Router) { }
@@ -26,6 +27,7 @@ export class SetNewPasswordComponent implements OnInit {
     this.userService.setNewPassword(this.setNewPassword).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         this.statusMessage=data.statusMessage;
+        this.statusCode=data.statusCode;
         document.getElementById("openModalButton").click();
       }
       else{
