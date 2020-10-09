@@ -61,9 +61,11 @@ public class EmailServiceImpl implements EmailService {
 		message.setFrom("do-not-reply@hfdc.com");
 		message.setTo(customer.getEmailId());
 		message.setSubject("Thank you for Registering to open a Savings account");
-		message.setText(
-				"Greetings " + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-		message.setText("Greetings " + customer.getFirstName() + " " + customer.getLastName());
+		message.setText("Greetings " + customer.getFirstName() + " " + customer.getLastName()+ " "
+				+". Your application for new savings account has been forwarded to admin for approval" + " "
+				+". To track your application status ,use the below service reference number  "+ " "
+				+". Service Reference Number :"+ customer.getServiceRefNo()
+				+". link to Track your Application : http://localhost:4200/track-application");
 		mailSender.send(message);
 	}
 
@@ -71,12 +73,10 @@ public class EmailServiceImpl implements EmailService {
 	public void sendMailForOtp(String otp, User user) {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom("do-not-reply@hfdc.com");
-		message.setTo("dummyAdyasha@outlook.com");
+		message.setTo(user.getCustomer().getEmailId());
 		message.setSubject("Otp for the transaction");
 		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getMiddleName()
 				+ " " + user.getCustomer().getLastName() + " ,  Your Otp is " + otp);
-		message.setText("Greetings " + user.getCustomer().getFirstName() + " " + user.getCustomer().getLastName()
-				+ " ,  Your Otp for the transaction is " + otp);
 		mailSender.send(message);
 	}
 

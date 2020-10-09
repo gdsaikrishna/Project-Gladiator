@@ -16,12 +16,15 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private EmailService emailService;
 
 	@Override
 	public int register(Customer customer) {
 		if (!customerRepository.isCustomerPresent(customer.getPanCard())) {
 			int serviceRefNo = customerRepository.save(customer);
-			// emailService.sendMailForNewRegistration(customer);
+			emailService.sendMailForNewRegistration(customer);
 			return serviceRefNo;
 		} else
 			throw new ServiceException("Customer already have a Savings Account");
